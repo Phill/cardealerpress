@@ -7,7 +7,7 @@ Tested up to: 4.2
 Stable tag: 4.2.1505.00
 License: GPLv2 or later
 
-In order to use CarDealerPress a subscription is required with DealerTrend. The plugin utalizes their API to pull automotive data.
+In order to use CarDealerPress a subscription is required with DealerTrend. The plugin utilizes their API to pull automotive data.
 
 == Description ==
 Thank you for using CarDealerPress for your automotive site(s). CarDealerPress is a display plugin for the VDash.io vehicle marketing system. The CarDealerPress plugin is GNU licensed however it does require a VDash.io paid subscription to be functional. This gives you the power of a full featured vehicle marketing system integrated into WordPress. You are welcome to modify the plugin to fit your needs, just be aware that this is a very active plugin and will be updated often. If you are not familiar with the GNU license, please take a minute to read through it before making modifications.
