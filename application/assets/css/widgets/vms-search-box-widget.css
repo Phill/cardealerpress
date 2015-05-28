@@ -1,0 +1,128 @@
+.saleclass-default{
+	display: none;
+}
+.saleclass-default.active{
+	display: block;
+}
+.vms-search-box{
+    padding: 2%;
+}
+.vms-sb-certified-wrap{
+    display: block;
+    height: 25px;
+    margin: 1% 0 0;
+    text-align: center;
+}
+.vms-sb-certified{
+	display: none;
+}
+.vms-sb-certified.active{
+	display: inline;
+}
+.widget-vms-search-box{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    width: 98%;
+    max-width: 300px;
+    font-size: 14px;
+    padding: 1%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.widget-vms-search-title{
+    display: block;
+    text-align: center;
+    font-size: 110%;
+    font-weight: bold;
+    padding: 1%;
+    width: 96%;
+    margin: 0 auto;
+}
+.widget-vms-select-wrapper, .widget-vms-text-wrapper{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    width: 90%;
+    margin: 1% auto 0;
+    font-size: 90%;
+	text-align: center;
+}
+.widget-vms-select-wrapper label, .widget-vms-text-wrapper label{
+    display: block;
+    float: left;
+}
+.widget-vms-select-wrapper select{
+    display: block;
+    float: right;
+    width: 60%;
+}
+.widget-vms-text-wrapper input{
+    display: block;
+    float: right;
+    width: 58%;
+}
+.widget-vms-select-wrapper.center select{
+	width: 80%;
+}
+.widget-vms-text-wrapper.center input{
+	width: 78%;
+}
+.widget-vms-select-wrapper.center select, .widget-vms-text-wrapper.center input{
+    float: none;
+	margin: 0 auto;
+}
+.widget-vms-search-button{
+    display: block;
+    text-align: center;
+    margin: 3% auto 0;
+    padding: 1% 0;
+    background-color: #0D72CF;
+    color: #FFF;
+    border-radius: 8px;
+    border: 2px solid #333333;
+    font-weight: bold;
+    width: 50%;
+    cursor: pointer;
+    font-size: 80%
+}
+.widget-vms-search-button:hover{
+    background-color: #FFF;
+    color: #0D72CF;
+    border: 2px solid #0D72CF;
+}
+.widget-vms-search-button.opacity{
+	opacity: .6;
+}
+/*
+Color Picker
+*/
+.vms-iris-holder{
+	position: relative;
+	display: block;
+}
+.vms-cc-header{
+    display: block;
+    text-align:center;
+    font-weight: bold;
+    margin: 0 0 4%;
+}
+.vms-cc-wrap{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+	margin: 0 0 2%;
+}
+.vms-cc-wrap .iris-picker{
+	clear: both;
+}
+.vms-cc-label{
+    float: left;
+}
+.vms-cc-input{
+    float: right;
+    width: 40%;
+}

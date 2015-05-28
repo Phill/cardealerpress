@@ -1,0 +1,1209 @@
+/***
+Default Colors:
+.color-one{ color: #9f0300 }
+***/
+.color-one{ color: #9F0300 }
+
+#inventory-wrapper{
+	display: block;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	font-family: Helvetica, Arial;
+	font-size:12px;
+	line-height:16px;
+	letter-spacing:.9px;
+	max-width:1000px;
+	width: 98%;
+	margin: 2% auto 0;
+	position: relative;
+	border: 1px solid #A8A8A8;
+}
+.breadcrumb-wrapper{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
+	background-color: #F2F2F2;
+	font-size: 110%;
+	border-bottom: 1px solid #A8A8A8;
+}
+.breadcrumbs{
+	display: block;
+	float: left;
+	width: 72%;
+	padding: 0 0 0 2%;
+}
+.breadcrumbs a{
+	color: #000;
+}
+.inventory-pager{
+	display: block;
+	float: right;
+	width: 26%;
+	text-align: center;
+	font-size: 88%;
+}
+#inventory-wrapper a:visited{
+	color: #898989;
+}
+
+/***
+ LISTING
+***/
+#inventory-search{
+	display: block;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	width: 100%;
+	padding: 0;
+	background: #EEE;
+	border-bottom: 1px solid #a8a8a8;
+}
+#inventory-search label{
+	display: block;
+	margin-left: 5%;
+	margin-right: 2%;
+	float: left;
+	line-height: 50px;
+	padding: 0;
+}
+#inventory-search-box{
+	display: block;
+	float: left;
+	width: 70%;
+	margin-top: 14px;
+}
+
+#inventory-list-top-wrapper{
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	background: #EEE;
+	color: #000;
+	border-bottom: 1px solid #A8A8A8;
+}
+#inventory-total-found{
+	float: left;
+	font-size: 120%;
+	font-weight: bold;
+	text-align: center;
+	max-width: 175px;
+	width: 20%;
+	padding: 1% 0;
+}
+#inventory-sort-wrapper{
+	float: right;
+	text-align: right;
+	width: 78%;
+	padding: 1% 2% 1% 0;
+}
+#inventory-sort-wrapper > div{
+	display: inline-block;
+}
+#sort-label{
+	font-weight: bold;
+}
+.sort-value{
+	padding: 0 1%;
+	border-right: 1px solid #000;
+}
+.sort-value:last-child{
+	border: none;
+}
+.sort-value a{
+	text-decoration: none;
+	background: transparent url('../../images/button-whole-arrow-7x10.jpg') no-repeat center left;
+	padding-left: 12px;
+}
+.sort-value a.asc{
+	background: transparent url('../../images/button-down-arrow-7x4.jpg') no-repeat center left;
+	padding-left: 12px;
+}
+.sort-value a.desc{
+	background: transparent url('../../images/button-up-arrow-7x4.jpg') no-repeat center left;
+	padding-left: 12px;
+}
+.sort-value a:hover{
+	color:#9f0300;
+}
+#inventory-list-sidebar{
+	float:left;
+	overflow: hidden;
+	background: #EEE;
+	z-index: 1;
+	position: relative;
+	margin-bottom: 10px;
+	width: 20%;
+	font-size: 90%;
+	line-height: 120%;
+	letter-spacing: .9px;
+}
+#list-sidebar-label{
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 110%;
+	font-weight: bold;
+	background-color: #EEE;
+	padding: 5% 0;
+	border-bottom: 1px solid #A8A8A8;
+}
+#list-sidebar-label-mobile{
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 110%;
+	font-weight: bold;
+    background-color: #9f0300;
+    width: 90%;
+    display: block;
+    margin: 2% auto;
+    padding: 2%;
+    color: #EEE;
+	border-bottom: 1px solid #A8A8A8;
+}
+#list-sidebar-label-mobile{
+	display: none;
+}
+#inventory-list-sidebar ul, #inventory-list-sidebar li{
+	list-style: none;
+}
+#inventory-list-sidebar > ul{
+	padding: 0;
+	margin: 0;
+}
+#inventory-list-sidebar > ul > li{
+	color: #006875;
+	font-weight: bold;
+	margin: 0;
+}
+.list-sidebar-label{
+	display: block;
+	width: 90%;
+	border-bottom: 1px solid #A8A8A8;
+	padding: 3% 5%;
+}
+.list-sidebar-label > span{
+	display: block;
+	width: 98%;
+	cursor: pointer;
+	padding: 1%;
+}
+li.inventory-collapsed .list-sidebar-label > span {
+	background: transparent url('../../images/button-expand-13x13.jpg') no-repeat center right;
+}
+li.inventory-expanded .list-sidebar-label > span {
+	background: transparent url('../../images/button-collapse-13x13.jpg') no-repeat center right;
+}
+#inventory-list-sidebar > ul > li > ul {
+	background-color: #FFF;
+	border-bottom: 1px solid #a8a8a8;
+	padding: 5%;
+}
+#inventory-list-sidebar > ul > li > ul > li {
+	margin: 3% 0 0 8%;
+}
+#inventory-list-sidebar > ul > li > ul > li > a {
+	text-transform: capitalize;
+}
+#inventory-list-sidebar > ul > li > ul > li > a:hover{
+	color: #9F0300;
+}
+#inventory-listing-content{
+	display: block;
+	overflow: hidden;
+	float: left;
+	width: 80%;
+	margin: 0 0 2%;
+}
+#inventory-listing-items{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
+}
+.inventory-vehicle{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 98%;
+    padding: 1%;
+    border-left: 1px solid #a8a8a8;
+    border-bottom: 1px solid #a8a8a8;
+	background-color: #FFF;
+}
+.inventory-vehicle:hover{
+	/*background-color: #9F0300;*/
+	opacity: .8;
+}
+.inventory-vehicle .vehicle-link{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+}
+.vehicle-link:hover{
+	text-decoration: none;
+}
+.inventory-content-wrapper{
+	display: block;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	background-color: #FFF;
+}
+.inventory-column-left{
+	display: block;
+	overflow: hidden;
+	float: left;
+	width: 28%;
+}
+.inventory-photo{
+	display: block;
+	position: relative;
+}
+.list-image{
+	display: block;
+	width: 100%;
+	max-height: 150px;
+	max-width: 200px;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+}
+.marked-sold-overlay{
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 40%;
+}
+.inventory-column-right{
+	display: block;
+	overflow: hidden;
+	float: left;
+	width: 68%;
+	padding: 0 1%;
+}
+.inventory-main-line{
+	display: block;
+	float: none;
+	clear: both;
+	font-size: 140%;
+	line-height: 120%;
+	font-weight: bold;
+	text-transform: capitalize;
+	word-wrap: break-word;
+}
+.inventory-main-line a{
+	color: #666;
+}
+.inventory-main-line:hover a{
+	color: #9F0300;
+}
+.inventory-details-left{
+    display: block;
+	overflow: hidden;
+    float: left;
+    width: 33%;
+    font-size: 75%;
+    line-height: 100%;
+    padding: 2% 0;
+}
+.inventory-details-left span{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0 1%;
+}
+.inventory-details-right{
+    display: block;
+	overflow: hidden;
+    float: left;
+    width: 33%;
+    font-size: 75%;
+    line-height: 100%;
+    padding: 2% 0 2% .5%;   
+}
+.inventory-details-right > span, .inventory-details .inventory-msrp{
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0 1%;
+}
+.inventory-icons{
+	display: block;
+	overflow: hidden;
+	float: left;
+	max-height: 40px;
+	width: 33%;
+	padding: 1% 0;
+}
+.inventory-details-bottom{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    padding: 1% 0 0;
+}
+.inventory-price-wrapper{
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 60%;
+	font-size: 80%;
+}
+.inventory-ais-link{
+	position: relative;
+	z-index: 10;
+	color: #0D72C7;
+}
+.inventory-ais-link:hover{
+	text-decoration: underline;
+}
+.inventory-main-price{
+	color: #9F0300;
+	font-size: 180%;
+	line-height: 110%;
+	font-weight: bold;
+}
+.inventory-sale-expires{
+	font-size: 70%;
+}
+.inventory-strike-through{
+	text-decoration: line-through;
+}
+.list-detail-button{
+    display: block;
+    float: left;
+    width: 30%;
+    margin: 0 5%;
+    background-color: #9F0300;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1% 0;
+    font-weight: bold;
+}
+.list-detail-button a{
+	color: #FFF;
+}
+.list-detail-button:hover{
+	background-color: #A8A8A8;
+}
+.bottom-inner-container-one{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    clear: both;
+}
+.bottom-inner-container-two{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    clear: both;
+	margin: 1% 0 0;
+}
+.inventory-form-button{
+    color: #FFF;
+    cursor: pointer;
+}
+.inventory-contact-information{
+    display: block;
+    overflow: hidden;
+    width: 58%;
+    font-size: 100%;
+    padding: 0 1%;
+	float: left;
+}
+.dealer-contact-wrapper{
+	display: block;
+	float: none;
+	clear: both;
+	width: 100%;
+	font-size: 90%;
+	text-align: left;
+	padding: 1% 0 0;
+}
+.dealer-contact-wrapper a{
+	text-decoration: none;
+	color: #000;
+}
+.inventory-listing-tags img{
+    width: 100%;
+    max-width: 38px;
+	margin: 0 1% 0 0;
+	vertical-align: middle;
+}
+#inventory-disclaimer{
+	display: block;
+	overflow: hidden;
+	clear: both;
+	margin: 0 0 2%;
+	font-size: 90%;
+	padding: 0 2%;
+	width: 96%;
+	text-align: center;
+}
+
+/***
+ Details
+***/
+#inventory-detail{
+	background: #FFF;
+	clear: both;
+	font-family: Helvetica, Arial;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: .9px;
+}
+#inventory-detail .inventory-main-line{
+	border-top: 1px solid #a8a8a8;
+	border-bottom: 1px solid #a8a8a8;
+	margin: 0 0 1% 0;
+	padding: 1% 2% 0 2%;
+	clear: both;
+	background-color: #F2F2F2;
+}
+#inventory-detail .inventory-main-line h2{
+	color: black;
+	font-size: 20px;
+	line-height: 22px;
+}
+#inventory-detail .inventory-main-line p{
+	clear: both;
+	margin: 0;
+	padding: 0;
+	color: #9f0300;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 5px;
+}
+#detail-content-wrapper{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    width: 100%;
+}
+#inventory-detail .inventory-disclaimer{
+    display: block;
+    margin: 2% auto;
+    width: 90%;
+}
+div.inventory-column{
+    display: block;
+    overflow: hidden;
+    width: 30.3%;
+    margin: 0 1.5%;
+}
+.column-float-right{
+	float: right;
+}
+.column-float-left{
+	float: left;
+}
+.inventory-header{
+	background: #858585;
+	color: #FFF;
+	font-size: 135%;
+	text-transform: uppercase;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
+	text-align: center;
+	overflow: hidden;
+}
+#inventory-column-info > div{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 98%;
+    border: 1px solid #a8a8a8;
+    margin: 0 auto 4%;
+    
+}
+#vehicle-inquiry table{
+    width: 100%;
+}
+#vehicle-inquiry input, #vehicle-inquiry textarea{
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+}
+#vehicle-inquiry .submit{
+    color: #FFF;
+    background-color: #9F0300;
+    margin: 2% auto 4%;
+    border-radius: 8px;
+}
+#vehicle-inquiry .submit:hover{
+    background-color: #a8a8a8;
+}
+#inventory-contact-information > div{
+    display: block;
+    text-align: center;
+}
+#contact-greeting {
+    font-size: 85%;
+}
+#contact-dealer-name{
+    font-size: 110%;
+    font-weight: bold;
+    margin: 2% 0;
+    color: #9F0300;
+}
+#contact-dealer-phone a{
+	font-weight: bold;
+	color: #9F0300;
+}
+#inventory-vehicle-information{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 98%;
+    border: 1px solid #a8a8a8;
+    margin: 0 auto 4%;
+}
+#vehicle-info-wrapper{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 94%;
+    margin: 3%;
+    border-bottom: 1px solid #a8a8a8;
+}
+#vehicle-info-wrapper > div{
+    display: block;
+    margin: 1% 0;
+    font-size: 90%;
+}
+#inventory-price-wrapper{
+    display: block;
+    width: 94%;
+    padding: 3%;
+    text-align: right;
+}
+#fuel-economy-wrapper{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	margin: 3% auto;
+	width: 98%;
+    text-align: center
+}
+#fuel-economy-wrapper > div{
+	display: inline-block;
+	overflow: hidden;
+	margin: 0 2% 0;
+	color: #757575;
+}
+#fuel-economy-wrapper > div span{
+	display: block;
+	text-align: center;
+}
+#city-value, #highway-value{
+	font-weight: bold;
+	font-size: 150%;
+	line-height: 150%;
+	color: #000;
+}
+#fuel-disclaimer{
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
+	font-size: 75%;
+	line-height: 100%;
+	color: #757575;
+	padding: 1% 0 0;
+}
+.inventory-detail-tags{
+    display: block;
+    width: 98%;
+    text-align: center;
+    border: 1px solid #a8a8a8;
+    padding: 1% 0;
+    margin: 0 auto;
+}
+.inventory-detail-tags img{
+    width: 100%;
+    max-width: 38px;
+	margin: 0 1% 0 0;
+	vertical-align: middle;
+}
+#vehicle-details-wrapper{
+    display: block;
+    width: 98%;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    border: 1px solid #a8a8a8;
+    max-height: 275px;
+	margin: 3% auto 0;
+}
+#vehicle-details-tabs-buttons{
+    display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 1px solid #a8a8a8;
+    margin: 0 0 2% 0;
+}
+#vehicle-details-tabs-content .tabs-content{
+    padding: 0 2% ;
+    width: 96%;
+	max-height: 225px;
+	overflow-x: hidden;
+	overflow-y: scroll;    
+}
+
+#vehicle-detail-equipment{
+    width: 98%;
+}
+#vehicle-detail-equipment h4{
+    background-color: #858585;
+    color: #FFFFFF;
+	padding: 0 0 0 1%;
+	margin: 0 0 2%;
+	cursor: pointer;
+}
+ul.equipment_list{
+    display: block;
+    margin: 0 0 0 5%;
+    list-style: none;
+}
+
+.tabs-button{
+    flex: 1 1 auto;
+    font-size: 85%;
+    margin: 0;
+	background-color: #858585;
+	color: #FFF;
+	font-weight: bold;
+	line-height: 100%;
+	padding: 1% 1%;
+	margin: 1% 1% 0;
+	cursor: pointer;
+}
+.tabs-button.active{
+	background-color: #9F0300;
+}
+.tabs-content{
+	display: none;
+	float: none;
+	clear: both;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+.tabs-content.active{
+	display: block;
+}
+
+#photo-tabs-wrapper{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	border: 1px solid #a8a8a8;
+	width: 98%;
+	margin: 0 auto;
+}
+#inventory-video-wrapper{
+	position: relative;
+	height: 0;
+	padding-bottom: 56.25%;;
+	padding-top: 25px;
+	margin: 0 auto;
+}
+#inventory-video-iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#video-overlay-wrapper{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    position: relative;
+    cursor: pointer;
+	text-align: center;
+}
+#video-overlay-wrapper-dm{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    position: relative;
+    cursor: pointer;
+	text-align: center;
+}
+#video-overlay-image{
+	width: 98%;
+	margin: 0 0 1% 0;
+}
+#video-overlay-play-button{
+    position: absolute;
+    z-index: 2;
+    top: 12%;
+    left: 32%;
+    display: block;
+	width: 40%;
+}
+#video-overlay-wrapper:hover #video-overlay-play-button{
+    background-color: #000;
+    opacity: .4;
+    border-radius: 4px;
+}
+#wp-video-shortcode-wrapper, #dm-video-wrapper{
+    display: none;
+}
+div.wp-video-shortcode{
+    height: 360px !important;
+    width: 640px !important
+}
+.dialog-video-wrapper, .dialog-list-gform-wrapper{
+    z-index: 900;
+}
+#vehicle-images{
+	display: block;
+	float: none;
+	clear: both;
+	overflow: hidden;
+	position: relative;
+	width: 98%;
+	padding-top: 0px;
+	margin: 0 auto 0;
+}
+#vehicle-images > a > img{
+	width: 100%;
+}
+#vehicle-thumbnails{
+	display: block;
+	float: none;
+	clear: both;
+	text-align: center;
+	width: 98%;
+	margin: 1% auto;
+	padding: 1% 0 0;
+}
+#vehicle-thumbnails a{
+	margin: 1%;
+	padding: 1%;
+	cursor: pointer;
+	display: inline-block;
+	*display: inline;/* For IE7*/
+	*zoom: 1;/* For IE7*/
+	vertical-align: top;
+	line-height: 0;
+	transition: inherit;
+}
+#vehicle-thumbnails a.cycle-pager-active{
+	background-color: #9F0300;
+}
+#photo-tabs-buttons{
+    display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	width: 100%;
+	text-align: center;
+}
+#photo-tabs-buttons .tabs-button {
+    margin: 1% 2%;
+}
+.inventory-carfax{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1% 0 2%; 
+}
+
+/***
+ Similar Vehicles
+***/
+#detail-similar-wrapper{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 96%;
+    border-top: 1px solid #a8a8a8;
+    border-bottom: 1px solid #a8a8a8;
+    margin: 2% auto 0;
+    padding: 0 2% 2%;
+}
+.similar-headline a{
+    font-weight: bold;
+    margin-left: 2%;
+}
+.similar-headline a span{
+    margin: 0 1%;
+}
+.similar-details span{
+    display: block;
+}
+.similar-button a{
+    color: #9F0300;
+    font-weight: bold;
+}
+#similar-title{
+    background-color: #858585;
+    color: #FFF;
+    text-align: center;
+    width: 40%;
+    margin: 1% auto;
+	font-size: 18px;
+	text-transform: uppercase;
+    padding: 1%;
+}
+#similar-items{
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+}
+.similar-item{
+    display: block;
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+/***
+ Loan Calc
+***/
+#loan-calculator{
+	display: block;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	background-color: #a8a8a8;
+	max-width: 480px;
+	width: 92%;
+	padding: 1%;
+	margin: 1% auto 0;
+}
+.loan-value{
+	display: block;
+	float: none;
+	clear: both;
+	overflow: hidden;
+	margin: 2% 0;
+}
+.loan-value label{
+	color: #000;
+	font-size: 120%;
+	line-height: 180%
+}
+.loan-value input{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+.loan-payment{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
+	border-bottom: 1px solid #FFF;
+	margin: 0 0 2%;
+}
+.loan-payment label{
+	display: block;
+	width: 48%;
+	text-align: center;
+	font-size: 110%;
+	font-weight: bold;
+}
+.loan-payment div{
+	display: block;
+	width: 90%;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+	line-height: 140%;
+	color: #000;
+	margin: 0 auto;
+}
+.loan-total{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
+}
+.loan-total label{
+	display: block;
+	width: 48%;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+}
+.loan-total div{
+	display: block;
+	width: 90%;
+	text-align: center;
+	font-size: 140%;
+	font-weight: bold;
+	line-height: 180%;
+	color: #9F0300;
+	margin: 0 auto;
+}
+#loan-calculator-submit{
+	display: block;
+	margin: 4% 0;
+	text-align: center;
+}
+#loan-calculator-error{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 2% 0 1%;
+    font-size: 120%;
+}
+#loan-calculator-data{
+	display: none;
+}
+#loan-calculator-data.active{
+	display: block;
+}
+#loan-calculator-button{
+    display: block;
+    width: 90%;
+    margin: 2% auto;
+    text-align: center;
+    padding: 1%;
+    background-color: #858585;
+    color: #FFF;
+    border: 1px solid #000;
+    font-weight: bold;
+    font-size: 120%;
+    cursor: pointer;
+}
+#loan-calculator-button:hover{
+    color: #000;
+}
+/***
+Dialog adjustments
+***/
+div.ui-widget-overlay{
+	height: 0;
+	padding-top: 100%;
+	z-index: 9999;
+}
+.ui-dialog{
+	z-index: 9999;
+	position: fixed;
+}
+.ui-dialog .ui-dialog-titlebar-close span{
+}
+div.form-wrap .gform_body .ginput_container input{
+	max-width: 98%;
+}
+div.form-wrap .gform_body .ginput_container textarea{
+	max-width: 97%;
+	max-height: 100px;
+}
+
+#friendly-print{
+	float: right;
+	clear: both;
+	background: transparent url('../../images/print.png') no-repeat right;
+	display: block;
+	text-decoration: none;
+	padding-right: 20px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+/***
+Geo Wrapper
+****/
+#geo-wrapper{
+    display: block;
+    width: 100%;
+    float: none;
+    clear: both;
+    background-color: #FFF;
+    padding: 5% 0;
+    text-align: center;
+}
+#inventory-geo-select{
+    width: 80%;
+    margin: 0 auto;
+}
+
+/********
+Autocheck
+********/
+.autocheck-list{
+	display: block;
+	float: right;
+	overflow: hidden;
+	margin: 0 7.5% 0;
+	padding: 1% 0 0;
+	text-align: right;
+	width: 108px;
+}
+.autocheck-list a{
+	cursor: pointer;
+}
+.autocheck-detail{
+    display: block;
+    float: none;
+    clear: both;
+    margin: -3% auto 2%;
+    padding: 0;
+    text-align: center;
+}
+.autocheck-detail a{
+    cursor: pointer;
+}
+
+/***
+Gravity Form
+***/
+.form-wrapper{
+	display: block;
+	clear: both;
+	float: none;
+	overflow: hidden;
+	width: 100%;
+	color: #000;
+	padding: 0;
+	margin: 0;
+}
+.form-display-wrap .gform_wrapper, .form-wrap .gform_wrapper{
+	padding: 0;
+	margin: 0 0 2%;
+	width: 100%;
+	max-width: 100%;
+	font-size: 16px;
+}
+.form-display-wrap .gform_wrapper .gform_heading, .form-wrap .gform_wrapper .gform_heading{
+	width: 100%;
+	margin: 0 0 2%;
+}
+.form-display-wrap .gform_wrapper .gform_heading h3.gform_title{
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	width: 100%;
+	background: #858585;
+	color: #FFF;
+	font-size: 18px;
+	text-transform: uppercase;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
+	text-align: center;
+	font-weight: normal;
+}
+.form-display-wrap .gform_wrapper .gform_body, .form-wrap .gform_wrapper .gform_body{
+	width: 96%;
+	padding: 0;
+	margin: 0 auto;
+	font-size: 90%;
+}
+.form-display-wrap .gform_wrapper .gform_body textarea, .form-wrap .gform_wrapper .gform_body textarea{
+	max-height: 65px;
+	width: 99%;
+}
+.form-display-wrap .gform_wrapper .gform_body input, .form-wrap .gform_wrapper .gform_body input{
+	width: 99%;
+}
+.form-display-wrap .gform_wrapper .gform_footer, .form-wrap .gform_wrapper .gform_footer{
+	width: 96%;
+	margin: 0 auto;
+	text-align: center;
+}
+.form-display-wrap .gform_wrapper .gform_footer > .gform_button, .form-wrap .gform_wrapper .gform_footer > .gform_button{
+    color: #FFF;
+    background-color: #9F0300;
+    margin: 2% auto 0;
+    border-radius: 6px;
+}
+.form-display-wrap .gform_wrapper .gform_footer > .gform_button:hover, .form-wrap .gform_wrapper .gform_footer > .gform_button:hover{
+    background-color: #a8a8a8;
+}
+#form-data{
+	display: none;
+}
+#form-button-wrapper{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    clear: both;
+    float: none;
+	margin: 0 0 3%;
+}
+#form-button-wrapper .form-button{
+    display: block;
+    width: 90%;
+    margin: 2% auto;
+    text-align: center;
+    padding: 1%;
+    background-color: #858585;
+    color: #FFF;
+    border: 1px solid #000;
+    font-weight: bold;
+    font-size: 120%;
+    cursor: pointer;
+}
+#form-button-wrapper .form-button:hover{
+    color: #000;
+}
+
+/***
+gForm LIst
+***/
+.inventory-form-container{
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+.list-form-wrapper{
+    width: 80%;
+    margin: 2% auto 0;
+    background-color: #D5D5D5;
+    border: 2px solid #9F0300
+;
+}
+.list-form-wrapper div.gform_wrapper .gfield_label{
+    color: #000;
+    margin: 0 0 0 5%;
+}
+.list-form-wrapper div.gform_wrapper .ginput_container input, .form-wrapper div.gform_wrapper .ginput_container input{
+    margin: 0 auto;
+    display: block;
+    width: 80%
+}
+.list-form-wrapper div.gform_wrapper .ginput_container textarea.textarea, .form-wrapper div.gform_wrapper .ginput_container textarea.textarea{
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    max-height: 80px;
+}
+.list-form-wrapper div.gform_wrapper .gform_button{
+    width: 50%;
+    margin: 5% auto 0;
+    display: block;
+}

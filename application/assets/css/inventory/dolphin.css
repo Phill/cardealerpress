@@ -1,0 +1,1596 @@
+#inventory-wrapper{
+    width: 99%;
+    max-width: 960px;
+    margin: .5% auto 0;
+    background-color: #838383;
+    padding: .5%;
+    display: block;
+    overflow: hidden;
+    clear:both;
+    border-radius: 6px 6px 6px 6px;
+    min-width: 260px;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+#inventory-wrapper a:visited{
+    color: #FFF;
+}
+.inventory-breadcrumb-wrapper{
+    width: 96%;
+    padding: 0;
+    margin: 0 2% 1%;
+    border-bottom: 3px solid  #3B3B3B;
+    border-radius: 5px 5px 5px 5px;
+    float: none;
+    clear: both;
+    overflow: hidden;
+}
+.breadcrumbs{
+    width: 64%;
+    display: block;
+    float: left;
+}
+.breadcrumbs a:first-child span{
+    display: none;
+}
+.breadcrumbs a{
+    margin-left: 1%;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.8em;
+}
+.breadcrumbs > span{
+    margin-left: 1%;
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+    line-height: 1.8em;
+}
+.breadcrumbs a:hover{
+    color: #0D72C7;
+}
+#inventory-disclaimer{
+    width: 98%;
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    background-color: #161616;
+    border-top: 6px solid #3B3B3B;
+    border-bottom: 6px solid #3B3B3B;
+    padding: 1%;
+    text-align: center;
+    margin: 1% auto;
+    border-radius: 8px;
+	font-size: .8em;
+}
+#inventory-disclaimer p{
+    color: #FFF;
+}
+
+/***Listing***/
+#inventory-listing{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    margin: 1% auto;
+    width: 98%;
+    border-top: 6px solid #3B3B3B;
+    border-bottom: 6px solid #3B3B3B;
+    border-radius: 8px;
+}
+#inventory-search-wrapper {
+    clear: both;
+    display: block;
+    float: none;
+    margin: 0 2% 1%;
+    overflow: hidden;
+    width: 96%;
+	font-size: 85%;
+}
+#mobile-show-search{
+	display: none;
+    background-color: #0453BC;
+    color: #D6D6D6;
+    font-style: italic;
+    border: 1px solid #D6D6D6;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1% 0;
+    font-size: 120%;
+    width: 80%;
+    line-height: 1.4em;
+    margin: 0 auto 1%;
+	text-align: center;
+}
+#mobile-show-search.active{
+    color: #0453BC;
+    background-color: #D6D6D6;
+}
+#search-top-wrapper{
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: none;
+    width: 98%;
+    padding: 1% 1%;
+    background-color: #333333;
+    color: #FFF;
+	text-align: center;
+	border-radius: 8px 8px 0 0;
+}
+.search-option-top{
+    display: block;
+    float: left;
+    clear: none;
+    width: 22%;
+    vertical-align: top;
+    text-align: center;
+}
+.search-option-mid{
+    display: block;
+    float: left;
+    clear: none;
+    width: 22%;
+    vertical-align: top;
+    text-align: center;
+	margin: 0;
+}
+#search-mid-wrapper{
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: both;
+    width: 98%;
+    padding: 0 1% 1%;
+    background-color: #333333;
+    color: #FFF;
+	text-align: center;
+	border-top: 3px solid #0453BC;
+}
+input#inventory-search-box{
+    height: 12px;
+    text-align: center
+}
+.inventory-option-wrapper select{
+    max-width: 140px;
+    width: 100%;
+}
+input#inventory-search-box{
+	max-width: 140px;
+	width: 100%;
+}
+div#geo_text{
+    display: inline;
+    color: #FFF;
+}
+a#geo-back-link{
+    color: #000;
+    cursor: pointer;
+    padding: 0 1%
+}
+#inventory-search-submit{
+    display: block;
+	float: left;
+    background-color: #0453BC;
+    color: #D6D6D6;
+    font-style: italic;
+    border: 1px solid #D6D6D6;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    font-size: 120%;
+    width: 100%;
+	max-width: 80px;
+    line-height: 1.4em;
+    margin: 0 1%;
+	height: 34px;
+}
+#inventory-search-submit:hover{
+    color: #0453BC;
+    background-color: #D6D6D6;
+}
+.sort-value a{
+    color: #000
+}
+.inventory-pager{
+    width: 34%;
+    display:block;
+    float: right;
+    text-align: right;
+    padding: 0 1% 0 0;
+    line-height: 1.8em;
+}
+.inventory-pager .page-numbers{
+    background-color: #3B3B3B;
+    padding: 0 1%;
+    border-radius: 4px 4px 4px 4px;
+}
+.inventory-pager > span{
+    color: #0D72C7;
+}
+.inventory-pager a{
+    color: #FFF;
+    text-decoration: none;
+}
+.inventory-pager a:hover{
+    color: #0D72C7;
+}
+.inventory-item{
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: both;
+    margin: 1% auto;
+    padding: 1%;
+    border-bottom: 4px solid #3B3B3B;
+    border-radius: 6px;
+    width: 96%;
+    background-color: #161616;
+}
+#inventory-search-info {
+    display: block;
+    clear: both;
+    float: none;
+    margin: 1% auto 0;
+    overflow: hidden;
+    padding: 0;
+    width: 96%;
+    color: #FFF;
+}
+#inventory-total-found{
+    display: block;
+    overflow: hidden;
+    float: left;
+    width: 48%;
+    text-align: left;
+    padding: 0 0 0 2%;
+}
+#inventory-sort-wrapper{
+    display: block;
+    overflow: hidden;
+    float: right;
+    width: 48%;
+    text-align: right;
+    padding: 0 2% 0 0;
+}
+#inventory-sort-wrapper > div{
+    display: inline-block;
+    margin: 0 1%;
+}
+.sort-value a.asc{
+    color: #FF0000;
+}
+.inventory-item:hover{
+    border-bottom: 4px solid #0453BC;
+	background-color: #999999;
+}
+.inventory-column-left{
+    display: block;
+    overflow: hidden;
+    float: left;
+    width: 20%;
+}
+.inventory-photo{
+	position: relative;
+}
+.list-image{
+    border-radius: 4px;
+    width: 100%;
+	position: relative;
+	z-index: 1;
+}
+.marked-sold-overlay{
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 40%;
+}
+.inventory-icons{
+    display: block;
+    height: auto;
+    margin: 5% 0 0;
+    max-height: 40px;
+    overflow: hidden;
+    text-align: center;
+}
+.inventory-icons img{
+    display: inline-block;
+}
+.inventory-column-right{
+    display: block;
+    overflow: hidden;
+    float: left;
+    width: 76%;
+    padding: 0 0 0 4%;
+}
+.inventory-headline{
+    display: block;
+    overflow: hidden;
+    float; none;
+    clear: both;
+    width: 96%;
+    padding: 0 2%;
+    border-bottom: 2px solid #3B3B3B;
+    border-radius: 4px;
+}
+.inventory-headline-details{
+    display: block;
+    overflow: hidden;
+    float: left;
+    width: 72%;
+    padding: 0 3% 0 0;
+}
+.inventory-headline-details a{
+    text-decoration: none;
+}
+.inventory-headline-details span{
+    color:  #FFF;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.inventory-headline-details .inventory-saleclass{
+    color: #D6D6D6;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+.inventory-headline-msrp{
+    display: block;
+    float: right;
+    width: 25%;
+    color: #D6D6D6;
+    text-align: right;
+}
+.inventory-headline-text{
+    width: 90%;
+    display: block;
+    clear: both;
+    float: none;
+    text-align: center;
+    color: #FFF;
+    margin: .5% auto;
+    background-color: #FF0000;
+    border-radius: 6px;
+    line-height: 1.2em;
+}
+.inventory-listing-info{
+    width: 96%;
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: both;
+    padding: 0 2% 0 2%;
+    background-color: #3B3B3B;
+    margin: 2% 0 1%;
+    border-radius: 6px;
+}
+.inventory-details-left{
+    width: 30%;
+    overflow: hidden;
+    font-size: .8em;
+    line-height: 1.5em;
+    color: #FFF;
+    border-right: 1px solid #FFF;
+    margin: 1% 0 1%;
+    display: block;
+	float: left;
+    vertical-align: top;
+}
+.inventory-details-left span{
+    display: inline-block;
+}
+.inventory-details-right{
+    width: 30%;
+    overflow: hidden;
+    font-size: .8em;
+    line-height: 1.5em;
+    color: #FFF;
+    border-right: 1px solid #FFF;
+    margin: 1% 0 1% 2%;
+    padding: 0 1% 0 0;
+    display: block;
+	float: left;
+    vertical-align: top;
+}
+.inventory-details-right span{
+    display: block;
+}
+.inventory-price{
+    width: 33%;
+    overflow: hidden;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    color: #FFF;
+    margin: 2% 0 1% 2%;
+    text-align: right;
+    display: block;
+	float: left;
+    vertical-align: top;
+}
+.inventory-main-price{
+    width: 95%;
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: both;
+    background-color: #D6D6D6;
+    border-radius: 6px;
+    padding: 1% 2%;
+    margin: 0 0 0 1%;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.inventory-strike-through{
+    text-decoration: line-through;
+    font-size: 1.0em;
+}
+.inventory-sale-price{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #FF0000;
+}
+.inventory-asking-price.inventory-ais{
+    font-size: .9em;
+}
+.inventory-ais-incentive-l-text{
+    font-size: .9em;
+}
+.inventory-your-price.inventory-ais{
+    font-size: 1em;
+    font-weight: bold;
+    color: #FF0000;
+}
+.inventory-ais-incentive-s-text{
+    font-size: .6em;
+    clear: both;
+}
+.inventory-ais-incentive-s-text a{
+    color: #FFF;
+    font-style: italic;
+}
+.inventory-more-info {
+    clear: both;
+    display: block;
+    float: none;
+    overflow: hidden;
+    padding: 0 2%;
+    width: 96%;
+}
+.inventory-contact-information{
+    float: left;
+    overflow: hidden;
+    width: 50%;
+    text-align: left;
+    color: #FFF;
+    font-size: .9em;
+    padding: .5% 0 0;
+}
+.inventory-detail-button{
+    display: block;
+    clear: right;
+    float: right;
+    margin: 1% 0 0;
+	overflow: hidden;
+	width: 48%;
+}
+.form-button{
+    display: block;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0453BC;
+    color: #FFF;
+    padding: 2% 0;
+    border-radius: 4px;
+    border-top: 2px solid #ADADAD;
+    border-right: 2px solid #3B3B3B;
+    border-bottom: 2px solid #3B3B3B;
+    border-left: 2px solid #ADADAD;
+    font-size: 80%;
+    line-height: 100%;
+    font-weight:  bold;
+    text-transform: uppercase;
+    margin: 0 2% 0 0;
+	cursor: pointer;
+	float: right;
+}
+.detail-link-button{
+    display: block;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0453BC;
+    color: #FFF;
+    padding: 2% 0;
+    border-radius: 4px;
+    border-top: 2px solid #ADADAD;
+    border-right: 2px solid #3B3B3B;
+    border-bottom: 2px solid #3B3B3B;
+    border-left: 2px solid #ADADAD;
+    font-size: 80%;
+    line-height: 100%;
+    font-weight:  bold;
+    text-transform: uppercase;
+    margin: 0 2% 0 0;
+	float: right;
+}
+.inventory-detail-button a:hover, .form-button:hover;{
+    text-decoration: none;
+    background-color: #03397F;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    color: #999999;
+}
+.inventory-listing-tags{
+	display: block;
+	float: left;
+	overflow: hidden;
+	width: 100%;
+	margin: 1% 0 0;
+}
+.inventory-listing-tags img{
+	max-width: 35px;
+	width: 100%;
+}
+/***Listing End ***/
+
+.inventory-detail-tags{
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	margin: 1% 0 0;
+	text-align: center;
+}
+.inventory-detail-tags img{
+	max-width: 35px;
+	width: 100%;
+}
+/***
+gForm LIst
+***/
+.inventory-form-container{
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+.list-form-wrapper{
+    width: 80%;
+    margin: 2% auto 0;
+    background-color: #414649;
+    border: 2px solid #0453BC;
+}
+.list-form-wrapper div.gform_wrapper .gfield_label{
+    color: #fff;
+    margin: 0 0 0 5%;
+}
+.list-form-wrapper div.gform_wrapper .ginput_container input{
+    margin: 0 auto;
+    display: block;
+    width: 80%
+}
+.list-form-wrapper div.gform_wrapper .ginput_container textarea.textarea{
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    max-height: 80px;
+}
+.list-form-wrapper div.gform_wrapper .gform_button{
+    width: 50%;
+    margin: 5% auto 0;
+    display: block;
+}
+
+
+
+/***Detail Start***/
+#inventory-headline{
+    width: 94%;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    padding: 0 3%;
+	text-align: center;
+}
+#inventory-headline h2{
+    color: #FFF;
+    font-size: 1.7em;
+    line-height: 1.4em;
+    font-weight: bold;
+}
+#inventory-headline-text {
+    background-color: #FF0000;
+    border-radius: 6px 6px 6px 6px;
+    clear: both;
+    color: #FFFFFF;
+    display: block;
+    float: none;
+    margin: 0.5% auto;
+    text-align: center;
+    max-width: 90%;
+    line-height: 1.4em;
+}
+#inventory-headline .inventory-saleclass{
+    color: #D6D6D6;
+    font-size: .7em;
+    text-transform: uppercase;
+}
+#inventory-headline .inventory-drive-train, #inventory-headline .inventory-body-style {
+    font-size: .7em;
+    color: #D6D6D6;
+}
+#inventory-media-wrapper{
+    width: 98%;
+    display: block;
+    float: none;
+    overflow: hidden;
+    clear: both;
+    margin: 0 auto;
+	font-size: .9em;
+}
+#inventory-contact-information{
+    width: 100%;
+    display:block;
+    overflow: hidden;
+    background-color: #161616;
+    color: #FFF;
+    margin: 1% 0;
+    padding: 0 3%;
+    text-align: center;
+    border-top: 6px solid  #3B3B3B;
+    border-bottom: 6px solid  #3B3B3B;
+    border-radius: 8px 8px 8px 8px;
+    line-height: 1.3em;
+}
+#inventory-contact-information strong{
+    font-weight: bold
+}
+
+#inventory-slideshow-text{
+    color: #FFF;
+    font-size: .7em;
+    line-height: .7em;
+    text-align: center;
+    margin: 0 0 2%;
+}
+#inventory-video-wrapper{
+	position: relative;
+	height: 0;
+	padding-bottom: 56.25%;;
+	padding-top: 25px;
+	margin: 0 auto;
+}
+#inventory-video-iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#video-overlay-wrapper{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    position: relative;
+    cursor: pointer;
+	text-align: center;
+}
+#video-overlay-wrapper-dm{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    position: relative;
+    cursor: pointer;
+}
+#video-overlay-image{
+	width: 98%;
+	margin: 0 0 1% 0;
+}
+#video-overlay-play-button{
+    position: absolute;
+    z-index: 2;
+    top: 12%;
+    left: 32%;
+    display: block;
+	width: 40%;
+}
+#video-overlay-wrapper:hover #video-overlay-play-button{
+    background-color: #000;
+    opacity: .4;
+    border-radius: 4px;
+}
+#wp-video-shortcode-wrapper, #dm-video-wrapper{
+    display: none;
+}
+div.wp-video-shortcode{
+    height: 360px !important;
+    width: 640px !important
+}
+.dialog-video-wrapper, .dialog-list-gform-wrapper{
+    z-index: 900;
+}
+#vehicle-images{
+    display: block;
+    overflow: hidden;
+    max-width: 258px;
+    max-height: 180px;
+    width: 100%;
+    clear: both;
+    float: none;
+	margin: 0 0 4%;
+}
+#vehicle-images img{
+    border-radius: 8px;
+    width: 100%;
+}
+#vehicle-thumbnails{
+	display: block;
+    width: 100%;
+    clear: both;
+    float: none;
+    overflow: hidden;
+    border-top: 4px solid #3B3B3B;
+    border-bottom: 4px solid #3B3B3B;
+    border-radius: 6px;
+	height: 112px;
+	text-align: center;
+}
+#vehicle-thumbnails.show-all{
+	height: auto;
+}
+#vehicle-thumbnails a{
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+	border-radius: 2px;
+	transition: inherit;
+}
+#vehicle-thumbnails .cycle-pager-active{
+	background-color: #0453BC;
+}
+#vehicle-thumbnails a:hover{
+    background-color: #FF0000;
+    border-radius: 2px;
+}
+#vehicle-thumbnails img{
+	text-align: center;
+}
+#inventory-nav-button.active{
+    display: block;
+}
+#inventory-nav-button.hidden{
+    display: none;
+}
+#inventory-nav-button{
+    float: none;
+    clear: both;
+    overflow: hidden;
+    width: 95%;
+    margin: 0 auto;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .9em;
+    text-align: center;
+    background-color: #161616;
+    border-right: 2px solid #3B3B3B;
+    border-bottom: 3px solid #3B3B3B;
+    border-left: 2px solid #3B3B3B;
+    border-radius: 0 0 6px 6px;
+    cursor: pointer;
+}
+#inventory-nav-button:hover{
+    color: #000;
+    background-color: #D5D5D5;
+}
+#inventory-price-wrapper{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: both;
+    background-color: #D6D6D6;
+    border-radius: 6px;
+    padding: 1% 0;
+}
+#inventory-price-wrapper .inventory-main-price{
+    display: block;
+    clear: both;
+    color: #FF0000;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 1em;
+    font-weight: bold;
+    width: 100%;
+}
+#inventory-price-wrapper a{
+    color: #0453BC;
+    display: block;
+    line-height: 1em;
+    text-align: right;
+}
+#inventory-price-wrapper > div{
+    display: block;
+    overflow: hidden;
+    width: 96%;
+    clear: both;
+    font-size: .8em;
+    text-align: right;
+}
+#fuel-economy-wrapper{
+    width: 96%;
+    display: block;
+	clear: both;
+    float: none;
+    overflow: hidden;
+    border-left: 4px solid #3B3B3B;
+    border-right: 4px solid #3B3B3B;
+    text-align: center;
+    padding: 4% 0;
+    margin: 0 auto;
+    color: #D6D6D6;
+}
+#fuel-city, #fuel-image, #fuel-hwy{
+    display: block;
+	float: left;
+    vertical-align: top;
+    width: 33%;
+}
+#fuel-economy-wrapper span{
+    width: 100%;
+    display: block;
+}
+#fuel-disclaimer{
+    display: block;
+    float: none;
+    clear: both;
+    color: #D6D6D6;
+    text-align: center;
+    line-height: 1em;
+    font-size: .75em;
+    padding: 2% 0 0;
+}
+.tabs-button{
+	display: block;
+	float: right;
+	background-color: #858585;
+	color: #FFF;
+	font-size: 120%;
+	font-weight: bold;
+	line-height: 100%;
+	padding: 1% 2%;
+	margin: 1% 0 0 1%;
+	cursor: pointer;
+}
+.tabs-button.active{
+	background-color: #0453BC;
+}
+.tabs-content{
+	display: none;
+	float: none;
+	clear: both;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+.tabs-content.active{
+	display: block;
+}
+.tabs-content > div{
+    width: 98%;
+    margin: 0 auto;
+    background-color: #D3D3D3;
+    padding: 1%
+}
+.tabs-content > div ul{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    width: 100%;
+    font-size: .8em;
+    text-align: left;
+}
+.tabs-content > div ul li{
+    display: block;
+    overflow: hidden;
+    float: left;
+    width: 30%;
+    margin: 0 1.5% 1%;
+}
+#vehicle-detail-equipment h4{
+    border-bottom: 2px solid #0453BC;
+}
+#inventory-detail-information{
+    width: 96%;
+    clear: both;
+    display: block;
+    float: none;
+    overflow: hidden;
+    border-bottom: 6px solid #3B3B3B;
+    border-radius: 8px 8px 8px 8px;
+    border-top: 6px solid #3B3B3B;
+    margin: 0 auto;
+    padding: 2% 1%;
+}
+#inventory-column-left{
+    width: 30%;
+    float: left;
+    display: block;
+    overflow: hidden;
+    padding: 1%;
+    margin: 0 0 1%;
+    background-color: #161616;
+    border-radius: 8px;
+    border-top: 6px solid #3B3B3B;
+    border-bottom: 6px solid #3B3B3B;
+}
+#inventory-column-middle{
+    width: 30%;
+    float: left;
+    display: block;
+    overflow: hidden;
+    padding: 1%;
+    margin: 0 2% 1%;
+    background-color: #161616;
+    border-radius: 8px;
+    border-top: 6px solid #3B3B3B;
+    border-bottom: 6px solid #3B3B3B;
+}
+#inventory-column-right{
+    width: 30%;
+    float: left;
+    display: block;
+    overflow: hidden;
+    padding: 1%;
+    margin: 0 0 1%;
+    background-color: #161616;
+    border-radius: 8px;
+    border-top: 6px solid #3B3B3B;
+    border-bottom: 6px solid #3B3B3B;
+}
+#inventory-detail-specs{
+    width: 98%;
+    display: block;
+    float: none;
+    clear: both;
+    overflow: hidden;
+    background-color: #161616;
+    border-top: 6px solid #3B3B3B;
+    border-bottom: 6px solid #3B3B3B;
+    padding: 1%;
+    margin: 1% auto 1%;
+    border-radius: 8px;
+}
+#inventory-vehicle-overview{
+    width: 100%;
+    display: block;
+    clear: both;
+    float: none;
+    overflow: hidden;
+    margin: 4% 0;
+    padding: 2% 0;
+    border-top: 4px solid #3B3B3B;
+    border-bottom: 4px solid #3B3B3B;
+    border-radius: 6px;
+}
+.inventory-vehicle-overview-wrap{
+    width: 90%;
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+    margin: 0 auto;
+    border-bottom: 2px solid #D6D6D6;
+    line-height: 1em;
+}
+.inventory-vehicle-overview-left{
+    width: 33%;
+    float: left;
+    margin: 0 0 0 2%;
+    padding: 0 1% 0 0;
+    text-align: right;
+    color: #D6D6D6;
+    font-size: .8em;
+    font-weight: bold;
+}
+.inventory-vehicle-overview-right{
+    width: 56%;
+    float: left;
+    margin: 0 2% 0 0;
+    padding: 0 0 0 4%;
+    text-align: left;
+    border-left: 0px solid #D6D6D6;
+    color: #D6D6D6;
+    font-size: .8em;
+}
+#inventory-carfax{
+    width: 100%;
+    display: block;
+    margin: 3% 0 0;
+}
+#inventory-carfax img{
+    display: block;
+    margin: 0 auto;
+}
+#friendly-print{
+    float: right;
+    background: transparent url('../../images/print.png') no-repeat right;
+    display: block;
+    text-decoration: none;
+    padding-right: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+	color: #000;
+}
+
+.inventory-form{
+    width: 97%;
+    margin: 0 auto 6%;
+    border-top: 4px solid #3B3B3B;
+    border-right: 4px solid #3B3B3B;
+    border-bottom: 4px solid #3B3B3B;
+    border-left: 4px solid #3B3B3B;
+}
+.inventory-form-headers{
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	width: 100%;
+	background: #D3D3D3;
+	color: #000;
+	font-size: 18px;
+	text-transform: uppercase;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 6px;
+}
+.inventory-form-table{
+    width: 96%;
+    display: block;
+    overflow: hidden;
+    float: none;
+    clear: both;
+    padding: 2%;
+}
+.inventory-form-table label{
+    color: #D6D6D6;
+    font-size: .8em
+}
+.inventory-form-table input{
+    background-color: #D6D6D6;
+    border-radius: 6px;
+    width: 100%;
+    padding: 0;
+    height: 1.4em;
+}
+.inventory-form-table textarea{
+    background-color: #D6D6D6;
+    border-radius: 6px;
+    width: 100%;
+    max-height: 60px;
+    padding: 0;
+}
+.inventory-form-one-half{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+}
+.inventory-form-one-half > div{
+    width: 45%;
+    display: block;
+	float: left;
+    margin: 0 2%;
+}
+.inventory-form-full{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    clear: both;
+    float: none;
+}
+.inventory-form-full > div{
+    width: 96%;
+    display: block;
+    margin: 0 2%;
+}
+.inventory-form-table .submit{
+    width: 98%;
+    display: block;
+	clear: both;
+	float: none;
+    margin: 4% auto 2%;
+    padding: 1% 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #D6D6D6;
+    background-image: none;
+    background-color: #0453BC;
+    border-top: 2px solid #D6D6D6;
+    border-right: 2px solid #D6D6D6;
+    border-bottom: 2px solid #D6D6D6;
+    border-left: 2px solid #D6D6D6;
+    cursor: 2px solid #D6D6D6;
+    height: 2.5em;
+}
+.inventory-form-table .submit:hover{
+    color: #000;
+    background-image: none;
+    background-color: #03397F;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-left: 2px solid #000;
+}
+.form-single-label{
+    width: 98%;
+    display: block;
+    text-align: center;
+    margin: 4% auto 0;
+    border-bottom: 2px solid #D6D6D6;
+}
+.loan-calculated-value{
+    background-color: #D6D6D6;
+    border-radius: 6px;
+    text-align:center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #FF0000;
+}
+.inventory-form-table input.privacy,.inventory-form-table input#friend-notify {
+    max-width: 20px;
+	float: left;
+}
+#inventory-detail-share{
+    width: 12%;
+    float: right;
+    display:block;
+    overflow: hidden;
+    background-color: #161616;
+    color: #FFF;
+    margin: 1% 0;
+    padding: 0 1%;
+    border-top: 6px solid  #3B3B3B;
+    border-bottom: 6px solid  #3B3B3B;
+    border-radius: 8px 8px 8px 8px;
+    min-width: 115px;
+}
+#inventory-share-text{
+    width: 40%;
+    display: block;
+	float: left;
+}
+#inventory-share-buttons{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 56%;
+    display: block;
+    vertical-align: top;
+	float: left;
+}
+#inventory-share-buttons li{
+    display: block;
+    vertical-align: ;
+    max-width: 16px;
+    width: 100%;
+    margin: 2%;
+	float: left;
+}
+#inventory-share-buttons li a{
+    display: block;
+    max-width: 16px;
+    width: 100%;
+    height: 16px;
+    text-align: -9999px;
+    font-size: 0em;
+    line-height: 0em;
+}
+#inventory-facebook a{
+    background-image: url('../../images/facebook_16x16.png');
+}
+#inventory-google a{
+    background-image: url('../../images/google_16x16.png');
+}
+#inventory-twitter a{
+    background-image: url('../../images/twitter_16x16.png');
+}
+/***Detail End***/
+
+/******************
+    Similar Vehicle Elements
+******************/
+#detail-similar-wrapper {
+    background-color: #161616;
+    border-bottom: 6px solid #3B3B3B;
+    border-radius: 8px 8px 8px 8px;
+    border-top: 6px solid #3B3B3B;
+    clear: both;
+    display: block;
+    float: none;
+    margin: 1% auto;
+    overflow: hidden;
+    padding: 1%;
+    width: 98%;
+}
+#similar-title {
+    background-color: #D6D6D6;
+    border-bottom: 4px solid #3B3B3B;
+    border-radius: 6px 6px 0 0;
+    border-top: 4px solid #3B3B3B;
+    color: #161616;
+    display: block;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.3em;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+#similar-items{
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    float: none;
+    clear: both;
+}
+.similar-item{
+    width: 30%;
+    margin: 1% 1.5% 0;
+    display: block;
+    vertical-align: top;
+    background-color: #D6D6D6;
+    border-radius: 6px;
+	float: left;
+}
+.similar-headline{
+    margin: 1%;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    overflow: hidden;
+    max-height: 20px;
+}
+.similar-saleclass{
+    padding: 1%;
+}
+.similar-headline a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+.similar-headline span{
+    margin: 0 1%;
+}
+.similar-content-wrap{
+    display: block;
+    float: none;
+    overflow: hidden;
+}
+.similar-column-left, .similar-column-right{
+    width: 46%;
+    display: block;
+    vertical-align: top;
+    margin: 0 2%;
+	float: left;
+	overflow: hidden;
+}
+.similar-photo a{
+    display: block;
+}
+.similar-photo img{
+    width: 100%;
+    border-radius: 4px;
+}
+.similar-details{
+    display: block;
+}
+.similar-details span{
+    display: block;
+    color: #000;
+    font-size: .7em;
+    line-height: 1em;
+    margin: 4% 0;
+}
+.similar-price{
+    display: block;
+    text-align: center;
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 10% 0 0;
+}
+.similar-button{
+    display: block;
+    clear: both;
+    float: none;
+    overflow: hidden;
+}
+.similar-button a{
+    display: block;
+    width: 50%;
+    margin: 2% auto;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0453BC;
+    color: #FFF;
+    padding: 1%;
+    border-radius: 4px;
+    border-top: 2px solid #ADADAD;
+    border-right: 2px solid #3B3B3B;
+    border-bottom: 2px solid #3B3B3B;
+    border-left: 2px solid #ADADAD;
+    font-size: .8em;
+    line-height: 1.2em;
+    font-weight:  bold;
+    text-transform: uppercase;
+    min-width: 130px;
+}
+.similar-button a:hover{
+    text-decoration: none;
+    background-color: #03397F;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    color: #000;
+}
+/***
+Gravity Form
+***/
+.form-wrapper{
+	display: block;
+	clear: both;
+	float: none;
+	overflow: hidden;
+	width: 100%;
+	color: #FFF;
+	padding: 0;
+	margin: 0;
+}
+.form-display-wrap .gform_wrapper{
+	padding: 0;
+	margin: 0 0 2%;
+	width: 100%;
+	max-width: 100%;
+}
+.form-display-wrap .gform_wrapper .gform_heading{
+	width: 100%;
+}
+.form-display-wrap .gform_wrapper .gform_heading h3.gform_title{
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	width: 100%;
+	background: #D3D3D3;
+	color: #000;
+	font-size: 18px;
+	text-transform: uppercase;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 6px;
+}
+.form-display-wrap .gform_wrapper .gform_body{
+	width: 96%;
+	padding: 0;
+	margin: 0 auto;
+}
+.form-display-wrap .gform_wrapper .gform_footer{
+	width: 96%;
+	margin: 0 auto;
+	text-align: center;
+}
+#form-data{
+	display: none;
+}
+#form-button-wrapper{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    clear: both;
+    float: none;
+}
+#form-button-wrapper .form-button{
+    width: 100%;
+    margin: 0 auto 6%;
+    display: block;
+    background-color: #D6D6D6;
+    color: #161616;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    text-align: center;
+    border-top: 4px solid #0453BC;
+    border-bottom: 4px solid #0453BC;
+    border-radius: 6px;
+    cursor: pointer; 
+}
+#form-button-wrapper .form-button:hover{
+    color: #D6D6D6;
+    background-color: #3B3B3B;
+    border-top: 4px solid #03397F;
+    border-bottom: 4px solid #03397F;
+}
+div.gform_body input{
+    background-color: #D6D6D6;
+    border-radius: 6px;
+    width: 100%;
+    padding: 0;
+    height: 1.4em;
+}
+div.gform_body textarea{
+        background-color: #D6D6D6;
+    border-radius: 6px;
+    width: 100%;
+    max-height: 60px;
+    padding: 0;
+}
+/***
+ Loan Calc
+***/
+#loan-calculator{
+	display: block;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	background-color: #a8a8a8;
+	max-width: 480px;
+	width: 92%;
+	padding: 1%;
+	margin: 1% auto 0;
+}
+.loan-value{
+	display: block;
+	float: none;
+	clear: both;
+	overflow: hidden;
+	margin: 2% 0;
+}
+.loan-value label{
+	color: #000;
+	font-size: 120%;
+	line-height: 180%
+}
+.loan-value input{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+.loan-payment{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
+	border-bottom: 1px solid #FFF;
+	margin: 0 0 2%;
+}
+.loan-payment label{
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 110%;
+	font-weight: bold;
+}
+.loan-payment div{
+	display: block;
+	width: 90%;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+	line-height: 140%;
+	color: #000;
+	margin: 0 auto;
+}
+.loan-total{
+	display: block;
+	overflow: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
+}
+.loan-total label{
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+}
+.loan-total div{
+	display: block;
+	width: 90%;
+	text-align: center;
+	font-size: 140%;
+	font-weight: bold;
+	line-height: 180%;
+	color: #9F0300;
+	margin: 0 auto;
+}
+#loan-calculator-submit{
+	display: block;
+	margin: 4% 0;
+	text-align: center;
+}
+#loan-calculator-error{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 2% 0 1%;
+    font-size: 120%;
+}
+#loan-calculator-data{
+	display: none;
+}
+#loan-calculator-data.active{
+	display: block;
+}
+#loan-calculator-button{
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    background-color: #D6D6D6;
+    color: #161616;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    text-align: center;
+    border-top: 4px solid #0453BC;
+    border-bottom: 4px solid #0453BC;
+    border-radius: 6px;
+    cursor: pointer; 
+}
+#loan-calculator-button:hover{
+    color: #D6D6D6;
+    background-color: #3B3B3B;
+    border-top: 4px solid #03397F;
+    border-bottom: 4px solid #03397F;
+}
+/***
+Dialog adjustments
+***/
+div.ui-widget-overlay{
+	height: 0;
+	padding-top: 100%;
+	z-index: 9999;
+}
+.ui-dialog{
+	z-index: 9999;
+	position: fixed;
+}
+.ui-dialog .ui-dialog-titlebar-close span{
+}
+div.form-wrap .gform_body .ginput_container input{
+	max-width: 98%;
+}
+div.form-wrap .gform_body .ginput_container textarea{
+	max-width: 97%;
+	max-height: 100px;
+}
+
+
+
+
+
+
