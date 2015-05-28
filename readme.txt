@@ -1,7 +1,7 @@
 === CarDealerPress ===
-Contributors: Cloudxero
+Contributors: DealerTrend
 Donate link: http://www.cardealerpress.com
-Tags: car dealer,car sales,automotive,api,dealertrend,automotive,cars,custom taxonomy,vehicles,cardealerpress
+Tags: car dealer,car sales,automotive,api,dealertrend,automotive,cars,custom taxonomy,vehicles,cardealerpress,cardealer
 Requires at least: 3.2
 Tested up to: 4.2
 Stable tag: 4.2.1505.00
