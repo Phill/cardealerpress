@@ -6,7 +6,6 @@ require_once( dirname( __FILE__ ) . '/application/helpers/http_request.php' );
 require_once( dirname( __FILE__ ) . '/application/helpers/vehicle_management_system.php' );
 require_once( dirname( __FILE__ ) . '/application/helpers/vehicle_reference_system.php' );
 require_once( dirname( __FILE__ ) . '/application/helpers/dynamic_site_headers.php' );
-require_once( dirname( __FILE__ ) . '/application/helpers/updater.php' );
 
 require_once( dirname( __FILE__ ) . '/application/views/widgets/vms_search_box.php' );
 require_once( dirname( __FILE__ ) . '/application/views/shortcode/sc_index.php' );
@@ -119,7 +118,6 @@ class cdp_plugin {
 
 	function execute() {
 		$this->load_plugin_information();
-		$this->check_for_updates();
 		$this->load_options();
 		$this->set_variables();
 		$this->load_widgets();
@@ -164,17 +162,6 @@ class cdp_plugin {
 
 	private function get_plugin_basename() {
 		return plugin_basename( $this->get_master_file() );
-	}
-	
-	/*
-		//// CEHCK FOR UPDATE
-	*/
-	function check_for_updates() {
-		add_action('init', array( $this, 'init_updater' ) );
-	}
-
-	function init_updater() {
-		new wp_auto_update (self::$plugin_information['Version'], $this->plugin_slug);
 	}
 
 	/*
