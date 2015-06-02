@@ -434,10 +434,18 @@ li.inventory-expanded .list-sidebar-label > span {
 	text-decoration: none;
 	color: #000;
 }
+.inventory-listing-tags{
+    display: block;
+    float: right;
+    overflow: hidden;
+    width: 30%;
+    padding: 0 1.5%;
+    max-height: 78px
+}
 .inventory-listing-tags img{
     width: 100%;
     max-width: 38px;
-	margin: 0 1% 0 0;
+	margin: 0 1% 1% 0;
 	vertical-align: middle;
 }
 #inventory-disclaimer{
@@ -1206,4 +1214,323 @@ gForm LIst
     width: 50%;
     margin: 5% auto 0;
     display: block;
+}
+
+
+
+/*******************************Portrait*******************************/
+
+
+/* 414x736 - i6+ */
+@media (max-width: 414px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 414px !important;
+	}
+	div.breadcrumbs{
+	    display: none;
+	}
+	.breadcrumb-wrapper .inventory-pager{
+	    width: 100%;
+	}
+	#inventory-listing #inventory-search label{
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	    margin: 2% 0 0;
+	    padding: 0;
+	    line-height: 100%;
+	}
+	#inventory-listing input#inventory-search-box{
+	    width: 90%;
+	    float: none;
+	    margin: 0 auto 2%;
+	}
+	#inventory-listing div#inventory-total-found{
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	    max-width: 100%;
+	}
+	#inventory-listing div#inventory-sort-wrapper{
+	    display: none;
+	}
+	#inventory-listing div#inventory-list-sidebar{
+	    display: block;
+	    float: none;
+	    width: 100%
+	}
+	h3#list-sidebar-label{
+		display: none;
+	}
+	h3#list-sidebar-label-mobile{
+		display: block;
+	}
+	div#inventory-list-sidebar > ul{
+	    display: none;
+	}
+	div#inventory-list-sidebar > ul.active{
+	    display: block;
+	}
+	div#inventory-listing-content{
+	    display: block;
+	    float: none;
+	    width: 98%;
+	    margin: 0 auto;
+	}
+	div.inventory-column-left{
+	    display: block;
+	    float: none;
+	    width: 60%;
+	    margin: 0 auto;
+	    padding: 0;
+	    text-align: center;
+	}
+	div.inventory-column-left .list-image{
+	    max-width: inherit;
+	    max-height: inherit;
+	}
+	div.inventory-column-right{
+	    display: block;
+	    width: 95%;
+	    margin: 0 auto;
+	    text-align: center;
+	    font-size: 70%
+	}
+	div.inventory-details-left, div.inventory-details-right{
+	    display: none;
+	}
+	div.inventory-vehicle{
+	    border-left: none;
+	}
+	div.inventory-price-wrapper > div{
+	    display: none;
+	}
+	div.inventory-price-wrapper > div.inventory-main-price{
+	    display: block;
+	    padding: 4% 0 0;
+	}
+	div.list-detail-button{
+	    padding: 1%;
+	    margin: 0 auto;
+	}
+	a.inventory-return-to-top{
+	    display: block;
+	    margin: 4% 0;
+	    text-align: center;
+	}
+	/*List End*/
+	
+	/*Detail Start*/
+	#inventory-detail div.inventory-main-line{
+	    text-align: center;
+	}
+	a#friendly-print{
+	    display: none;
+	}
+	#inventory-detail .inventory-column{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 98%;
+	    padding: 0;
+	    margin: 2% auto;
+	}
+	div#vehicle-thumbnails{
+	    height: 115px;
+	    overflow-x: hidden;
+	    overflow-y: auto;
+	}
+	div#similar-title{
+	    width: 96%;
+	}
+	div.similar-item{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 96%;
+	    margin: 4% auto;
+	    border-bottom: 2px solid #000;
+	    padding: 0 0 2%;
+	}
+	div.similar-item:last-child{
+	    border-bottom: none;
+	}
+}
+
+/*375x667 - i6*/
+@media (max-width: 375px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 375px !important;
+	}
+}
+
+/*360x640 - s4*/
+@media (max-width: 360px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 360px !important;
+	}
+}
+
+/*320x568 | i5*/
+@media (max-width: 320px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 320px !important;
+	}
+}
+
+
+/*******************************Landscape*******************************/
+
+
+
+/* 414x736 - i6+  */
+@media (max-width: 736px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 736px !important;
+	}
+	div.breadcrumbs{
+	    display: none;
+	}
+	.breadcrumb-wrapper .inventory-pager{
+	    width: 100%;
+	}
+	#inventory-listing #inventory-search label{
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	    margin: 2% 0 0;
+	    padding: 0;
+	    line-height: 100%;
+	}
+	#inventory-listing input#inventory-search-box{
+	    width: 90%;
+	    float: none;
+	    margin: 0 auto 2%;
+	}
+	#inventory-listing div#inventory-total-found{
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	    max-width: 100%;
+	}
+	#inventory-listing div#inventory-sort-wrapper{
+	    display: none;
+	}
+	#inventory-listing div#inventory-list-sidebar{
+	    display: block;
+	    float: none;
+	    width: 100%
+	}
+	h3#list-sidebar-label{
+		display: none;
+	}
+	h3#list-sidebar-label-mobile{
+		display: block;
+	}
+	div#inventory-list-sidebar > ul{
+	    display: none;
+	}
+	div#inventory-list-sidebar > ul.active{
+	    display: block;
+	}
+	div#inventory-listing-content{
+	    display: block;
+	    float: none;
+	    width: 98%;
+	    margin: 0 auto;
+	}
+	div.inventory-column-left{
+	    display: block;
+	    float: none;
+	    width: 60%;
+	    margin: 0 auto;
+	    padding: 0;
+	    text-align: center;
+	}
+	div.inventory-column-left .list-image{
+	    max-width: inherit;
+	    max-height: inherit;
+	}
+	div.inventory-column-right{
+	    display: block;
+	    width: 95%;
+	    margin: 0 auto;
+	    text-align: center;
+	    font-size: 70%
+	}
+	div.inventory-details-left, div.inventory-details-right{
+	    display: none;
+	}
+	div.inventory-vehicle{
+	    border-left: none;
+	}
+	div.inventory-price-wrapper > div{
+	    display: none;
+	}
+	div.inventory-price-wrapper > div.inventory-main-price{
+	    display: block;
+	    padding: 4% 0 0;
+	}
+	div.list-detail-button{
+	    padding: 1%;
+	    margin: 0 auto;
+	}
+	a.inventory-return-to-top{
+	    display: block;
+	    margin: 4% 0;
+	    text-align: center;
+	}
+}
+
+/* 375x667 - i6 */
+@media (max-width: 667px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 667px !important;
+	}
+}
+
+/* 360x640 - s4 */
+@media (max-width: 640px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 640px !important;
+	}
+}
+
+/*568x320 | i5*/
+@media (max-width: 568px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 568px !important;
+	}
 }

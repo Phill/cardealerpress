@@ -241,17 +241,17 @@
 	}
 	
 	function cdp_get_image_source(){
-		$value = plugins_url( '/cardealerpress_plugin/application/assets/images/' );
+		$value = plugins_url( '/cardealerpress/application/assets/images/' );
 		return $value;
 	}
 	
 	function cdp_get_css_source(){
-		$value = plugins_url( '/cardealerpress_plugin/application/assets/css/' );
+		$value = plugins_url( '/cardealerpress/application/assets/css/' );
 		return $value;
 	}
 	
 	function cdp_get_js_source(){
-		$value = plugins_url( '/cardealerpress_plugin/application/assets/js/' );
+		$value = plugins_url( '/cardealerpress/application/assets/js/' );
 		return $value;
 	}
 
@@ -1185,16 +1185,16 @@
 		}
 	}
 	
-	function cdp_create_saleclass_dd_sc( $flag = 'all' ){
+	function cdp_create_saleclass_dd_sc( $flag = 'all', $default = 'all' ){
 		$content = '<div class="sc-search-item saleclass">';
 		$content .= '<label class="sc-search-label">Sale Class</label>';
 		$content .= '<select id="sc-search-saleclass" class="inventory-select" onchange="cdp_vehicle_caller(this.value, \'saleclass\');">';
 			
-		switch( $flag ){
+		switch( strtolower($flag) ){
 			case 'all':
-				$content .= '<option value="" selected >All Vehicles</option>';
-				$content .= '<option value="new">New Vehicles</option>';
-				$content .= '<option value="used">Pre-Owned Vehicles</option>';
+				$content .= '<option value="" '.(strtolower($default) == 'all' ?'selected':'' ).' >All Vehicles</option>';
+				$content .= '<option value="new" '.(strtolower($default) == 'new' ?'selected':'' ).'>New Vehicles</option>';
+				$content .= '<option value="used" '.(strtolower($default) == 'used' ?'selected':'' ).'>Pre-Owned Vehicles</option>';
 				//$content .= '<option value="certified">Certified Pre-Owned</option>';
 				break;
 			case 'new':

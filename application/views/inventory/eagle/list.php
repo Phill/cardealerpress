@@ -151,18 +151,20 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 							<div class="inventory-sidebar-content content-new-used">
 								<h4 class="" name="condition">Condition</h4>
 								<ul>
-								<?php switch( $this->options['vehicle_management_system']['saleclass'] ) {
+								<?php
+								$hide_certified = !empty($theme_settings['hide_certified_saleclass']) ? TRUE: FALSE;
+								switch( $this->options['vehicle_management_system']['saleclass'] ) {
 									case 'all':
 										echo '<li><a href="'.$new_link.'" title="View New Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'new'?'disabled': NULL).'">New</a></li>';
 										echo '<li><a href="'.$used_link.'" title="View Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled': NULL).'">Used</a></li>';
-										echo '<li><a href="'.$cert_link.'" title="View Certified Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled':NULL).'">Certified</a></li>';
+										echo !$hide_certified ? '<li><a href="'.$cert_link.'" title="View Certified Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled':NULL).'">Certified</a></li>' : '';
 										break;
 									case 'new':
 										echo '<li><a href="'.$new_link.'" title="View New Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'new'?'disabled':NULL).'">New</a></li>';
 										break;
 									case 'used':
 										echo '<li><a href="'.$used_link.'" title="View Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled':NULL).'">Used</a></li>';
-										echo '<li><a href="'.$cert_link.'" title="View Certified Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled':NULL).'">Certified</a></li>';
+										echo !$hide_certified ? '<li><a href="'.$cert_link.'" title="View Certified Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled':NULL).'">Certified</a></li>' : '';
 										break;
 									case 'certified':
 										echo '<li><a href="'.$cert_link.'" title="View Certified Used Inventory" class="'.(strtolower($parameters[ 'saleclass' ]) == 'used'?'disabled': NULL).'">Certified</a></li>';

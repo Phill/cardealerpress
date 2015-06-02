@@ -46,8 +46,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		wp_enqueue_script( $dependent );
 	}
 
-	wp_enqueue_style( 'cdp_inventory', self::$plugin_information[ 'PluginURL' ].'/application/assets/css/inventory/'.$current_theme.'.css' );
-	wp_enqueue_style( 'cdp_inventory_resp', self::$plugin_information[ 'PluginURL' ].'/application/assets/css/inventory/'.$current_theme.'_responsive.css' );
 	wp_enqueue_style( 'cdp_jquery_ui_style', self::$plugin_information[ 'PluginURL' ] . '/application/assets/css/jquery-css/jquery-css.css' );
 	
 	$gform_class = '';
@@ -89,7 +87,13 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			break;
 	}
 
-	wp_register_script( 'cdp_inventory_js', self::$plugin_information[ 'PluginURL' ].'/application/assets/js/inventory/'.$current_theme.'.js', $dependent_scripts, FALSE, TRUE );	
+	$inventory_style_url = self::$plugin_information[ 'PluginURL' ].'/application/assets/css/inventory/'.$current_theme.'.css';
+	$inventory_style_url = apply_filters('cdp_inventory_style_url',$inventory_style_url);
+	$inventory_script_url = self::$plugin_information[ 'PluginURL' ].'/application/assets/js/inventory/'.$current_theme.'.js';
+	$inventory_script_url = apply_filters('cdp_inventory_script_url',$inventory_script_url);
+
+	wp_enqueue_style( 'cdp_inventory', $inventory_style_url );	
+	wp_register_script( 'cdp_inventory_js', $inventory_script_url, $dependent_scripts, FALSE, TRUE );	
 	wp_localize_script( 'cdp_inventory_js', 'ajax_path', $ajax_script );
 	wp_enqueue_script( 'cdp_inventory_js' );
 

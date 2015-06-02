@@ -86,7 +86,11 @@ namespace Wordpress\Plugins\Dealertrend\Inventory\Api;
 			</div>
 			<div class="tr-wrapper tr-color">
 				<div class="td-two short center">saleclass</div>
-				<div class="td-two long center">New,Used<span style="display: block; font-size: 10px; font-style: italic; color: #707070">Default: New</span></div>
+				<div class="td-two long center">All,New,Used<span style="display: block; font-size: 10px; font-style: italic; color: #707070">Default: All</span></div>
+			</div>
+			<div class="tr-wrapper tr-color">
+				<div class="td-two short center">d_saleclass</div>
+				<div class="td-two long center">All,New,Used<span style="display: block; font-size: 10px; font-style: italic; color: #707070">Default: New <small>(only works when salecass = all)</small></span></div>
 			</div>
 			<div class="tr-wrapper tr-color">
 				<div class="td-two short center">make</div>

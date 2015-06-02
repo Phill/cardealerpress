@@ -1097,3 +1097,309 @@ div.form-wrap .gform_body .ginput_container textarea{
 	max-width: 97%;
 	max-height: 100px;
 }
+
+/*******************************Portrait*******************************/
+
+
+/* 414x736 - i6+ */
+@media (max-width: 414px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 414px !important;
+	}
+	div.breadcrumbs{
+	    display: none;
+	}
+	div.inventory-pager{
+	    width: 98%;
+	    float: none;
+	    text-align: center;
+		margin: 0 auto;
+		padding: 0;
+	}
+	div.quick-link-items{
+	    display: block;
+	    overflow-x: scroll;
+	    overflow-y: hidden;
+	    height: 30px;
+	    white-space: nowrap;
+		margin: 0 auto;
+		padding: 0;
+		width: 94%;
+	}
+	div#inventory-search-text{
+	    float: none;
+	    clear: both;
+	    width: 96%;
+	    margin: 0 auto;
+	    padding: 0;
+	}
+	input#inventory-search-box{
+	    padding: 0;
+	}
+	div#inventory-advance-show{
+	    width: 96%;
+	    float: none;
+	    clear: both;
+	    margin: 2% auto 0;
+	}
+	div#inventory-total-found{
+	    float: none;
+	    display: block;
+	    clear: both;
+	    width: 96%;
+	    margin: 0 auto;
+	    text-align: center;
+	    padding: 0;
+	    border-bottom: 1px solid #C9C9C9;
+	}
+	div#inventory-inventory-wrapper{
+	    width: 94%;
+	}
+	.inventory-vehicle-middle > div{
+	    float: none;
+	    clear: both;
+	    display: block;
+	    width: 100%;
+	    padding: 0;
+	    margin: 0;
+	}
+	div.inventory-price-wrap{
+	    height: auto;
+	    margin: 0 0 2%;
+	}
+	.middle-left .inventory-more-info{
+	    display: none;
+	}
+
+	div.vehicle-information{
+	    display: none;
+	}
+	div.dealer-contact-wrapper{
+	    width: 100%;
+	    text-align: center;
+	}
+	
+	/*Detail Start*/
+	div#inventory-content-wrapper > div{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 100%;
+	}
+	div#inventory-price-wrap{
+	    margin: 2% 0;
+	    text-align: center;
+	}
+	div#inventory-price-wrap > div{
+	    float: none;
+	    clear: both;
+	    width: 100%;
+	}
+	div#vehicle-thumbnails{
+	    height: 60px;
+	}
+	div#vehicle-details-tabs-buttons > div.tabs-button{
+	    width: 96%;
+	    margin: 1% auto;
+	    padding: 1% 0;
+	    float: none;
+	    clear: both;
+	    text-align: center;
+	}
+	div#vehicle-detail-options > ul > li{
+	    width: 42%;
+	    margin: 0 0 0 6%;
+	    padding: 0 2% 0 0;
+	}
+}
+
+/*375x667 - i6*/
+@media (max-width: 375px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 375px !important;
+	}
+}
+
+/*360x640 - s4*/
+@media (max-width: 360px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 360px !important;
+	}
+}
+
+/*320x568 | i5*/
+@media (max-width: 320px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 320px !important;
+	}
+}
+
+
+
+/*******************************Landscape*******************************/
+
+/* 414x736 - i6+  */
+@media (max-width: 736px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 736px !important;
+	}
+	div.breadcrumbs{
+	    display: none;
+	}
+	div.inventory-pager{
+	    width: 98%;
+	    float: none;
+	    text-align: center;
+		margin: 0 auto;
+		padding: 0;
+	}
+	div.quick-link-items{
+	    display: block;
+	    overflow-x: scroll;
+	    overflow-y: hidden;
+	    height: 30px;
+	    white-space: nowrap;
+		margin: 0 auto;
+		padding: 0;
+		width: 94%;
+	}
+	div#inventory-search-text{
+	    float: none;
+	    clear: both;
+	    width: 96%;
+	    margin: 0 auto;
+	    padding: 0;
+	}
+	input#inventory-search-box{
+	    padding: 0;
+	}
+	div#inventory-advance-show{
+	    width: 96%;
+	    float: none;
+	    clear: both;
+	    margin: 2% auto 0;
+	}
+	div#inventory-total-found{
+	    float: none;
+	    display: block;
+	    clear: both;
+	    width: 96%;
+	    margin: 0 auto;
+	    text-align: center;
+	    padding: 0;
+	    border-bottom: 1px solid #C9C9C9;
+	}
+	div#inventory-inventory-wrapper{
+	    width: 94%;
+	}
+	.inventory-vehicle-middle > div{
+	    float: none;
+	    clear: both;
+	    display: block;
+	    width: 100%;
+	    padding: 0;
+	    margin: 0;
+	}
+	div.inventory-price-wrap{
+	    height: auto;
+	    margin: 0 0 2%;
+	}
+	.middle-left .inventory-more-info{
+	    display: none;
+	}
+
+	div.vehicle-information{
+	    display: none;
+	}
+	div.dealer-contact-wrapper{
+	    width: 100%;
+	    text-align: center;
+	}
+	
+	/*Detail Start*/
+	div#inventory-content-wrapper > div{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 100%;
+	}
+	div#inventory-price-wrap{
+	    margin: 2% 0;
+	    text-align: center;
+	}
+	div#inventory-price-wrap > div{
+	    float: none;
+	    clear: both;
+	    width: 100%;
+	}
+	div#vehicle-thumbnails{
+	    height: 60px;
+	}
+	div#vehicle-details-tabs-buttons > div.tabs-button{
+	    width: 96%;
+	    margin: 1% auto;
+	    padding: 1% 0;
+	    float: none;
+	    clear: both;
+	    text-align: center;
+	}
+	div#vehicle-detail-options > ul > li{
+	    width: 42%;
+	    margin: 0 0 0 6%;
+	    padding: 0 2% 0 0;
+	}
+
+}
+
+/* 375x667 - i6 */
+@media (max-width: 667px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 667px !important;
+	}
+}
+
+/* 360x640 - s4 */
+@media (max-width: 640px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 640px !important;
+	}
+}
+
+/*568x320 | i5*/
+@media (max-width: 568px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 568px !important;
+	}
+}

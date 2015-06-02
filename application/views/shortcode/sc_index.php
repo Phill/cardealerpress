@@ -72,7 +72,8 @@ class sc_run {
 		
 		//Shortcode Attributes
 		$sc_defaults = array (
-			'saleclass' => 'New',
+			'saleclass' => 'all',
+			'd_saleclass' => 'all',
 			'make' => '',
 			'model' => '',
 			'trim' => '',
@@ -90,13 +91,17 @@ class sc_run {
 		$this->sc_form = $sc_atts['form_id'];
 		$this->sc_style = $sc_atts['style'];
 		$this->sc_search = $sc_atts['search'];
-		$sc_atts[ 'icons' ] = $sc_atts[ 'tag' ];
-		$sc_atts[ 'per_page' ] = $sc_atts[ 'limit' ];
-		unset( $sc_atts[ 'style' ] );
-		unset( $sc_atts[ 'tag' ] );
-		unset( $sc_atts[ 'limit' ] );
-		unset( $sc_atts[ 'form_id'] );
-		unset( $sc_atts[ 'search'] );
+		$this->sc_flag_saleclass = strtolower($sc_atts['saleclass']);
+		$this->sc_default_saleclass = strtolower($sc_atts['saleclass']) == 'all' && strtolower($sc_atts['d_saleclass']) != 'all'? strtolower($sc_atts['d_saleclass']) : strtolower($sc_atts['saleclass']);
+		$sc_atts['icons'] = $sc_atts['tag'];
+		$sc_atts['per_page'] = $sc_atts['limit'];
+		$sc_atts['saleclass'] = $this->sc_default_saleclass;
+		unset( $sc_atts['d_saleclass'] );
+		unset( $sc_atts['style'] );
+		unset( $sc_atts['tag'] );
+		unset( $sc_atts['limit'] );
+		unset( $sc_atts['form_id'] );
+		unset( $sc_atts['search'] );
 		foreach( $sc_atts as $key => $att ){
 			if ( empty( $att ) ) {
 				unset( $sc_atts[ $key ] );

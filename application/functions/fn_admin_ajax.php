@@ -189,7 +189,7 @@ class Admin_ajax {
 			case 'runCleanUninstall':
 				$output['id'] = ''; $output['content'] = '';
 				delete_option( 'cardealerpress_settings' );
-				deactivate_plugins( 'cardealerpress_plugin/cardealerpress.php' );
+				deactivate_plugins( 'cardealerpress/cardealerpress.php' );
 				break;
 			default:
 				$output['error'] = 'That is not a valid FN parameter. Please check your string and try again.';

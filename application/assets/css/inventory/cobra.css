@@ -1416,4 +1416,597 @@ gForm
     width: 100%;
 }
 
+/*******************************Portrait*******************************/
 
+
+/* 414x736 - i6+ */
+@media (max-width: 414px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 414px !important;
+	}
+	div.breadcrumbs{
+	    display: none;
+	}
+	div.cobra-pager{
+	    width: 98%;
+	    float: none;
+	    text-align: center;
+		margin: 0 auto;
+		padding: 0;
+	}
+	div#mobile-show-search{
+		display: block;
+	}
+	div#cobra-search-wrapper{
+	    display: none;
+	}
+	div#cobra-search-wrapper.mobile-view{
+	    display: block;
+	}
+	div#cobra-quick-links{
+	    display: block;
+	    overflow: hidden;
+	    float: none;
+	    clear: both;
+	    text-align: center;
+	}
+	div#cobra-quick-select{
+	    display: block;
+	    overflow: hidden;
+	    float: none;
+	    clear: both;
+	}
+	div#cobra-quick-selects{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    overflow: hidden;
+	}
+	div.quick-link-wrap{
+	    display: block;
+	    width: 80%;
+	    margin: 1% auto;
+	    float: none;
+	}
+	div#cobra-quick-search{
+	    float: none;
+	    clear: both;
+	    text-align: center;
+	}
+
+	input#cobra-search-box{
+	    padding: 0;
+	    margin: 0 auto;
+	    float: none;
+	    clear: both;
+	}
+	button#cobra-search-submit{
+	    display: block;
+	    float: none;
+	    margin: 2% auto 1%;
+	    height: 18px;
+		right: inherit;
+	}
+	div#cobra-total-found{
+	    margin: 0 auto 1%;
+	}
+	div#cobra-sorting{
+		display: none;
+	}
+	div#cobra-inventory-wrapper{
+	    margin: 1% auto;
+	    padding: 0;
+	}
+	div.cobra-vehicle-left{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 60%;
+	    margin: 2% auto 1%;
+	    padding: 0
+	}
+	div.cobra-vehicle-right{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 98%;
+	    margin: 0 auto;
+	    padding: 0;
+	}
+	div.cobra-vehicle-top{
+	    display: none;
+	}
+	div.cobra-vehicle-inner-left{
+	    display: block;
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	}
+	a.title-details div{
+	    display: inline
+	}
+	span.title-trim{
+	    display: inline;
+	}
+	div.cobra-vehicle-extras{
+	    display: none;
+	}
+	div.cobra-vehicle-inner-right{
+	    display: block;
+	    float: none;
+	    width: 90%;
+	    text-align: center;
+	    margin: auto;
+	}
+	div.cobra-price-wrap{
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	}
+	div.cobra-price-wrap > div{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	    width: 100%;
+	}
+	div.cobra-price-wrap > div span{
+	    margin: 0;
+	    padding: 0;
+	}
+	.cobra-vehicle div.cobra-main-price{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	}
+	div.cobra-more-info{
+	    float: none;
+	    clear: both;
+	    margin: 1% auto;
+	    padding: 0;
+	}
+	div.cobra-more-info-button{
+	    margin: 0 auto;
+	    padding: 0;
+	    float: none;
+	    clear: both;
+	}
+	div.cobra-vehicle-bottom{
+	    text-align: center;
+	    float: none;
+	    clear: both;
+	}
+	div.dealer-contact-wrapper{
+	    float: none;
+	    clear: both;
+	    width: 100%;
+	    text-align: center;
+	    margin: 1% 0;
+	    padding: 0;
+	    text-shadow: none;
+	}
+	/*List End*/
+	
+	/*Detail Start*/
+	a#friendly-print{
+	    display: none;
+	}
+	div#top-inner-left{
+	    display: block;
+	    float: none;
+	    width: 98%;
+	    margin: 0 auto;
+	    padding: 0;
+	    text-align: center;
+	}
+	div#top-inner-right{
+	    display: block;
+	    float: none;
+	    width: 98%;
+	    margin: 0 auto;
+	    padding: 0;
+	    text-align: center;
+	}
+	hr.cobra-hr-half{
+	    width: 100%;
+	}
+	div#top-dealer-info{
+	    border-bottom: 2px solid #D72A19;
+	    padding: 0 0 1%;
+	    margin: 0;
+	}
+
+	div.cobra-main-price{
+	    padding: 0;
+	    margin: 0;
+	}
+	div.cobra-main-price > span{
+	    display: inline;
+	    margin: 0;
+	}
+	div.cobra-asking-price{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	}
+	div#cobra-content-wrapper > div{
+	    display: block;
+	    overflow: hidden;
+	    clear: both;
+	    float: none;
+	    width: 100%;
+	    padding: 0;
+	    margin: 0 auto;
+	}
+	div#cobra-content-wrapper div#content-inner-bottom{
+	    margin: 2% auto 0;
+	}
+	div#vehicle-details-tabs-content{
+	    padding: 0;
+	    margin: 0 auto;
+	    width: 98%;
+	}
+	div#vehicle-images{
+	    margin: 0 auto;
+	}
+	div#vehicle-thumbnails{
+	    height: 60px;
+	}
+	div.tabs-button{
+	    float: none;
+	    width: 88%;
+	    text-align: right;
+	    display: block;
+	    padding: 2% 5%;
+	    margin: 1% auto;
+	}
+	div#similar-title{
+	    width: 96%;
+	}
+	div.similar-item{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 96%;
+	    margin: 4% auto;
+	    border-bottom: 2px solid #000;
+	    padding: 0 0 2%;
+	}
+	div.similar-item:last-child{
+	    border-bottom: none;
+	}
+}
+
+/*375x667 - i6*/
+@media (max-width: 375px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 375px !important;
+	}
+}
+
+/*360x640 - s4*/
+@media (max-width: 360px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 360px !important;
+	}
+}
+
+/*320x568 - i5*/
+@media (max-width: 320px) and (orientation: portrait){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 320px !important;
+	}
+}
+
+
+
+/*******************************Landscape*******************************/
+
+/* 414x736 - i6+  */
+@media (max-width: 736px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 736px !important;
+	}
+	div.breadcrumbs{
+	    display: none;
+	}
+	div.cobra-pager{
+	    width: 98%;
+	    float: none;
+	    text-align: center;
+		margin: 0 auto;
+		padding: 0;
+	}
+	div#mobile-show-search{
+		display: block;
+	}
+	div#cobra-search-wrapper{
+	    display: none;
+	}
+	div#cobra-search-wrapper.mobile-view{
+	    display: block;
+	}
+	div#cobra-quick-links{
+	    display: block;
+	    overflow: hidden;
+	    float: none;
+	    clear: both;
+	    text-align: center;
+	}
+	div#cobra-quick-select{
+	    display: block;
+	    overflow: hidden;
+	    float: none;
+	    clear: both;
+	}
+	div#cobra-quick-selects{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    overflow: hidden;
+	}
+	div.quick-link-wrap{
+	    display: block;
+	    width: 80%;
+	    margin: 1% auto;
+	    float: none;
+	}
+	div#cobra-quick-search{
+	    float: none;
+	    clear: both;
+	    text-align: center;
+	}
+
+	input#cobra-search-box{
+	    padding: 0;
+	    margin: 0 auto;
+	    float: none;
+	    clear: both;
+	}
+	button#cobra-search-submit{
+	    display: block;
+	    float: none;
+	    margin: 2% auto 1%;
+	    height: 18px;
+		right: inherit;
+	}
+	div#cobra-total-found{
+	    margin: 0 auto 1%;
+	}
+	div#cobra-sorting{
+		display: none;
+	}
+	div#cobra-inventory-wrapper{
+	    margin: 1% auto;
+	    padding: 0;
+	}
+	div.cobra-vehicle-left{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 60%;
+	    margin: 2% auto 1%;
+	    padding: 0
+	}
+	div.cobra-vehicle-right{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 98%;
+	    margin: 0 auto;
+	    padding: 0;
+	}
+	div.cobra-vehicle-top{
+	    display: none;
+	}
+	div.cobra-vehicle-inner-left{
+	    display: block;
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	}
+	a.title-details div{
+	    display: inline
+	}
+	span.title-trim{
+	    display: inline;
+	}
+	div.cobra-vehicle-extras{
+	    display: none;
+	}
+	div.cobra-vehicle-inner-right{
+	    display: block;
+	    float: none;
+	    width: 90%;
+	    text-align: center;
+	    margin: auto;
+	}
+	div.cobra-price-wrap{
+	    float: none;
+	    width: 100%;
+	    text-align: center;
+	}
+	div.cobra-price-wrap > div{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	    width: 100%;
+	}
+	div.cobra-price-wrap > div span{
+	    margin: 0;
+	    padding: 0;
+	}
+	.cobra-vehicle div.cobra-main-price{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	}
+	div.cobra-more-info{
+	    float: none;
+	    clear: both;
+	    margin: 1% auto;
+	    padding: 0;
+	}
+	div.cobra-more-info-button{
+	    margin: 0 auto;
+	    padding: 0;
+	    float: none;
+	    clear: both;
+	}
+	div.cobra-vehicle-bottom{
+	    text-align: center;
+	    float: none;
+	    clear: both;
+	}
+	div.dealer-contact-wrapper{
+	    float: none;
+	    clear: both;
+	    width: 100%;
+	    text-align: center;
+	    margin: 1% 0;
+	    padding: 0;
+	    text-shadow: none;
+	}
+	/*List End*/
+	
+	/*Detail Start*/
+	a#friendly-print{
+	    display: none;
+	}
+	div#top-inner-left{
+	    display: block;
+	    float: none;
+	    width: 98%;
+	    margin: 0 auto;
+	    padding: 0;
+	    text-align: center;
+	}
+	div#top-inner-right{
+	    display: block;
+	    float: none;
+	    width: 98%;
+	    margin: 0 auto;
+	    padding: 0;
+	    text-align: center;
+	}
+	hr.cobra-hr-half{
+	    width: 100%;
+	}
+	div#top-dealer-info{
+	    border-bottom: 2px solid #D72A19;
+	    padding: 0 0 1%;
+	    margin: 0;
+	}
+
+	div.cobra-main-price{
+	    padding: 0;
+	    margin: 0;
+	}
+	div.cobra-main-price > span{
+	    display: inline;
+	    margin: 0;
+	}
+	div.cobra-asking-price{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	}
+	div#cobra-content-wrapper > div{
+	    display: block;
+	    overflow: hidden;
+	    clear: both;
+	    float: none;
+	    width: 100%;
+	    padding: 0;
+	    margin: 0 auto;
+	}
+	div#cobra-content-wrapper div#content-inner-bottom{
+	    margin: 2% auto 0;
+	}
+	div#vehicle-details-tabs-content{
+	    padding: 0;
+	    margin: 0 auto;
+	    width: 98%;
+	}
+	div#vehicle-images{
+	    margin: 0 auto;
+	}
+	div#vehicle-thumbnails{
+	    height: 60px;
+	}
+	div.tabs-button{
+	    float: none;
+	    width: 88%;
+	    text-align: right;
+	    display: block;
+	    padding: 2% 5%;
+	    margin: 1% auto;
+	}
+	div#similar-title{
+	    width: 96%;
+	}
+	div.similar-item{
+	    display: block;
+	    float: none;
+	    clear: both;
+	    width: 96%;
+	    margin: 4% auto;
+	    border-bottom: 2px solid #000;
+	    padding: 0 0 2%;
+	}
+	div.similar-item:last-child{
+	    border-bottom: none;
+	}
+}
+
+/* 375x667 - i6 */
+@media (max-width: 667px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 667px !important;
+	}
+}
+
+/* 360x640 - s4 */
+@media (max-width: 640px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 640px !important;
+	}
+}
+
+/* 320x568 - i5 */
+@media (max-width: 568px) and (orientation: landscape){
+	/*List Start*/
+	.inventory-parentClass{
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 568px !important;
+	}
+}

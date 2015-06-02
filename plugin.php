@@ -71,7 +71,8 @@ class cdp_plugin {
 				'default_info_tab' => '',
 				'list_info_button' => '',
 				'list_gform_id' => '',
-				'detail_gform_id' => ''
+				'detail_gform_id' => '',
+				'hide_certified_saleclass' => ''
 			),
 			'saleclass' => 'all',
 			'data' => array(
@@ -376,6 +377,7 @@ class cdp_plugin {
 
 						$current_theme = $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'name' ];					
 						$theme_path = dirname( __FILE__ ) . '/application/views/inventory/' . $current_theme;
+						$theme_path = apply_filters('cdp_theme_path', $theme_path);
 
 						$status = $this->vms->set_headers( $this->parameters );
 					

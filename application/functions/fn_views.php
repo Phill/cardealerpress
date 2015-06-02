@@ -91,6 +91,11 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		$value = isset($options[ 'display_similar' ]) ? $options[ 'display_similar' ] : '';
 		$content .= '<input type="checkbox" id="display-similar" class="cdp-input" name="vehicle_management_system/theme/display_similar"'. ( !empty($value) ? ' checked ' : '' ).' />';
 		$content .= '</div></div>';
+		// Hide Certified Saleclass
+		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Hide Certified Saleclass:</span></div><div class="td-two">';
+		$value = isset($options[ 'hide_certified_saleclass' ]) ? $options[ 'hide_certified_saleclass' ] : '';
+		$content .= '<input type="checkbox" id="hide-certified-saleclass" class="cdp-input" name="vehicle_management_system/theme/hide_certified_saleclass"'. ( !empty($value) ? ' checked ' : '' ).' />';
+		$content .= '</div></div>';
 		// Default Image Tab
 		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Default Photo/Video Tab:</span></div><div class="td-two">';
 		$content .= '<select id="default-image-tab" name="vehicle_management_system/theme/default_image_tab" class="cdp-input">';

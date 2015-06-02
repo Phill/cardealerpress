@@ -28,16 +28,16 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		//Mobile
 		$sc_content .= '<div id="sc-detail-mobile-wrapper"><div id="mobile-image-wrapper"><img id="mobile-action-button" src="'.cdp_get_image_source().'search_icon.png" /></div></div>';
 		//SaleClass
-		$sc_content .= cdp_create_saleclass_dd_sc();
+		$sc_content .= cdp_create_saleclass_dd_sc($this->sc_flag_saleclass, $this->sc_default_saleclass);
 		//Makes
 		$sc_content .= '<div class="sc-search-item makes">';
 		$sc_content .= '<label class="sc-search-label">Makes</label>';
 		$sc_content .= '<select id="sc-search-make" class="inventory-select" onchange="cdp_vehicle_caller(this.value, \'make\');">';
-		$makes = cdp_generate_make_options( $this->vms, $this->sc_atts['saleclass'], $this->options['vehicle_management_system']['data']['makes_new'], FALSE, $this->sc_dealer_ID );
+		$makes = cdp_generate_make_options( $this->vms, $this->sc_default_saleclass, $this->options['vehicle_management_system']['data']['makes_new'], FALSE, $this->sc_dealer_ID );
 		$sc_content .= isset( $makes['display'] ) ? $makes['display'] : '';
 		$sc_content .= '</select></div>';
 		//Models
-		$models = cdp_generate_model_options( $this->vms, $this->sc_atts['saleclass'], $makes['val'], FALSE );
+		$models = cdp_generate_model_options( $this->vms, $this->sc_default_saleclass, $makes['val'], FALSE );
 		$disabled = isset( $models['disabled'] ) ? 'disabled' : '';
 		$sc_content .= '<div class="sc-search-item models">';
 		$sc_content .= '<label class="sc-search-label">Models</label>';
@@ -45,7 +45,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		$sc_content .= isset( $models['display'] ) ? $models['display'] : '';
 		$sc_content .= '</select></div>';
 		//Trims
-		$trims = cdp_generate_trim_options( $this->vms, $this->sc_atts['saleclass'], $makes['val'], $models['val'], FALSE );
+		$trims = cdp_generate_trim_options( $this->vms, $this->sc_default_saleclass, $makes['val'], $models['val'], FALSE );
 		$disabled = isset( $trims['disabled'] ) ? 'disabled' : '';
 		$sc_content .= '<div class="sc-search-item trims">';
 		$sc_content .= '<label class="sc-search-label">Trims</label>';

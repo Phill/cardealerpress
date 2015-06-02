@@ -130,19 +130,20 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 						<label class="inventory-label">Sale Class</label><br/>
 						<select id="inventory-saleclass" class="inventory-select" onchange="document.location = this.value;">
 							<?php
+								$hide_certified = !empty($theme_settings['hide_certified_saleclass']) ? TRUE: FALSE;
 								switch( $this->options['vehicle_management_system']['saleclass'] ) {
 									case 'all':
 										echo '<option value="'.$all_link.'" '.(strtolower( $parameters[ 'saleclass' ] ) == 'all' ? 'selected' : NULL) .' >All Vehicles</option>';
 										echo '<option value="'.$new_link.'" '.(strtolower( $parameters[ 'saleclass' ] ) == 'new' ? 'selected' : NULL) .' >New Vehicles</option>';
 										echo '<option value="'.$used_link.'" '.(strtolower( $parameters[ 'saleclass' ] ) == 'used' && empty( $certified ) ? 'selected' : NULL) . ' >Pre-Owned Vehicles</option>';
-										echo '<option value="'.$cert_link.'" '.(strtolower( $parameters[ 'saleclass' ] ) == 'used' && !empty( $certified ) ? 'selected' : NULL) . ' >Certified Pre-Owned</option>';
+										echo !$hide_certified ? '<option value="'.$cert_link.'" '.(strtolower( $parameters[ 'saleclass' ] ) == 'used' && !empty( $certified ) ? 'selected' : NULL) . ' >Certified Pre-Owned</option>': '';
 										break;
 									case 'new':
 										echo '<option value="'.$new_link.'" selected >New Vehicles</option>';
 										break;
 									case 'used':
 										echo '<option value="'.$used_link.'" ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' && empty( $certified ) ? 'selected' : NULL) . ' >Pre-Owned Vehicles</option>';
-										echo '<option value="'.$cert_link.'" ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' && !empty( $certified ) ? 'selected' : NULL) . ' >Certified Pre-Owned</option>';
+										echo !$hide_certified ? '<option value="'.$cert_link.'" ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' && !empty( $certified ) ? 'selected' : NULL) . ' >Certified Pre-Owned</option>' : '';
 										break;
 									case 'certified':
 										echo '<option value="'.$cert_link.'" selected >Certified Pre-Owned</option>';

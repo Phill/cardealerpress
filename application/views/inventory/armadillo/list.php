@@ -133,18 +133,20 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 					<li class="inventory-expanded">
 						<div class="list-sidebar-label"><span>Sale Class</span></div>
 						<ul>
-							<?php switch( $this->options['vehicle_management_system']['saleclass'] ) {
+							<?php 
+							$hide_certified = !empty($theme_settings['hide_certified_saleclass']) ? TRUE: FALSE;
+							switch( $this->options['vehicle_management_system']['saleclass'] ) {
 								case 'all':
 									echo '<li><span class="no-style"><a href="' . $new_link . '" title="View New Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'new' ? 'disabled' : NULL) . '">New</a></span></li>';
 									echo '<li><span class="no-style"><a href="' . $used_link . '" title="View Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Used</a></span></li>';
-									echo '<li><span class="no-style"><a href="' . $cert_link . '" title="View Certified Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Certified</a></span></li>';
+									echo !$hide_certified ? '<li><span class="no-style"><a href="' . $cert_link . '" title="View Certified Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Certified</a></span></li>' : '';
 									break;
 								case 'new':
 									echo '<li><span class="no-style"><a href="' . $new_link . '" title="View New Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'new' ? 'disabled' : NULL) . '">New</a></span></li>';
 									break;
 								case 'used':
 									echo '<li><span class="no-style"><a href="' . $used_link . '" title="View Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Used</a></span></li>';
-									echo '<li><span class="no-style"><a href="' . $cert_link . '" title="View Certified Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Certified</a></span></li>';
+									echo !$hide_certified ? '<li><span class="no-style"><a href="' . $cert_link . '" title="View Certified Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Certified</a></span></li>' : '';
 									break;
 								case 'certified':
 									echo '<li><span class="no-style"><a href="' . $cert_link . '" title="View Certified Used Inventory" class="list-button ' . (strtolower( $parameters[ 'saleclass' ] ) == 'used' ? 'disabled' : NULL) . '">Certified</a></span></li>';
