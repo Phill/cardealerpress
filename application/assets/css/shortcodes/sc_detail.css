@@ -1,7 +1,6 @@
 #sc-detail-container{
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -9,6 +8,8 @@
 	-webkit-flex-flow: row wrap;
 	
     justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
     background-color: #EAEAEA;
 	margin: 0 auto;
 	font-size: 12px;
@@ -20,9 +21,14 @@
 	position: relative;
 }
 .sc-detail-item{
+    -webkit-box-flex: 0 0 auto;
+    -moz-box-flex:  0 0 auto;
+    -webkit-flex:  0 0 auto;
+    -ms-flex:  0 0 auto;
     flex: 0 0 auto;
+	
     max-width: 415px;
-    width: 100%;
+    width: 50%;
     margin: 2% 0 0;
     box-sizing: border-box;
     border: 2px solid #000;
@@ -45,7 +51,6 @@
 .sc-detail-top-container{
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -53,6 +58,8 @@
 	-webkit-flex-flow: row wrap;
 	
     justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
     width: 100%;
 }
 .sc-detail-top-one, .sc-detail-top-four{
@@ -82,6 +89,10 @@
     font-style: italic;
 }
 .sc-detail-top-two, .sc-detail-top-three{
+    -webkit-box-flex: 1 1 auto;
+    -moz-box-flex:  1 1 auto;
+    -webkit-flex:  1 1 auto;
+    -ms-flex:  1 1 auto;
     flex: 1 1 auto;
     width: 48%;
     padding: 1%;
@@ -89,7 +100,6 @@
 .sc-detail-top-three{
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -97,6 +107,7 @@
 	-webkit-flex-flow: column nowrap;
 	
 	justify-content: center;
+	-webkit-justify-content: space-around;
 }
 .sc-detail-top-two img{
     width: 100%;
@@ -149,6 +160,7 @@
 }
 .sc-detail-item.active{
     max-width: 600px;
+	width: 100%;
 }
 .sc-detail-bottom-container{
     display: none;
@@ -156,11 +168,10 @@
     height: 400px;
 }
 .sc-detail-bottom-container.active{
-    display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
+	display: flex;
 	
 	flex-flow: row wrap;
 	-webkit-flex-flow: row wrap;
@@ -174,17 +185,17 @@
 
 
 .sc-detail-bottom-one{
-    flex: 0 0 auto;
     -webkit-box-flex: 0 0 auto;
     -moz-box-flex:  0 0 auto;
     -webkit-flex:  0 0 auto;
     -ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+		
     width: 20%;
 }
 .sc-detail-bottom-buttons{
 	display: flex;
 	display: -webkit-box;
-    
     display: -ms-flexbox;
 	display: -webkit-flex;
 	
@@ -193,12 +204,23 @@
 	
     
 	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
 	align-content: center;
+	-webkit-align-content: center;
+	
 	align-items: center;
+	-webkit-align-items: center;
+	
 	height: 396px;
 }
 .bottom-button{
+    -webkit-box-flex: 0 0 auto;
+    -moz-box-flex:  0 0 auto;
+    -webkit-flex:  0 0 auto;
+    -ms-flex: 0 0 auto;
 	flex: 0 0 auto;
+	
 	width: 45px;
 	height: 45px;
 	text-align: center;
@@ -219,11 +241,12 @@
 	box-shadow: none;
 }
 .sc-detail-bottom-two{
-    flex: 0 0 auto;
     -webkit-box-flex: 0 0 auto;
     -moz-box-flex:  0 0 auto;
     -webkit-flex:  0 0 auto;
     -ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	
     width: 80%;
     background-color: #C6C6C6;
     box-shadow: -6px 0px 8px #888888;
@@ -301,7 +324,6 @@ div.ajax-loader img{
 .bottom-tab-buttons-wrapper{
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -309,12 +331,19 @@ div.ajax-loader img{
 	-webkit-flex-flow: row wrap;
 	
     justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
     width: 90%;
     margin: 2% auto 0;
     text-align: center;
 }
 .bottom-tab-buttons-wrapper .tab-button{
+    -webkit-box-flex: 1 0 auto;
+    -moz-box-flex:  1 0 auto;
+    -webkit-flex:  1 0 auto;
+    -ms-flex: 1 0 auto;
     flex: 1 0 auto;
+	
     border: 2px solid #000;
     border-bottom: none;
     box-sizing: border-box;
@@ -359,7 +388,6 @@ div.ajax-loader img{
 .sc-detail-photo-container{
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -367,6 +395,8 @@ div.ajax-loader img{
 	-webkit-flex-flow: row wrap;
 	
     justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
 	overflow-y: auto;
     overflow-x: hidden;
 	max-height: 370px;
@@ -374,7 +404,12 @@ div.ajax-loader img{
 	padding: 2% 0 1%;
 }
 .sc-detail-photo-container a{
+    -webkit-box-flex: 0 1 auto;
+    -moz-box-flex:  0 1 auto;
+    -webkit-flex:  0 1 auto;
+    -ms-flex: 0 1 auto;
 	flex: 0 1 auto;
+	
 	width: 125px;
 	border: 2px solid #00a025;
     box-sizing: border-box;
@@ -382,11 +417,12 @@ div.ajax-loader img{
 	
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
 	align-items: center;
+	-webkit-align-items: center;
+	
 	background-color: #00a025;
 }
 .sc-detail-photo-container a:hover{
@@ -479,7 +515,6 @@ div#cdp-ajax-end{
 #sc-detail-search-container{
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -487,6 +522,8 @@ div#cdp-ajax-end{
 	-webkit-flex-flow: row wrap;
 	
     justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
     width: 95%;
     margin: 2% auto 0;
     padding: 1%;
@@ -503,10 +540,14 @@ div#cdp-ajax-end{
 	left: 50%;
 }
 .sc-search-item{
+    -webkit-box-flex: 0 0 auto;
+    -moz-box-flex:  0 0 auto;
+    -webkit-flex:  0 0 auto;
+    -ms-flex: 0 0 auto;
     flex: 0 0 auto;
+	
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
@@ -514,6 +555,8 @@ div#cdp-ajax-end{
 	-webkit-flex-flow: column nowrap;
 	
     align-items: center;
+	-webkit-align-items: center;
+	
     box-sizing: border-box;
 	width: 25%;
 }
@@ -530,16 +573,21 @@ div#cdp-ajax-end{
     width: 25px;
     height: 25px;
     border-radius: 60%;
+	
     display: flex;
     display: -webkit-box;
-    
     display: -ms-flexbox;
     display: -webkit-flex;
 	
 	flex-flow: column nowrap;
 	-webkit-flex-flow: column nowrap;
+	
 	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
     align-items: center;
+	-webkit-align-items: center;
+	
     cursor: pointer;
     border: 2px solid #000;
     box-shadow: 3px 3px 6px #888888;
