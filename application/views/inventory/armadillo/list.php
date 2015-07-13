@@ -111,11 +111,12 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 				<div class="breadcrumbs"><?php echo display_breadcrumb( $parameters, $this->company, $this->options['vehicle_management_system' ]['custom_contact'] ); ?></div>
 				<div class="inventory-pager"><?php echo paginate_links( $args ); ?></div>
 			</div>
-			<form onsubmit="return list_search_field(event, this.value);" name="list_search_form" id="inventory-search">
-				<label for="search">Inventory Search:</label>
-				<input id="inventory-search-box" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
-			</form>
-
+			<div class="inventory-search-text-wrapper">
+				<form onsubmit="return list_search_field(event, this.value);" name="list_search_form" id="inventory-search" class="<?php echo $search_input_class; ?>">
+					<label for="search">Inventory Search:</label>
+					<input id="inventory-search-box" class="text-search" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
+				</form>
+			</div>
 			<div id="inventory-list-top-wrapper">
 				<div id="inventory-total-found" class="color-one"><?php echo $vehicle_total_found; ?> Cars Found</div>
 				<div id="inventory-sort-wrapper">

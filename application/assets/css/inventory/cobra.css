@@ -54,10 +54,17 @@
 	margin: 0;
 	padding: 1%;
 	width: 98%;
-	display: block;
-	float: none;
-	clear: both;
-	overflow: hidden;
+
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+	
+	flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	
+    justify-content: space-around;
+	-webkit-justify-content: space-around;
 }
 .quick-link-wrap{
 	display: block;
@@ -65,14 +72,10 @@
 	overflow: hidden;
 }
 #inventory-quick-selects{
-	display: block;
-	float: left;
-	overflow: hidden;
+
 }
-#inventory-quick-search{
-	display: block;
-	float: right;
-	overflow: hidden;
+#inventory-search-text{
+	margin-top: -3px;
 }
 #inventory-quick-links select {
 	margin-right: 10px;
@@ -81,9 +84,9 @@
 
 #inventory-search-box {
 	border: none;
-	height: 21px;
-	padding: 0px 0 2px 25px;
-	width: 234px;
+	height: 16px;
+	padding: 0px 0 2px 10px;
+	width: 70%;
 }
 #inventory-search-submit {
 	background-color: #D72A19;
@@ -91,15 +94,47 @@
 	color: #FFF;
 	cursor: pointer;
 	height: 21px;
-	line-height: 10px;
-	margin-right: 5px;
+	line-height: 100%;
 	position: relative;
 	width: 28px;
 	display: inline;
-	padding: 4px 2px;
-	right: 5px;
+	padding: 4px 2px 3px;
 	top: 1.5px;
 	font-weight: bold;
+}
+#inventory-search-text.search-typeahead{
+	margin: 0;
+}
+.search-typeahead #inventory-search-box{
+    padding: 0 0 0 5px;
+    margin: 0;
+    max-width: 200px;
+    width: 100%;
+	border: none;
+	height: 18px;
+}
+.search-typeahead #inventory-search-submit{
+    display: block;
+	float: right;
+	top: 0;
+}
+.search-typeahead input{
+	padding: 0 0 0 5px;
+    margin: 0;
+    max-width: 200px;
+    width: 100%;
+	border: none;
+	height: 18px;
+}
+.tt-menu.tt-open{
+    background-color: #FFF;
+	color: #000;
+    padding: 5%;
+}
+.tt-menu.tt-open .tt-suggestion:hover{
+    background-color: #EEE;
+	color: #000;
+    cursor: pointer;
 }
 #inventory-search-wrapper{
 	display: block;

@@ -5,7 +5,7 @@
  * Author: DealerTrend, Inc.
  * Author URI: http://www.dealertrend.com
  * Description: Provides access to the Vehicle Management System and Vehicle Reference System provided by <a href="http://www.dealertrend.com" target="_blank" title="DealerTrend, Inc: Shift Everything">DealerTrend, Inc.</a>
- * Version: 4.2.1506.02
+ * Version: 4.2.1507.00
  * License: GPLv2 or later
  */
 

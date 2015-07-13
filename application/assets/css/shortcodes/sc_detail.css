@@ -623,6 +623,9 @@ div.sc-search-item.mobile label{
 		width: 81%;
 		left: 50%;
 	}
+	div.sc-detail-item{
+		width: 100%;
+	}
 	div#sc-detail-mobile-wrapper{
 		display: block;
 	}
@@ -661,6 +664,7 @@ div.sc-search-item.mobile label{
 		display:  none;
 	}
 	div.sc-detail-item{
+		width: 100%;
 		box-shadow: 0px 6px 4px #888888;
 	}
 	div.data-row{

@@ -94,7 +94,7 @@ div#inventory-search-text {
 	padding: 0 5% 0 0;
 }
 
-#inventory-inventory-wrapper{
+#inventory-listing-items{
 	display: block;
 	overflow: hidden;
 	float: none;
@@ -301,14 +301,64 @@ div#inventory-search-text {
 	overflow: hidden;
     width: 50%;
 }
+hr.full-divider{
+    display: block;
+    clear: both;
+    float: none;
+}
+.inventory-search-text-wrapper{
+	display: block;
+	float: none;
+	clear: both;
+	position: relative;
+}
+#inventory-search-text.search-typeahead{
+    display: block;
+    position: relative;
+    max-width: 250px;
+    margin: 0 auto;
+    overflow: inherit;
+	float: none;
+	clear: both;
+}
+.search-typeahead > span{
+    display: inline-block;
+}
+.search-typeahead #inventory-search-submit{
+    display: block;
+    overflow: hidden;
+    margin: -2px 0 0;
+	float: right;
+	line-height: 168%;
+	padding: 0;
+}
+.search-typeahead input{
+    margin: 0;
+    max-width: 200px;
+    width: 100%;
+}
+.search-typeahead #inventory-search-box{
+	height: inherit;
+	padding: 0;
+    max-width: 200px;
+    width: 100%;
+}
+.tt-menu.tt-open{
+    background-color: #FFF;
+    padding: 5%;
+}
+.tt-menu.tt-open .tt-suggestion:hover{
+    background-color: #EEE;
+    cursor: pointer;
+}
 
-#inventory-search-box {
+#inventory-search-box{
 	height: 21px;
 	padding: 0px 0 2px 25px;
 	max-width: 72%;
 	width: 100%;
 }
-#inventory-search-submit {
+#inventory-search-submit{
 	background-color: #2172C7;
 	border: none;
 	color: #EAEAEA;
@@ -323,12 +373,12 @@ div#inventory-search-text {
 }
 #inventory-search-wrapper{
     display: block;
-    overflow: hidden;
     clear: both;
     float: none;
     width: 98%;
     margin: 0 auto;
 }
+
 #inventory-search-advance{
     overflow: hidden;
     clear: both;

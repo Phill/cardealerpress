@@ -28,10 +28,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	);
 	foreach( $filters as $key => $filter ){ if( empty($filter) ){ unset($filters[$key]); } }
 
-	$vehicleclass = isset( $this->parameters[ 'vehicleclass' ] ) ? $this->parameters[ 'vehicleclass' ] : NULL;
 	$certified = isset( $this->parameters[ 'certified' ] ) ? $this->parameters[ 'certified' ] : NULL;
-	$price_to = isset( $this->parameters[ 'price_to' ] ) ? $this->parameters[ 'price_to' ] : NULL;
-	$price_from = isset( $this->parameters[ 'price_from' ] ) ? $this->parameters[ 'price_from' ] : NULL;
 
 	$search_error = '';
 
@@ -155,6 +152,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 					<div id="vehicleclass-wrapper" class="inventory-option-wrapper search-option-top">
 						<label class="inventory-label">Vehicle Class</label><br/>
 						<select id="inventory-vehicleclass" class="inventory-select" onchange="document.location = this.value;">
+							<?php $vehicleclass = isset( $this->parameters[ 'vehicleclass' ] ) ? $this->parameters[ 'vehicleclass' ] : NULL; ?>
 							<option value="<?php echo remove_query_arg('vehicleclass'); ?>">All</option>
 							<option value="<?php echo add_query_arg(array('vehicleclass'=>'car')); ?>" <?php echo $vehicleclass == 'car' ? 'selected' : NULL; ?>>Car</option>
 							<option value="<?php echo add_query_arg(array('vehicleclass'=>'truck')); ?>" <?php echo $vehicleclass == 'truck' ? 'selected' : NULL; ?>>Truck</option>
@@ -165,18 +163,22 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 					<div id="price-range-wrapper" class="inventory-option-wrapper search-option-top">
 						<label class="inventory-label" for="price-range">Price Range</label><br/>
 						<select class="inventory-select" onchange="document.location = this.value;">
-							<option value="<?php echo remove_query_arg( 'price_from', 'price_to' ) ?>"><?php echo (isset($parameters['price_from']))? 'Remove Price Range' : 'Select Price Range'; ?></option>
-							<option value="<?php echo add_query_arg( array('price_from'=>'1','price_to'=>10000) ); ?>" <?php echo $parameters['price_from'] == "1" ? 'selected' : ''; ?>>$1 - $10,000</option>
-							<option value="<?php echo add_query_arg( array('price_from'=>'10001','price_to'=>20000) ); ?>" <?php echo $parameters['price_from'] == "10001" ? 'selected' : ''; ?>>$10,001 - $20,000</option>
-							<option value="<?php echo add_query_arg( array('price_from'=>'20001','price_to'=>30000) ); ?>" <?php echo $parameters['price_from'] == "20001" ? 'selected' : ''; ?>>$20,001 - $30,000</option>
-							<option value="<?php echo add_query_arg( array('price_from'=>'30001','price_to'=>40000) ); ?>" <?php echo $parameters['price_from'] == "30001" ? 'selected' : ''; ?>>$30,001 - $40,000</option>
-							<option value="<?php echo add_query_arg( array('price_from'=>'40001','price_to'=>50000) ); ?>" <?php echo $parameters['price_from'] == "40001" ? 'selected' : ''; ?>>$40,001 - $50,000</option>
-							<option value="<?php echo remove_query_arg( 'price_to', add_query_arg( array('price_from'=>'50001') ) ); ?>" <?php echo $parameters['price_from'] == "50001" ? 'selected' : ''; ?>>$50,001 - Above</option>
+							<?php 
+								$price_to = isset( $this->parameters[ 'price_to' ] ) ? $this->parameters[ 'price_to' ] : NULL;
+								$price_from = isset( $this->parameters[ 'price_from' ] ) ? $this->parameters[ 'price_from' ] : NULL;
+							?>
+							<option value="<?php echo remove_query_arg( 'price_from', 'price_to' ) ?>"><?php echo (isset($price_from))? 'Remove Price Range' : 'Select Price Range'; ?></option>
+							<option value="<?php echo add_query_arg( array('price_from'=>'1','price_to'=>10000) ); ?>" <?php echo $price_from == "1" ? 'selected' : ''; ?>>$1 - $10,000</option>
+							<option value="<?php echo add_query_arg( array('price_from'=>'10001','price_to'=>20000) ); ?>" <?php echo $price_from == "10001" ? 'selected' : ''; ?>>$10,001 - $20,000</option>
+							<option value="<?php echo add_query_arg( array('price_from'=>'20001','price_to'=>30000) ); ?>" <?php echo $price_from == "20001" ? 'selected' : ''; ?>>$20,001 - $30,000</option>
+							<option value="<?php echo add_query_arg( array('price_from'=>'30001','price_to'=>40000) ); ?>" <?php echo $price_from == "30001" ? 'selected' : ''; ?>>$30,001 - $40,000</option>
+							<option value="<?php echo add_query_arg( array('price_from'=>'40001','price_to'=>50000) ); ?>" <?php echo $price_from == "40001" ? 'selected' : ''; ?>>$40,001 - $50,000</option>
+							<option value="<?php echo remove_query_arg( 'price_to', add_query_arg( array('price_from'=>'50001') ) ); ?>" <?php echo $price_from == "50001" ? 'selected' : ''; ?>>$50,001 - Above</option>
 						</select>
 					</div>
-					<div id="text-search-wrapper" class="search-option-top">
+					<div id="inventory-search-text" class="search-option-top <?php echo $search_input_class;?>">
 						<label for="search">Inventory Search</label><br/>
-						<input id="inventory-search-box" class="<?php echo isset( $parameters[ 'search' ] ) ? '' : 'invalid '; ?>list-search-value" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : 'Text Search'; ?>" />
+						<input id="inventory-search-box" class="text-search <?php echo isset( $parameters[ 'search' ] ) ? '' : 'invalid '; ?>list-search-value" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : 'Text Search'; ?>" />
 					</div>
 					<button onclick="return get_list_input_values(event);" id="inventory-search-submit">Search</button>
 				</div>
@@ -193,7 +195,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 									if( ! in_array( $make_safe , $shown_makes ) ) {
 										$shown_makes[] = $make_safe;
 										$link = generate_inventory_link($url_rule,$parameters,array('make'=>$make_safe),array('model','trim'));
-										echo '<option value="'.$link.'" '.(rawurlencode(strtolower($make_safe)) == strtolower($parameters['make']) ? 'selected': '').' >'.$make.'</option>';
+										$selected = ( isset($parameters['make']) ? (rawurlencode(strtolower($make_safe)) == strtolower($parameters['make']) ? 'selected': '') : '');
+										echo '<option value="'.$link.'" '.$selected.' >'.$make.'</option>';
 									}
 								}
 							?>
@@ -212,7 +215,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 									foreach( $models as $model ) {
 										$model_safe = str_replace( '/' , '%2F' , $model );
 										$link = generate_inventory_link($url_rule,$parameters,array('model'=>$model_safe),array('trim'));
-										echo '<option value="'.$link.'" '.(rawurlencode(strtolower($model_safe)) == strtolower($parameters['model']) ? 'selected': '').' >'.$model.'</option>';
+										$selected = ( isset($parameters['model']) ? (rawurlencode(strtolower($model_safe)) == strtolower($parameters['model']) ? 'selected': '') : '');
+										echo '<option value="'.$link.'" '.$selected.' >'.$model.'</option>';
 									}
 								}
 							?>
@@ -229,7 +233,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 									}
 									foreach( $trims as $trim ) {
 										$trim_safe = str_replace( '/' , '%2F' , $trim );
-										echo '<option value="'.add_query_arg(array('trim' => urlencode($trim_safe))).'" '.(rawurlencode(strtolower($trim_safe)) == strtolower($parameters['trim']) ? 'selected': '').'> '.$trim.'</option>';
+										$selected = ( isset($parameters['trim']) ? (rawurlencode(strtolower($trim_safe)) == strtolower($parameters['trim']) ? 'selected': '') : '');
+										echo '<option value="'.add_query_arg(array('trim' => urlencode($trim_safe))).'" '.$selected.'> '.$trim.'</option>';
 									}
 								}
 							?>

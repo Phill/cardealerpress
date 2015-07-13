@@ -4,7 +4,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	
 	$parameters = $this->parameters;
 	$parameters[ 'saleclass' ] = isset( $parameters[ 'saleclass' ] ) ? ucwords( $parameters[ 'saleclass' ] ) : 'All';
-		
 	$theme_settings = $this->options[ 'vehicle_management_system' ][ 'theme' ];
 	
 	$rules = get_option( 'rewrite_rules' );
@@ -64,6 +63,16 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			}
 			break;
 		case 'list':
+			$search_input_class = '';
+			if( $this->options[ 'vehicle_management_system' ]['keywords']['enable'] ){
+				wp_enqueue_script( 'cdp_inventory_typeahead_js' , self::$plugin_information[ 'PluginURL' ] . '/application/assets/js/jquery-typeahead/typeahead.js' , array( 'jquery' ) , '0.11.1' );
+				wp_register_script( 'cdp_inventory_general_js' , self::$plugin_information[ 'PluginURL' ] . '/application/assets/js/inventory/general.js' , array( 'jquery' ) , '1.0', true );
+				$typeahead_keywords = explode(',', $this->options[ 'vehicle_management_system' ]['keywords']['pot']);
+				wp_localize_script( 'cdp_inventory_general_js', 'cdp_keywords', $typeahead_keywords );
+				wp_enqueue_script('cdp_inventory_general_js');
+				$search_input_class = 'search-typeahead';
+			}
+			
 			$on_page = isset( $inventory[ 0 ]->pagination->on_page ) ? $inventory[ 0 ]->pagination->on_page : 0;
 			$page_total = isset( $inventory[ 0 ]->pagination->total ) ? $inventory[ 0 ]->pagination->total : 0;
 

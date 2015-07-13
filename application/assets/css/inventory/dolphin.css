@@ -71,7 +71,6 @@
 /***Listing***/
 #inventory-listing{
     display: block;
-    overflow: hidden;
     clear: both;
     float: none;
     margin: 1% auto;
@@ -85,7 +84,6 @@
     display: block;
     float: none;
     margin: 0 2% 1%;
-    overflow: hidden;
     width: 96%;
 	font-size: 85%;
 }
@@ -111,10 +109,17 @@
     background-color: #D6D6D6;
 }
 #search-top-wrapper{
-    display: block;
-    overflow: hidden;
-    float: none;
-    clear: none;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+	
+	flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	
+    justify-content: space-around;
+	-webkit-justify-content: space-around;
+
     width: 98%;
     padding: 1% 1%;
     background-color: #333333;
@@ -122,6 +127,33 @@
 	text-align: center;
 	border-radius: 8px 8px 0 0;
 }
+
+.search-typeahead #inventory-search-box{
+    margin: 0;
+    max-width: 200px;
+    width: 95%;
+    text-align: left;
+    height: inherit;
+}
+.search-typeahead input{
+    margin: 0;
+    max-width: 200px;
+    width: 95%;
+}
+.tt-menu.tt-open{
+    background-color: #FFF;
+	color: #000;
+    padding: 5%;
+    width: 90%;
+    margin: 0 auto;
+	text-align: left;
+}
+.tt-menu.tt-open .tt-suggestion:hover{
+    background-color: #EEE;
+	color: #000;
+    cursor: pointer;
+}
+
 .search-option-top{
     display: block;
     float: left;

@@ -120,7 +120,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 								if( ! in_array( $make_safe , $shown_makes ) ) {
 									$shown_makes[] = $make_safe;
 									$link = generate_inventory_link($url_rule,$parameters,array('make'=>$make_safe),array('model','trim'));
-									echo '<option value="'.$link.'" '.(rawurlencode(strtolower($make_safe)) == strtolower($parameters['make']) ? 'selected': '').' >'.$make.'</option>';
+									$selected = ( isset($parameters['make']) ? (rawurlencode(strtolower($make_safe)) == strtolower($parameters['make']) ? 'selected': '') : '');
+									echo '<option value="'.$link.'" '.$selected.' >'.$make.'</option>';
 								}
 							}
 							?>
@@ -139,7 +140,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 								foreach( $models as $model ) {
 									$model_safe = str_replace( '/' , '%2F' , $model );
 									$link = generate_inventory_link($url_rule,$parameters,array('model'=>$model_safe),array('trim'));
-									echo '<option value="'.$link.'" '.(rawurlencode(strtolower($model_safe)) == strtolower($parameters['model']) ? 'selected': '').' >'.$model.'</option>';
+									$selected = ( isset($parameters['model']) ? (rawurlencode(strtolower($model_safe)) == strtolower($parameters['model']) ? 'selected': '') : '');
+									echo '<option value="'.$link.'" '.$selected.' >'.$model.'</option>';
 								}
 							}
 							?>
@@ -156,15 +158,16 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 								}
 								foreach( $trims as $trim ) {
 									$trim_safe = str_replace( '/' , '%2F' , $trim );
-									echo '<option value="'.add_query_arg(array('trim' => urlencode($trim_safe))).'" '.(rawurlencode(strtolower($trim_safe)) == strtolower($parameters['trim']) ? 'selected': '').'> '.$trim.'</option>';
+									$selected = ( isset($parameters['trim']) ? (rawurlencode(strtolower($trim_safe)) == strtolower($parameters['trim']) ? 'selected': '') : '');
+									echo '<option value="'.add_query_arg(array('trim' => urlencode($trim_safe))).'" '.$selected.'> '.$trim.'</option>';
 								}
 							}
 							?>
 						</select>
 					</div>
 				</div>
-				<div id="inventory-quick-search">
-					<input id="inventory-search-box" class="list-search-value" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
+				<div id="inventory-search-text" class="<?php echo $search_input_class; ?>">
+					<input id="inventory-search-box" class="text-search list-search-value" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
 					<button onclick="return get_list_input_values(event);" id="inventory-search-submit">GO</button>
 				</div>
 			</div>

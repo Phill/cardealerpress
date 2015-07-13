@@ -52,6 +52,12 @@ Default Colors:
 /***
  LISTING
 ***/
+.inventory-search-text-wrapper{
+	background: #EEE;
+	border-bottom: 1px solid #a8a8a8;
+	padding: 1%;
+	position: relative;
+}
 #inventory-search{
 	display: block;
 	overflow: hidden;
@@ -59,22 +65,50 @@ Default Colors:
 	float: none;
 	width: 100%;
 	padding: 0;
-	background: #EEE;
-	border-bottom: 1px solid #a8a8a8;
 }
 #inventory-search label{
 	display: block;
 	margin-left: 5%;
 	margin-right: 2%;
 	float: left;
-	line-height: 50px;
 	padding: 0;
+	line-height: 150%;
 }
 #inventory-search-box{
 	display: block;
 	float: left;
 	width: 70%;
-	margin-top: 14px;
+}
+
+#inventory-search.search-typeahead{
+    display: block;
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+	overflow: inherit;
+}
+#inventory-search.search-typeahead > label{
+    display: block;
+    overflow: hidden;
+    float: left;
+    margin: 0 2% 0 4%;
+    line-height: 180%
+}
+#inventory-search.search-typeahead input{
+    display: block;
+    overflow: hidden;
+    float: left;
+    margin: 0 0 0 2%;
+    max-width: 900px;
+    width: 100%;
+}
+.tt-menu.tt-open{
+    background-color: #FFF;
+    padding: 5%;
+}
+.tt-menu.tt-open .tt-suggestion:hover{
+    background-color: #EEE;
+    cursor: pointer;
 }
 
 #inventory-list-top-wrapper{

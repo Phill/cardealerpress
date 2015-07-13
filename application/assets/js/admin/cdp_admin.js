@@ -87,6 +87,20 @@
 		});
 	});
 	
+	// Generate Keyword Pot
+	jQuery('.generate-keyword-pot').click(function(){
+		key = jQuery(this).attr('tag');
+		tag = 'generateKeywordPot';
+		data = {'id': key};
+		jQuery('#'+key).text('');
+		jQuery('#'+key).siblings('.ajax-loading-message').addClass('loading');
+		cdp_ajax_call( tag, data, '' ).done(function(result) {
+			jQuery('#'+key).siblings('.ajax-loading-message').removeClass('loading');
+		}).fail(function() {
+		    alert('Data Not Added');
+		});
+	});
+	
 	// Show Inner Table Row Content
 	jQuery('.inner-table-content').on( 'click', '.inner-row-label', function(e){
 		if( jQuery(e.target).parent().siblings('.inner-row-content').hasClass('active') ){

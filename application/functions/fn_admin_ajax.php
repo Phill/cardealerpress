@@ -191,6 +191,30 @@ class Admin_ajax {
 				delete_option( 'cardealerpress_settings' );
 				deactivate_plugins( 'cardealerpress/cardealerpress.php' );
 				break;
+			case 'generateKeywordPot':
+				$keywords_array = array(); $content = $keywords = '';
+				$output['id'] = $_REQUEST['params']['id'];
+				
+				$keywords_array = $this->get_default_keywords();
+				$this->remove_unwanted_keywords($keywords_array);
+				$this->append_additonal_keywords($keywords_array);
+				if( !empty($keywords_array) ){
+					$keywords = implode(',', $keywords_array);
+				}
+				
+				$this->options[ 'vehicle_management_system' ][ 'keywords' ]['pot'] = $keywords;
+				$this->save_options_ajax();
+				
+				if( $keywords_array ){
+					$content .= '<ul class="keyword-list">';
+					foreach($keywords_array as $word){
+						$content .= '<li>'.$word.'</li>';
+					}
+					$content .= '</ul>';
+				}
+				
+				$output['content'] = $content;
+				break;
 			default:
 				$output['error'] = 'That is not a valid FN parameter. Please check your string and try again.';
 				break;
@@ -260,6 +284,54 @@ class Admin_ajax {
 			)
 		);
 		return $flex;
+	}
+	
+	function get_default_keywords(){
+		$keyword_request = 'http://api.dealertrend.com/api/companies/' . $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ] . '/vehicles.json';
+		$keyword_handler = new http_request( $keyword_request , 'vehicle_keyword' );
+		$keyword_information = $keyword_handler->cached() ? $keyword_handler->cached() : $keyword_handler->get_file();
+		$keyword_data = isset( $keyword_information[ 'body' ] ) ? json_decode( $keyword_information[ 'body' ] ) : array();
+		
+		$keyword_array = array();
+		$item_array = array('make','model','trim');
+		if( !empty($keyword_data) ){
+			foreach($item_array as $item){
+				foreach($keyword_data as $data){
+					if( !in_array($data->$item, $keyword_array) && !empty($data->$item) ){
+						$keyword_array[] = trim($data->$item);	
+					}
+				}
+			}
+		}
+		return $keyword_array;
+	}
+	
+	function remove_unwanted_keywords(&$keywords){
+		if( !empty($keywords) && is_array($keywords) ){
+			$exclude_string = !empty($this->options['vehicle_management_system']['keywords']['exclude']) ? $this->options['vehicle_management_system']['keywords']['exclude']: '';
+			if( !empty($exclude_string) ){
+				$exclude = explode(',',$exclude_string);
+				foreach( $keywords as $key => $word ){
+					foreach($exclude as $unwanted){
+						if($word == $unwanted){
+							unset($keywords[$key]);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	function append_additonal_keywords(&$keywords){
+		if( !empty($keywords) && is_array($keywords) ){
+			$add_string = !empty($this->options['vehicle_management_system']['keywords']['add']) ? $this->options['vehicle_management_system']['keywords']['add']: '';
+			if( !empty($add_string) ){
+				$add = explode(',',$add_string);
+				foreach($add as $new){
+					$keywords[] = trim($new);
+				}
+			}
+		}
 	}
 }
 ?>

@@ -92,7 +92,8 @@ class cdp_plugin {
 			),
 			'styles' => array(
 				'data' => array()
-			)
+			),
+			'keywords' => array( 'enable'=>'','add'=>'', 'exclude'=>'', 'pot'=>'' )
 		),
 		'vehicle_reference_system' => array(
 			'host' => 'http://vrs.dealertrend.com'
@@ -120,6 +121,7 @@ class cdp_plugin {
 	function execute() {
 		$this->load_plugin_information();
 		$this->load_options();
+		$this->send_additional_header_data();
 		$this->set_variables();
 		$this->load_widgets();
 		$this->load_admin();
@@ -193,6 +195,27 @@ class cdp_plugin {
 		}
 
 		return $modified;
+	}
+	
+	/*
+		//// Send Headers
+	*/
+	function send_additional_header_data(){
+		add_action( 'send_headers', array($this, 'additional_headers') );
+	}
+	
+	function additional_headers() {
+		if( !is_admin() ){
+			global $wp_version;
+			header( 'X-WP-Version: '.$wp_version );
+			header( 'X-CDP-Version: '.self::$plugin_information['Version'] );
+			if( isset($this->options['vehicle_management_system']['company_information']['id']) ){
+				header( 'X-CDP-Company-ID: '.$this->options['vehicle_management_system']['company_information']['id'] );
+			}
+			if( isset($this->options['vehicle_management_system']['theme']['name']) ){
+				header( 'X-CDP-Theme-Name: '.$this->options['vehicle_management_system']['theme']['name'] );
+			}
+		}
 	}
 
 	/*

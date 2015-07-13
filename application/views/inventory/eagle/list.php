@@ -120,8 +120,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			</div>
 			<div id="inventory-top-search">
 				<div class="inventory-search">
-					<form action="#" method="GET" id="inventory-search">
-						<input id="inventory-search-box" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
+					<form action="#" method="GET" id="inventory-search-text" class="<?php echo $search_input_class;?>">
+						<input id="inventory-search-box" class="text-search" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
 						<button id="inventory-search-submit">SEARCH</button>
 					</form>
 				</div>

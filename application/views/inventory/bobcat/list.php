@@ -161,9 +161,11 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			<hr class="full-divider">
 
 			<div id="inventory-search-wrapper">
-				<div id="inventory-search-text">
-					<input id="inventory-search-box" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
-					<div id="inventory-search-submit">Search</div>
+				<div class="inventory-search-text-wrapper">
+					<div id="inventory-search-text" class="<?php echo $search_input_class; ?>">
+						<input id="inventory-search-box" class="text-search" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
+						<div id="inventory-search-submit">Search</div>
+					</div>
 				</div>
 				<form action="#" method="POST" id="inventory-search"> <!-- Vehicle Search -->
 					<input type="hidden" id="hidden-rewrite" value="<?php if ( isset($rules['^(inventory)']) ) { echo 'true'; } ?>" name="h_taxonomy" />

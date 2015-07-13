@@ -185,6 +185,18 @@ a.dealertrend-link img{
 	border: 2px solid #cbcbef;
 	position: relative;
 }
+span.td-title.center {
+    text-align: center;
+    display: block;
+    margin: 0 0 1%;
+}
+.td-full > textarea{
+    display: block;
+    width: 90%;
+    margin: 0 auto 2%;
+    min-height: 60px;
+	resize: none;
+}
 img.refresh-button{
     right: 5%;
     position: absolute;
@@ -476,7 +488,7 @@ span.msw-inner-title.small{
 /***
 Inner Table Layout
 ***/
-button.add-row-button{
+button.add-row-button, button.generate-keyword-pot{
     display: inline-block;
     margin: 0 0 0 6%;
     color: #FFF;
@@ -487,7 +499,7 @@ button.add-row-button{
     border: 2px solid #cbcbef;
     border-radius: 8px;
 }
-button.add-row-button:hover{
+button.add-row-button:hover, button.generate-keyword-pot:hover{
     color: #FFF;
     background-color: #008002;
 }
@@ -611,6 +623,9 @@ button.add-row-button:hover{
 .inner-td.value input.input-med{
 	width: 30%;
 }
+#emailRows input.input-short{
+	width: 28%;
+}
 a.custom_media_upload{
     text-decoration: none;
     background-color: #1D1C87;
@@ -639,6 +654,38 @@ a.custom_media_upload:hover{
 }
 #cdp-uninstall-button:hover{
 	border-color: #FFF;
+}
+
+div#KeywordPot{
+    display: block;
+    width: 90%;
+    margin: 1% auto 2%;
+    text-align: center;
+    color: #FFF;
+    background-color: #1D1C87;
+    padding: 1%;
+    border-radius: 8px;
+}
+ul.keyword-list{
+    background-color: #EEE;
+    color: #000;
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-around;
+    width: 90%;
+    margin: 6% auto;
+    padding: 4% 0;
+    max-height: 300px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 90%;
+}
+ul.keyword-list > li{
+    flex: 1 0 auto;
+    max-width: 90px;
+    width: 100%;
+    text-decoration: underline;
 }
 
 /***

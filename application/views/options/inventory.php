@@ -22,6 +22,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		?>
 		<div id="tab-content-scripts" class="tab-button tab-button-scripts" >Scripts</div>
 		<div id="tab-content-styles" class="tab-button tab-button-styles" >Styles</div>
+		<div id="tab-content-keywords" class="tab-button tab-button-keywords" >Keywords</div>
 	</div>
 	<div id="cdp-content-display-wrapper">
 		<div id="content-general" class="tab-content tab-content-general active">
@@ -138,6 +139,9 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		</div>
 		<div id="content-styles" class="tab-content tab-content-styles">
 			<?php include( dirname( __FILE__ ) . '/styles.php' ); ?>
+		</div>
+		<div id="content-keywords" class="tab-content tab-content-keywords">
+			<?php include( dirname( __FILE__ ) . '/keywords.php' ); ?>
 		</div>
 	</div>
 </div>
