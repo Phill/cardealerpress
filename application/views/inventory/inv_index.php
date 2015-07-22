@@ -1,14 +1,13 @@
 <?php
 
 namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
-	
+
 	$parameters = $this->parameters;
 	$parameters[ 'saleclass' ] = isset( $parameters[ 'saleclass' ] ) ? ucwords( $parameters[ 'saleclass' ] ) : 'All';
 	$theme_settings = $this->options[ 'vehicle_management_system' ][ 'theme' ];
 	
 	$rules = get_option( 'rewrite_rules' );
 	$url_rule = ( isset($rules['^(inventory)']) ) ? TRUE : FALSE;
-	//$cro_system = new cro_system($this->options['cro_system']['access_id']);
 
 	$dealer_geo = array(); $geo_params = array();
 	if( isset($theme_settings['display_geo']) ? $theme_settings['display_geo'] : FALSE ){

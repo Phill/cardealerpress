@@ -94,7 +94,7 @@
 	}
 
 	function cdp_widget_select_caller( selector, filter ){
-		widget = jQuery(selector).parent().parent().parent().parent().attr('ID');
+		widget = jQuery(selector).parents('.vms-search-box-widget').attr('id');
 		if( filter != 'trim' ){
 			cdp_widget_get_dropdown_data( widget, filter );
 		}
@@ -126,7 +126,7 @@
 	function cdp_widget_preset_load(){
 		jQuery('.widget-vms-preset-load').each(function(){
 			var data = {};
-			widget_id = jQuery(this).parent().parent().attr('id');
+			widget_id = jQuery(this).parents('.vms-search-box-widget').attr('id');
 			jQuery('#'+widget_id+' .widget-vms-preset-load').children().each(function(){
 				data[jQuery(this).attr('key')] = jQuery(this).text();
 			})

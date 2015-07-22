@@ -77,7 +77,11 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 						}
 					?>
 				</div>
-				<div id="inventory-custom-headline"><?php echo $vehicle['headline'];?></div>
+				<?php
+					if( $vehicle['headline'] ){
+						echo '<div id="inventory-custom-headline">'.$vehicle['headline'].'</div>';
+					}
+				?>
 			</div>
 		</div>
 		<div id="inventory-content"> <!-- inventory Content -->

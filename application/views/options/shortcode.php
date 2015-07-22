@@ -127,6 +127,10 @@ namespace Wordpress\Plugins\Dealertrend\Inventory\Api;
 			<div class="tr-wrapper tr-color">
 				<div class="td-two short center">search</div>
 				<div class="td-two long center">Toggle search feature on or off.<span style="display: block; font-size: 10px; font-style: italic; color: #707070">Default: 0 (off)</span></div>
+			<div class="tr-wrapper tr-color">
+				<div class="td-two short center">style</div>
+				<div class="td-two long center">clear<span style="display: block; font-size: 10px; font-style: italic; color: #707070">Default: detail</span></div>
+			</div>
 			</div>
 		</div>
 	</div>
