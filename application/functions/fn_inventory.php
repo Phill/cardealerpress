@@ -235,7 +235,7 @@
 		}
 
 		//Clean Price Values
-		$data['hidden_prices'] = '<div class="hidden-vehicle-prices" style="display: none;"><div class="hidden-msrp form-value" name="msrp">'.$price['retail_price'].'</div>'. (( $price['ais']['value'] > 0 && empty($data['rebate_link']) ) ? '<div class="hidden-rebate form-value" name="rebate">'.$price['ais']['value'].'</div>' : '') . '<div class="hidden-sale form-value" name="sale">'.$price['sale_price'].'</div><div class="hidden-asking form-value" name="asking">'.$price['asking_price'].'</div><div class="hidden-main form-value" name="main">'.$data['primary_price'].'</div>'. (( $price['sale_price'] > 0 && ($price['asking_price'] - $price['sale_price']) != 0 ) ? '<div class="hidden-discount" alt="discount">'. ($price['asking_price'] - $price['sale_price']) .'</div>' : '') . '</div>';
+		$data['hidden_prices'] = '<div class="hidden-vehicle-prices" style="display: none;"><div class="hidden-msrp form-value" name="msrp">'.$price['retail_price'].'</div>'. (( $price['ais']['value'] > 0 && empty($data['rebate_link']) ) ? '<div class="hidden-rebate form-value" name="rebate">'.$price['ais']['value'].'</div>' : '') . '<div class="hidden-sale form-value" name="sale">'.$price['sale_price'].'</div><div class="hidden-asking form-value" name="asking">'.$price['asking_price'].'</div><div class="hidden-main form-value" name="price">'.$data['primary_price'].'</div>'. (( $price['sale_price'] > 0 && ($price['asking_price'] - $price['sale_price']) != 0 ) ? '<div class="hidden-discount" alt="discount">'. ($price['asking_price'] - $price['sale_price']) .'</div>' : '') . '</div>';
 
 		return $data;
 	}

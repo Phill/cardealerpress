@@ -125,7 +125,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		//List Form ID
 		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">List Form ID:</span></div><div class="td-two">';
 		$value = isset($options[ 'list_gform_id' ]) ? $options[ 'list_gform_id' ] : ''; 
-		$content .= '<input type="text" id="detail-gform-id" class="cdp-input input-short" name="vehicle_management_system/theme/list_gform_id" pattern="[0-9]" value="'.$value.'" />';
+		$content .= '<input type="text" id="list-gform-id" class="cdp-input input-short" name="vehicle_management_system/theme/list_gform_id" pattern="[0-9]" value="'.$value.'" />';
 		$content .= '</div></div>';
 		// Detail Form ID
 		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Detail Form ID:</span></div><div class="td-two">';
@@ -576,11 +576,11 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		$sc_content .= '<div class="sc-detail-bottom-one">'; //bottom one -s
 		//bottom buttons
 		$sc_content .= '<div class="sc-detail-bottom-buttons">';
-		$sc_content .= '<div class="bottom-button vehicle_info-button"><img class="sc-action-button inner-button" name="vehicle_info" key="'.$vehicle['vin'].'" src="'.cdp_get_image_source().'info_icon.png" /></div>';
-		$sc_content .= '<div class="bottom-button vehicle_details-button"><img class="sc-action-ajax" name="vehicle_details" key="'.$vehicle['vin'].'" tag="info" src="'.cdp_get_image_source().'detail_info_icon.png" /></div>';
-		$sc_content .= '<div class="bottom-button vehicle_images-button"><img class="sc-action-ajax" name="vehicle_images" key="'.$vehicle['vin'].'" tag="images" src="'.cdp_get_image_source().'image_icon.png" /></div>';
+		$sc_content .= '<div class="bottom-button vehicle_info-button"><img class="sc-action-button inner-button" name="vehicle_info" key="'.$vehicle['vin'].'" src="'.cdp_get_image_source().'info_icon.png" /><small class="sc-detail-label label-information">Information</small></div>';
+		$sc_content .= '<div class="bottom-button vehicle_details-button"><img class="sc-action-ajax" name="vehicle_details" key="'.$vehicle['vin'].'" tag="info" src="'.cdp_get_image_source().'detail_info_icon.png" /><small class="sc-detail-label label-details">Comments</small></div>';
+		$sc_content .= '<div class="bottom-button vehicle_images-button"><img class="sc-action-ajax" name="vehicle_images" key="'.$vehicle['vin'].'" tag="images" src="'.cdp_get_image_source().'image_icon.png" /><small class="sc-detail-label lable-pictures">Pictures</small></div>';
 		if( function_exists('gravity_form') ){
-			$sc_content .= $form?'<div class="bottom-button vehicle_form-button"><img class="sc-action-form inner-button" name="vehicle_form" key="'.$vehicle['vin'].'" src="'.cdp_get_image_source().'email_icon.png" /></div>': '';
+			$sc_content .= $form?'<div class="bottom-button vehicle_form-button"><img class="sc-action-form inner-button" name="vehicle_form" key="'.$vehicle['vin'].'" src="'.cdp_get_image_source().'email_icon.png" /><small class="sc-detail-label label-offer">Make Offer</small></div>': '';
 		}
 		$sc_content .= '</div>';
 		$sc_content .= '</div>'; //bottom one -e

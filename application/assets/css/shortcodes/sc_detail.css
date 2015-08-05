@@ -240,6 +240,14 @@
 	color: #FFF;
 	box-shadow: none;
 }
+.bottom-button > img{
+    margin: 0 0 8% 0;
+}
+small.sc-detail-label {
+    color: #000;
+    display: block;
+	font-size: 70%;
+}
 .sc-detail-bottom-two{
     -webkit-box-flex: 0 0 auto;
     -moz-box-flex:  0 0 auto;

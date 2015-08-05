@@ -70,6 +70,7 @@ class cdp_plugin {
 				'default_image_tab' => '',
 				'default_info_tab' => '',
 				'list_info_button' => '',
+				'list_form_button' => '',
 				'list_gform_id' => '',
 				'detail_gform_id' => '',
 				'hide_certified_saleclass' => ''

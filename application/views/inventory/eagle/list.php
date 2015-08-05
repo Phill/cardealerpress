@@ -269,7 +269,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 									$form_submit_url = $this->options['vehicle_management_system' ]['host'] . '/' . $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ] . '/forms/create/';
 									$link_params = array( 'year' => $vehicle['year'], 'make' => $vehicle['make']['name'],  'model' => $vehicle['model']['name'], 'state' => $state, 'city' => $city, 'vin' => $vehicle['vin'] );
 									$link = generate_inventory_link($url_rule,$link_params,'','',1);
-									$contact_information = $inventory_item->contact_info;
 									$generic_vehicle_title = $vehicle['year'].' '.$vehicle['make']['name'].' '.$vehicle['model']['name'];
 
 									?>

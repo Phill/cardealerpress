@@ -87,7 +87,7 @@
 				slides: '> a',
 				fx: 'fade',
 				pager: '#vehicle-thumbnails',
-				pagerTemplate: '<a href="#"><img src="{{href}}" width="70" height="50" /></a>'
+				pagerTemplate: '<a href="#"><img src="{{href}}" style="width:70px;height:50px;" /></a>'
 			});
 
 			jQuery('#vehicle-images > a')

@@ -1858,6 +1858,18 @@ Gravity Form
 	div.inventory-ais-incentive-l-text,div.inventory-ais-incentive-s-text{
 		display: none;
 	}
+	div.listing-bottom-container-one {
+		width: 100%;
+		max-width: none;
+		text-align: center;
+	}
+	div.listing-bottom-container-two{
+		width: 100%;
+		max-width: none;
+	}
+	div.listing-bottom-container-two > div{
+		text-align: center;
+	}
 	div.inventory-listing-buttons{
 		display: none;
 	}
@@ -2025,6 +2037,18 @@ Gravity Form
 	}
 	div.inventory-photo{
 		width: 46%;
+	}
+	div.listing-bottom-container-one {
+		width: 100%;
+		max-width: none;
+		text-align: center;
+	}
+	div.listing-bottom-container-two{
+		width: 100%;
+		max-width: none;
+	}
+	div.listing-bottom-container-two > div{
+		text-align: center;
 	}
 	div.inventory-listing-info{
 		width: 50%;
