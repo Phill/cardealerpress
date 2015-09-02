@@ -310,7 +310,7 @@ class cdp_plugin {
 				'description' => 'Widgets in this area will show up on the Vehicle Detail Page.',
 				'before_title' => '<h1>',
 				'after_title' => '</h1>',
-				'before_widget' => '<div class="inventory widget">',
+				'before_widget' => '<div id="%1$s" class="inventory widget %2$s">',
 				'after_widget' => '</div>'
 			));
 			register_sidebar(array(
@@ -319,7 +319,7 @@ class cdp_plugin {
 				'description' => 'Widgets in this area will show up on the Vehicle List Page.',
 				'before_title' => '<h1>',
 				'after_title' => '</h1>',
-				'before_widget' => '<div class="inventory-list widget">',
+				'before_widget' => '<div id="%1$s" class="inventory-list widget %2$s">',
 				'after_widget' => '</div>'
 			));
 			$labels = array(

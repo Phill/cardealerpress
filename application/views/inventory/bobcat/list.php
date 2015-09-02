@@ -367,7 +367,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			</div>
 			<?php
 				if ( is_active_sidebar( 'vehicle-listing-page' ) ) :
-					echo '<div id="detail-widget-area">';
+					echo '<div id="list-widget-area">';
 						dynamic_sidebar( 'vehicle-listing-page' );
 					echo '</div>';
 				endif;

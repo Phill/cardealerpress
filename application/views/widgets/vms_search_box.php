@@ -7,7 +7,7 @@ class vms_search_box_widget extends WP_Widget {
 	private $widget_cdp_options;
 	// constructor
 	function vms_search_box_widget() {
-		parent::WP_Widget(false, $name = 'VMS Search Box', array( 'classname' => 'vms-search-box-widget', 'description' => 'Creates a VMS search box, which allows a user to search through the assigned VMS ID inventory.' ) );
+		parent::__construct(false, $name = 'VMS Search Box', array( 'classname' => 'vms-search-box-widget', 'description' => 'Creates a VMS search box, which allows a user to search through the assigned VMS ID inventory.' ) );
 
 		global $pagenow;
 		
@@ -164,13 +164,13 @@ class vms_search_box_widget extends WP_Widget {
 
 	function form($instance) {
 
-	    $title = esc_attr($instance['title']);
-		$display = $instance['salesclass_display'];
-		$default = $instance['salesclass_default'];
-		$trims = $instance['show_trims'];
-		$text = $instance['show_text_search'];
-		$colors = $instance['custom_colors'];
-		$labels = $instance['hide_labels'];
+	    $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
+		$display = isset($instance['salesclass_display']) ? $instance['salesclass_display'] : '';
+		$default = isset($instance['salesclass_default']) ? $instance['salesclass_default'] : '';
+		$trims = isset($instance['show_trims']) ? $instance['show_trims'] : '';
+		$text = isset($instance['show_text_search']) ? $instance['show_text_search'] : '';
+		$colors = isset($instance['custom_colors']) ? $instance['custom_colors'] : '';
+		$labels = isset($instance['hide_labels']) ? $instance['hide_labels'] : '';
     	?>
 
 		<p>

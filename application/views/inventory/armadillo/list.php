@@ -351,7 +351,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	<a href="#inventory-top" title="Return to Top" class="inventory-return-to-top">Return to Top</a>
 	<?php
 		if ( is_active_sidebar( 'vehicle-listing-page' ) ) :
-			echo '<div id="detail-widget-area">';
+			echo '<div id="list-widget-area">';
 				dynamic_sidebar( 'vehicle-listing-page' );
 			echo '</div>';
 		endif;

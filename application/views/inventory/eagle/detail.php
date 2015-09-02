@@ -138,7 +138,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
 											if ( !empty( $vehicle['odometer'] ) ) {
 												$vehicle_info .= '<div class="inventory-vehicle-overview-wrap vehicle-odometer">';
-												$vehicle_info .= '<div class="inventory-vehicle-overview-left">Mileage:</div>';
+												$vehicle_info .= '<div class="inventory-vehicle-overview-left">Odometer:</div>';
 												$vehicle_info .= '<div class="inventory-vehicle-overview-right vehicle-odometer-value">' . $vehicle['odometer'] . '</div>';
 												$vehicle_info .= '</div>';
 											}

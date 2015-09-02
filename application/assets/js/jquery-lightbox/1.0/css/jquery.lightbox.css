@@ -87,7 +87,7 @@ padding-right: 20px;
 #imageData #caption{ font-weight: bold;	}
 #imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;	}
 #imageData #numberDisplay a { color: black; padding-left: 5px; padding-right: 5px;}
-#imageData #bottomNavClose{ width: 66px; float: right;  padding-bottom: 0.7em;	}
+#imageData #bottomNavClose{ width: 26px; float: right;  padding-bottom: 0.7em; height: 26px; background: url('../images/close.gif') no-repeat;	}
 #imageData #helpDisplay {clear: left; float: left; display: block; }
 
 #overlay{

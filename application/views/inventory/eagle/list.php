@@ -299,7 +299,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 															echo '<div class="inventory-msrp" alt="'.$vehicle['prices']['retail_price'].'"><span>MSRP:</span> '.'$'.number_format( $vehicle['prices']['retail_price'] , 0 , '.' , ',' ).'</div>';
 														}
 														if ( $vehicle['odometer'] > 100 ) {
-															echo '<div class="inventory-odometer"><span>Mileage:</span> ' . $vehicle['odometer'] . '</div>';
+															echo '<div class="inventory-odometer"><span>Odometer:</span> ' . $vehicle['odometer'] . '</div>';
 														}
 														echo $vehicle['exterior_color'] != NULL ? '<div class="inventory-exterior-color"><span>Exterior:</span> '.$vehicle['exterior_color']. '</div>' : NULL;
 														echo $vehicle['interior_color'] != NULL ? '<div class="inventory-interior-color"><span>Interior:</span> '.$vehicle['interior_color']. '</div>' : NULL;
@@ -389,7 +389,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
 		<?php
 			if ( is_active_sidebar( 'vehicle-listing-page' ) ) :
-				echo '<div id="detail-widget-area">';
+				echo '<div id="list-widget-area">';
 					dynamic_sidebar( 'vehicle-listing-page' );
 				echo '</div>';
 			endif;

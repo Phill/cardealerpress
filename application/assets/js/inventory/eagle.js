@@ -71,7 +71,7 @@ if ( jQuery('#inventory-listing').length ) {
 				jQuery('#inventory-mobile-search-wrap').css({
 					'position':'fixed',
 					'top':'0',
-					'width': '40%',
+					'width': '60%',
 					'left':'6%'
 				})
 			} else {
@@ -120,7 +120,7 @@ if ( jQuery('#inventory-listing').length ) {
 				jQuery('html, body').animate({
 					scrollTop: jQuery('#inventory-content-center').offset().top
 				}, 600);
-				jQuery('#inventory-mobile-search-wrap #inventory-mobile-search-text').text('Close');
+				jQuery('#inventory-mobile-search-wrap #inventory-mobile-search-text').text('Close Search');
 			}
 		}
 
@@ -147,7 +147,7 @@ if ( jQuery('#inventory-listing').length ) {
 				if( leftHeight > centerHeight ){
 					jQuery('#inventory-content-center').height(leftHeight);
 				}
-				jQuery(this).children('#inventory-mobile-search-text').text('Close');
+				jQuery(this).children('#inventory-mobile-search-text').text('Close Search');
 			} else {
 
 				if(typeof Storage !=="undefined"){

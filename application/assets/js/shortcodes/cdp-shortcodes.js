@@ -133,8 +133,8 @@ function cdp_front_ajax_call( fn, params, wrapper ){
 
 		},
 		error: function(xhr, status, error) {
-			alert('Ajax call failed.');
-			alert(error);
+			//alert('Ajax call failed.');
+			//alert(error);
 		}
 	});
 }

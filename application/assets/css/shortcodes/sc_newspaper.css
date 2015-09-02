@@ -1,7 +1,15 @@
 #sc-inventory-wrapper{
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+	
 	flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	
     justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
     background-color: #E6E6E6;
     border-radius: 4px;
 	margin: 0 auto;
@@ -9,7 +17,12 @@
 	padding: 2% 0 3%;
 }
 .sc-item-wrapper{
+    -webkit-box-flex: 1 1 auto;
+    -moz-box-flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
+	
     border: 4px solid #FFFFFF;
     border-radius: 4px;
     padding: 1%;
@@ -17,12 +30,21 @@
     box-shadow: 6px 6px 4px #888888;
     font-size: 100%;
     font-weight: bold;
-	width: 100%;
+	
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+	
+	flex-flow: column nowrap;
+	-webkit-flex-flow: column nowrap;
+
     align-items: center;
+	-webkit-align-items: center;
+	
     justify-content: center;
+	-webkit-justify-content: center;
+	
 	max-width: 160px;
 }
 .sc-item-wrapper:hover{

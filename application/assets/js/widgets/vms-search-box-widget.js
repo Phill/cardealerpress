@@ -117,8 +117,8 @@
 				jQuery('#'+wrapper_id+' .widget-vms-search-button').removeClass('opacity').text('Search');
 			},
 			error: function(xhr, status, error) {
-				alert('Ajax call failed.');
-				alert(error);
+				//alert('Ajax call failed.');
+				//alert(error);
 			}
 		});
 	}

@@ -11,6 +11,8 @@
  **/
 
 (function($) {
+
+	
 	$.fn.lightbox = function(options) {
 		// build main options
 		var opts = $.extend({}, $.fn.lightbox.defaults, options);
