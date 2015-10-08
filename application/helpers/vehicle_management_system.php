@@ -10,9 +10,11 @@ class vehicle_management_system {
 	public $tracer = NULL;
 	public $company_id = 0;
 	public $request_stack = array();
-
+	public $request_code = 0;
+	
 	private $url = NULL;
 	private $parameters = array();
+	private $company_call = FALSE;
 
 	function __construct( $host , $company_id ) {
 
@@ -27,7 +29,7 @@ class vehicle_management_system {
 
 	function set_headers( $parameters = array() ) {
 		$status = 500;
-		$this->tracer = 'Checking inventory feed.';
+		$this->tracer = 'Checking inventory feed status';
 		$check_inventory = $this->check_inventory()->please( $parameters );
 
 		if( isset( $check_inventory[ 'response' ][ 'code' ] ) ) {
@@ -58,6 +60,7 @@ class vehicle_management_system {
 
 	function get_company_information() {
 		$this->url = $this->host . '/api/companies/' . $this->company_id;
+		$this->company_call = TRUE;
 		return $this;
 	}
 
@@ -88,22 +91,21 @@ class vehicle_management_system {
 	}
 	
 	function get_automall_dealer_names(){
-		if ( false === ( $names = get_site_transient('cdp_dealer_names') ) ){
-			$geo = array();
+		$names = get_site_transient('cdp_dealer_names');
+		if ( false === $names || !isset($names[$this->company_id]) ){
+			$names = array();
 			$this->url = $this->host .'/api/companies/'.$this->company_id;
 			$data = $this->please();
-			$data = isset( $data['body'] ) ? json_decode($data['body']) : array();
 			if( $data->automall_ids !== NULL && count($data->automall_ids) > 1){
 				foreach( $data->automall_ids as $value ){
 					$this->url = $this->host . '/api/companies/'.$value;
 					$dealer = $this->please();
-					$dealer = isset( $dealer['body'] ) ? json_decode($dealer['body']) : array();
 					if( !empty($dealer->name) ){
-						$names[$value] = $dealer->name;
+						$names[$this->company_id][] = array($value => $dealer->name);
 					}
 				}
 				set_site_transient( 'cdp_dealer_names', $names, 60*60*24*7 ); // 1 Week
-			}		
+			}
 		}
 
 		return $names;
@@ -114,12 +116,10 @@ class vehicle_management_system {
 			$geo = array();
 			$this->url = $this->host .'/api/companies/'.$this->company_id;
 			$data = $this->please();
-			$data = isset( $data['body'] ) ? json_decode($data['body']) : array();
 			if( isset($data->automall_ids) && count($data->automall_ids) > 1){
 				foreach( $data->automall_ids as $value ){
 					$this->url = $this->host . '/api/companies/'.$value;
 					$dealer = $this->please();
-					$dealer = isset( $dealer['body'] ) ? json_decode($dealer['body']) : array();
 					if( !empty($dealer->city) && !empty($dealer->state) && !empty($dealer->zip) ){
 						$geo[$dealer->state][$dealer->city][$dealer->zip][] = $value;
 						//error_log('City: '.$dealer->city.' State: '.$dealer->state.' Zip: '.$dealer->zip);
@@ -139,7 +139,6 @@ class vehicle_management_system {
 			foreach( $dealers as $dealer ){
 				$this->url = $this->host . '/' . $dealer . '/inventory/vehicles/'.$key.'.json';
 				$temp = $this->please( $params );
-				$temp = (isset($temp['body'])) ? json_decode($temp['body']) : array();
 				$geo_array = (!empty($temp)) ? array_merge($geo_array, $temp) : $geo_array;
 			}
 		}
@@ -164,18 +163,21 @@ class vehicle_management_system {
 			unset( $parameters['search_sim'] );
 		}
 
-		$parameters['saleclass'] = isset($parameters['saleclass']) ? $parameters['saleclass'] : 'all';
-		if( strcasecmp($parameters['saleclass'], 'new') == 0 && !empty($parameters['make_filters']) ) {
-			$makes_string = '';
-			foreach ( $parameters['make_filters'] as $new_make ) {
-				if (  empty( $makes_string ) ) {
-					$makes_string = 'makes[]=' . rawurlencode($new_make);
-				} else {
-					$makes_string .=  '&makes[]=' . rawurlencode($new_make);
+		if( !$this->company_call ){
+			$parameters['saleclass'] = isset($parameters['saleclass']) ? $parameters['saleclass'] : 'all';
+			if( strcasecmp($parameters['saleclass'], 'new') == 0 && !empty($parameters['make_filters']) ) {
+				$makes_string = '';
+				foreach ( $parameters['make_filters'] as $new_make ) {
+					if (  empty( $makes_string ) ) {
+						$makes_string = 'makes[]=' . rawurlencode($new_make);
+					} else {
+						$makes_string .=  '&makes[]=' . rawurlencode($new_make);
+					}
 				}
 			}
+			unset( $parameters['make_filters'] );
 		}
-		unset( $parameters['make_filters'] );
+		$this->company_call = FALSE;
 
 		$parameter_string = count( $parameters > 0 ) ? $this->process_parameters( $parameters ) : NULL;
 		$parameters[ 'photo_view' ] = isset( $parameters[ 'photo_view' ] ) ? $parameters[ 'photo_view' ] : 1;
@@ -189,8 +191,6 @@ class vehicle_management_system {
 		}
 
 		$request = $api_url . $parameter_string;
-		//error_log($request); 
-		//echo $request.'</br>';
 		$request_handler = new http_request( $request , 'vehicle_management_system' );
 
 		if( $this->tracer !== NULL ) {
@@ -200,8 +200,9 @@ class vehicle_management_system {
 			$this->request_stack[] = $request;
 		}
 
-		//$data = $request_handler->cached() ? $request_handler->cached() : $request_handler->get_file();
-		$data = $request_handler->get_file();
+		$response = $request_handler->get_file();
+		$data = isset($response['body']) ? json_decode($response['body']) : array();
+		$this->request_code = wp_remote_retrieve_response_code( $response );
 		$this->parameters = array();
 		return $data;
 	}

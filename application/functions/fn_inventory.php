@@ -963,8 +963,7 @@
 			}
 
 			$vms->tracer = 'Obtaining Similar Vehicles - 1';
-			$inventory_sims_info = $vms->get_inventory()->please( $sim_array );
-			$inventory_sims = isset( $inventory_sims_info[ 'body' ] ) ? json_decode( $inventory_sims_info[ 'body' ] ) : false;
+			$inventory_sims = $vms->get_inventory()->please( $sim_array );
 
 			$sim_value = '';
 
@@ -975,8 +974,7 @@
 				unset( $sim_array['price_to'] );
 				$sim_array = $sim_array + array( 'make' => $make );
 				$vms->tracer = 'Obtaining Similar Vehicles - 2';
-				$inventory_sims_info = $vms->get_inventory()->please( $sim_array );
-				$inventory_sims = isset( $inventory_sims_info[ 'body' ] ) ? json_decode( $inventory_sims_info[ 'body' ] ) : false;
+				$inventory_sims = $vms->get_inventory()->please( $sim_array );
 				if ( !empty( $inventory_sims ) && count($inventory_sims) > 1 ) {
 					$sim_value = similar_vehicle_view( $inventory_sims, $location, $detail_vin, $flex );
 				}
@@ -1220,7 +1218,6 @@
 		if( empty($makes) || strtolower($saleclass) == 'used' ) {
 			$vms->tracer = 'Getting Makes';
 			$makes = $vms->get_makes( $alt_id )->please( array( 'saleclass' => $saleclass ) );
-			$makes = ( !empty($makes[ 'body' ]) ? json_decode( $makes[ 'body' ] ) : array() );
 		}
 		$options = '';
 		if( $val_only ){
@@ -1252,7 +1249,6 @@
 
 		$vms->tracer = 'Getting Models';
 		$models = $vms->get_models( $alt_id )->please( array( 'saleclass' => $saleclass, 'make' => $make ) );
-		$models = ( !empty($models[ 'body' ]) ? json_decode( $models[ 'body' ] ) : array() );
 
 		if( $val_only ){
 			return $models;
@@ -1283,7 +1279,6 @@
 
 		$vms->tracer = 'Getting Trims';
 		$trims = $vms->get_trims( $alt_id )->please( array( 'saleclass' => $saleclass , 'make' => $make , 'model' => $model ) );
-		$trims = ( !empty($trims[ 'body' ]) ? json_decode( $trims[ 'body' ] ) : array() );
 
 		if( $val_only ){
 			return $trims;

@@ -6,32 +6,67 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	$parameters[ 'saleclass' ] = isset( $parameters[ 'saleclass' ] ) ? ucwords( $parameters[ 'saleclass' ] ) : 'All';
 	$theme_settings = $this->options[ 'vehicle_management_system' ][ 'theme' ];
 	
-	$rules = get_option( 'rewrite_rules' );
-	$url_rule = ( isset($rules['^(inventory)']) ) ? TRUE : FALSE;
+	$rules = get_option( 'rewrite_rules' ); $url_rule = ( isset($rules['^(inventory)']) ) ? TRUE : FALSE;
+	$this->page_url = 'http'.(isset($_SERVER['HTTPS']) ? 's' : '').'://'."$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$this->page_referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER']: '';
+	setcookie('cdp_page_url',$this->page_url, 0, '/' );
 
+	$this->vms->tracer = 'Obtaining requested inventory from theme index';
+	$inventory = $this->vms->get_inventory()->please( array_merge( $parameters , array( 'photo_view' => 1 , 'make_filters' =>  $this->options['vehicle_management_system' ]['data']['makes_new'] ) ) );
+
+	$site_url = site_url();
+	//Redirect if sold
+	if( empty($inventory) && isset($parameters['vin']) ){
+		$redirect_class = $this->options['vehicle_management_system']['saleclass'] == 'new' ? 'New' : 'Used';
+		wp_redirect( $site_url.'/inventory/'.$redirect_class, 301 );
+		exit;
+	}
+	//Log if debug is on if the inventory is empty
+	if ( empty($inventory) ){
+		if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
+			error_log('CDP Inv Error: Inventory returned empty | Front URL: '.$this->page_url. (!empty($this->page_referer) ? ' | Referer: '.$this->page_referer : '') );
+			foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
+		}
+	}
+	
+	$generic_error_message = '<h2 style="font-family:Helvetica,Arial; color:red;">Unable to display inventory. Please contact technical support.</h2><br class="clear" />';
+	switch( $this->vms->request_code ) {
+		case 200:
+			break;
+		case 404:
+			if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
+				error_log('CDP Inv 404 Error - Front URL: '.$this->page_url);
+				foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
+			}
+			break;
+		case 503:
+			if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
+				error_log('CDP Inv 503 Error - Front URL: '.$this->page_url);
+				foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
+			}
+			echo $generic_error_message;
+			echo '<p>We were unable to establish a connection to the API. Refreshing the page may resolve this.</p>';
+		default:
+			if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
+				error_log('CDP Inv '.$this->vms->request_code.' Error - Front URL: '.$this->page_url);
+				foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
+			}
+			get_header(); get_footer();
+			return false;
+			break;
+	}
+	
 	$dealer_geo = array(); $geo_params = array();
 	if( isset($theme_settings['display_geo']) ? $theme_settings['display_geo'] : FALSE ){
 		$dealer_geo = $this->vms->get_automall_geo_data();
 		decode_geo_query( $dealer_geo, $parameters, $geo_params );
 	}
-
+	
 	$company_zip = $this->company->zip;
 	$city = $this->company->city;
 	$state = $this->company->state;
 	$company_name = strtoupper( $this->company->name );
 	$country_code =	$this->company->country_code;
-
-	$this->vms->tracer = 'Obtaining requested inventory.';
-	$inventory_information = $this->vms->get_inventory()->please( array_merge( $parameters , array( 'photo_view' => 1 , 'make_filters' =>  $this->options['vehicle_management_system' ]['data']['makes_new'] ) ) );
-	$inventory = isset( $inventory_information[ 'body' ] ) ? json_decode( $inventory_information[ 'body' ] ) : array();
-
-	$site_url = site_url();
-	//Redirect if sold
-	if( empty($inventory) ){
-		$redirect_class = $this->options['vehicle_management_system']['saleclass'] == 'new' ? 'New' : 'Used';
-		wp_redirect( $site_url.'/inventory/'.$redirect_class, 301 );
-		exit;
-	}
 
 	$type = isset( $inventory->vin ) ? 'detail' : 'list';
 	
@@ -71,6 +106,10 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 				wp_enqueue_script('cdp_inventory_general_js');
 				$search_input_class = 'search-typeahead';
 			}
+			
+			$this->vms->tracer = 'Calculating how many items were returned with the given parameters.';
+			$vehicle_total_found = $this->vms->get_inventory()->please( array_merge( $parameters , array( 'per_page' => 1 , 'photo_view' => 1 , 'make_filters' =>  $this->options['vehicle_management_system' ]['data']['makes_new'] ) ) );
+			$vehicle_total_found = is_array( $vehicle_total_found ) && count( $vehicle_total_found ) > 0 ? $vehicle_total_found[ 0 ]->pagination->total : 0;
 			
 			$on_page = isset( $inventory[ 0 ]->pagination->on_page ) ? $inventory[ 0 ]->pagination->on_page : 0;
 			$page_total = isset( $inventory[ 0 ]->pagination->total ) ? $inventory[ 0 ]->pagination->total : 0;
@@ -114,23 +153,10 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	
 	get_header();
 	flush();
-
-	$generic_error_message = '<h2 style="font-family:Helvetica,Arial; color:red;">Unable to display inventory. Please contact technical support.</h2><br class="clear" />';
 	
-	switch( $status ) {
-		case 200:
-		case 404:
-			break;
-		case 503:
-			echo $generic_error_message;
-			echo '<p>We were unable to establish a connection to the API. Refreshing the page may resolve this.</p>';
-		default:
-			get_footer();
-			return false;
-			break;
-	}
-	echo '<!--'."\n".'[CDP Version] => '.self::$plugin_information['Version']."\n".'-->'; 
-	echo '<div id="cardealerpress-inventory" class="'.$current_theme.'-theme-wrapper" theme="'.$current_theme.'" saleclass="'.$parameters[ 'saleclass' ].'" page="'.(isset($parameters['page']) ? $parameters['page'] : '0').'">';
+	echo "\n".'<!--'.'[CDP Version] => '.self::$plugin_information['Version'].'-->'."\n";
+	echo "\n".'<!--'.'[CDP Status Code] => '.$this->vms->request_code.'-->'."\n";
+	echo '<div id="cardealerpress-inventory" class="'.$current_theme.'-theme-wrapper '.( has_filter('cro_link_display')?'cro-active':'').'" theme="'.$current_theme.'" saleclass="'.$parameters[ 'saleclass' ].'" page="'.(isset($parameters['page']) ? $parameters['page'] : '0').'">';
 	echo !empty($gform_element) ? $gform_element: '';
 		include( $theme_path . '/' . $type . '.php' );
 	echo '</div>';
@@ -148,6 +174,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		echo "\n" . '########' . "\n";
 		echo '-->' . "\n";
 	}
+	
 	flush();
 	get_footer();
 

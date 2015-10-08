@@ -2,8 +2,7 @@
 
 	$plugin_url = plugins_url('/cardealerpress');
 	
-	$sitemap_information = $sitemap_handler->cached() ? $sitemap_handler->cached() : $sitemap_handler->get_file();
-	$sitemap_data = isset( $sitemap_information[ 'body' ] ) ? json_decode( $sitemap_information[ 'body' ] ) : false;
+	$sitemap_data = $sitemap_handler->get_file();
 
 	$city = $this->company->city;
 	$state = $this->company->state;

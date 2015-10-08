@@ -20,7 +20,9 @@ class cdp_front_ajax{
 			case 'get_gform':
 				$output['id'] = $_REQUEST['params']['key'];
 				$this->apply_ajax_gravity_hooks( $_REQUEST['params']['hooks'] );
-				$output['content'] = '<div class="list-form-wrapper active">'.do_shortcode('[gravityform id='.$_REQUEST['params']['form'].' title=false description=false ajax=true]').'</div>';
+				$form = gravity_form( $_REQUEST['params']['form'], $display_title = false, $display_description = false, $display_inactive = false, $field_values = false, $ajax = true, $tabindex = 0, $echo = false );
+				//$output['content'] = '<div class="list-form-wrapper active">'.do_shortcode('[gravityform id='.$_REQUEST['params']['form'].' title=false description=false ajax=true]').'</div>';
+				$output['content'] = '<div class="list-form-wrapper active">'.$form.'</div>';
 				break;
 			case 'get_vehicle_details':
 				$output['id'] = $_REQUEST['params']['key'];
@@ -112,8 +114,7 @@ class cdp_front_ajax{
 	
 	function get_vehicle_inventory( $params ){
 		$this->vms->tracer = 'Obtaining requested inventory. Ajax from SC Detail.';
-		$inventory_information = $this->vms->get_inventory()->please( $params );
-		$inventory = isset( $inventory_information[ 'body' ] ) ? json_decode( $inventory_information[ 'body' ] ) : FALSE;
+		$inventory = $this->vms->get_inventory()->please( $params );
 		
 		return $inventory;
 	}

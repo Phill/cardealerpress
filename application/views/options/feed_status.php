@@ -3,6 +3,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
 	$this->load_admin_assets();
 	$this->get_admin_header();
+	
 ?>
 
 <div id="cdp-content-wrapper" class="feed-wrapper">
@@ -21,22 +22,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		</div>
 	</div>
 	
-	<!--
-	<div class="tr-wrapper">
-		<div class="td-full"><h3 class="title">Vehicle Reference System Feed</h3></div>
-	</div>
-	<div class="tr-wrapper tr-color">
-		<div class="td-full center">
-			<?php
-				/*if( !empty($this->vrs) && !empty($this->company) ){ 
-					echo '<span class="td-title">Feed Status: </span> <span class="td-message succuss">VRS Connection Active</span>';
-				} else {
-					echo '<span class="td-title">Feed Status: </span> <span class="td-message error">Missing valid VRS API in settings page.</span>';
-				}*/
-			?>
-		</div>
-	</div>
-	-->
 	<div class="tr-wrapper">
 		<div class="td-full"><h3 class="title">Company Information</h3></div>
 	</div>
@@ -62,8 +47,10 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			echo '<div class="tr-wrapper tr-color">';
 			echo '<div class="td-two center"><span class="td-title">AutoMall Accounts:</span></div>';
 			echo '<div class="td-two">';
-			foreach( $dealers as $key => $dealer){
-				echo '<span class="automall-dealer-name">'.$dealer.' ('.$key.')</span>';
+			foreach( $dealers[$this->company->id] as $dealer){
+				foreach( $dealer as $id => $name ){
+					echo '<span class="automall-dealer-name">'.$name.' ('.$id.')</span>';	
+				}
 			}
 			echo '</div>';
 			echo '</div>';	

@@ -121,8 +121,12 @@ class dynamic_site_headers {
 			$url .= '?' . rawurlencode(http_build_query( $this->parameters , '' , '&' ));
 			$request_handler = new http_request( $url , 'dynamic_site_headers' );
 			$this->request_stack[] = $url;
-			$data = $request_handler->cached() ? $request_handler->cached() : $request_handler->get_file( true );
-			$body = isset( $data[ 'body' ] ) ? json_decode( $data[ 'body' ] ) : false;
+			$trans_key = 'cdp_dynamic_headers';
+			if ( false === ( $trans_value = get_transient( $trans_key ) ) ) {
+				$trans_value = $request_handler->get_file( true );
+				if( !empty($trans_value) ){ set_transient( $trans_key, $trans_value, DAY_IN_SECONDS ); }
+			}
+			$body = $trans_value;
 			if( $body ) {
 				$this->headers[ 'page_title' ] = isset($body->page_title) ? rawurldecode( $body->page_title ) : '';
 				$this->headers[ 'page_description' ] = isset($body->page_description) ? $body->page_description : '';

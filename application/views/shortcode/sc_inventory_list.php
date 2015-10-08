@@ -5,25 +5,12 @@
 	/* echo '<pre>'; var_dump($sc_atts); echo '</pre>'; */
 
 	$this->vms->tracer = 'Obtaining requested sc inventory.';
-	$inventory_information = $this->vms->get_inventory()->please( $this->sc_atts );
-	$inventory = isset( $inventory_information[ 'body' ] ) ? json_decode( $inventory_information[ 'body' ] ) : array();
+	$inventory = $this->vms->get_inventory()->please( $this->sc_atts );
 
 	$state = $this->company->state;
 	$city = $this->company->city;
 
 	$site_url = site_url();
-
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-ui-core' );
-
-	if( strtolower($this->sc_style) != 'clear' ){
-		wp_enqueue_style(
-			'cdp-shortcode-style',
-			cdp_get_css_source().'shortcodes/sc_'.$this->sc_style.'.css',
-			false,
-			1.0
-		);
-	}
 
 	$sc_content = '<div id="sc-inventory-wrapper" >';
 

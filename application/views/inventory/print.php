@@ -2,13 +2,9 @@
 namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
 	$this->vms->tracer = 'Obtaining requested inventory print page';
-	$inventory_information = $this->vms->get_inventory()->please( array_merge( $this->parameters , array( 'photo_view' => 1 ) ) );
-	$inventory = isset( $inventory_information[ 'body' ] ) ? json_decode( $inventory_information[ 'body' ] ) : false;
-
-	//$company_information = json_decode( $company_information[ 'body' ] );
+	$inventory = $this->vms->get_inventory()->please( array_merge( $this->parameters , array( 'photo_view' => 1 ) ) );
 
 	$type = isset( $inventory->vin ) ? 'detail' : 'list';
-
 	$vehicle = itemize_vehicle($inventory);
 
 	if ( $type == 'detail' ) {

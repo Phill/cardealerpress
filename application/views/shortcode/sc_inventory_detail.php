@@ -2,24 +2,12 @@
 namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
 	$this->vms->tracer = 'Obtaining requested sc inventory.';
-	$inventory_information = $this->vms->get_inventory()->please( $this->sc_atts );
-	$inventory = isset( $inventory_information[ 'body' ] ) ? json_decode( $inventory_information[ 'body' ] ) : array();
+	$inventory = $this->vms->get_inventory()->please( $this->sc_atts );
 
 	$state = $this->company->state;
 	$city = $this->company->city;
 	$c_code = $this->company->country_code;
 
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-ui-core' );
-
-	if( strtolower($this->sc_style) != 'clear' ){
-		wp_enqueue_style(
-			'cdp-detail-shortcode-style',
-			cdp_get_css_source().'shortcodes/sc_'.$this->sc_style.'.css',
-			false,
-			1.0
-		);
-	}
 	$sc_content =' <div style="display: none; width: 100%; text-align: center;" id="cdp-ajax-status">0 | 0</div>';
 	$sc_content .= '<div id="sc-detail-container" >';
 	

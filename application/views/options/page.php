@@ -36,9 +36,6 @@ class cdp_admin{
 			if( !empty($this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ]) ){
 				add_submenu_page( 'cardealerpress_status', 'CDP Inventory', 'Inventory Settings', 'manage_options', 'cardealerpress_settings', array( &$this, 'get_inventory') );
 			}
-			if( !empty($this->vrs) ){
-				//add_submenu_page( 'cardealerpress_status', 'CDP Showcase', 'Showcase Settings', 'manage_options', 'cardealerpress_showcase', array( &$this, 'get_showcase') );
-			}
 			add_submenu_page( 'cardealerpress_status', 'CDP ShortCodes', 'ShortCodes', 'manage_options', 'cardealerpress_shortcodes', array( &$this, 'get_shortcodes') );
 			add_submenu_page( 'cardealerpress_status', 'CDP Admin', 'Admin Settings', 'manage_options', 'cardealerpress_admin', array( &$this, 'get_admin') );
 			add_submenu_page( 'cardealerpress_status', 'CDP Help', 'Help', 'manage_options', 'cardealerpress_help', array( &$this, 'get_help') );
@@ -119,7 +116,6 @@ class cdp_admin{
 		include_once( $this->plugin_dir.'/application/functions/fn_admin_ajax.php' );
 		$this->admin_ajax = new Admin_ajax($this->options, $this->vms, $this->vrs);
 		add_action('wp_ajax_cdp_admin_handle_request', array(&$this->admin_ajax, 'admin_handle_request') );
-		//add_action('wp_ajax_cdp_admin_handle_request', function(){ Admin_ajax::admin_handle_request();});
 	}
 	
 	function admin_footer(){

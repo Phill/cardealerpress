@@ -10,7 +10,7 @@
 	<div class="tr-wrapper tr-color">
 		<div class="td-two center"><span class="td-title">Company ID:</span></div>
 		<div class="td-two">
-			<input type="text" name="vehicle_management_system/company_information/id" id="company-id" value="<?php echo $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ]; ?>" class="cdp-input input-short" />
+			<input type="text" name="vehicle_management_system/company_information/id" id="company-id" extra="refresh" value="<?php echo $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ]; ?>" class="cdp-input input-short" />
 		</div>
 		<div class="td-full center"><small>Inventory will not be retreived without providing a valid company ID.</small></div>
 	</div>
@@ -34,25 +34,7 @@
 	<?php
 	}
 	?>
-	<!--
-	<div class="tr-wrapper">
-		<div class="td-full"><h3 class="title">API Settings</h3></div>
-	</div>
-	<div class="tr-wrapper tr-color">
-		<div class="td-two center"><span class="td-title">Vehicle Reference System Key:</span></div>
-		<div class="td-two">
-			<input type="text" id="vehicle-reference-system" name="vehicle_reference_system/host" value="<?php //echo $this->options[ 'vehicle_reference_system' ][ 'host' ] ?>" class="cdp-input" />
-		</div>
-		<div class="td-full center"><small>Showcase and certain tools will not be available without providing a valid VRS Key from <?php //echo $this->admin['link_site']; ?></small></div>
-	</div>
-	<div class="tr-wrapper tr-color">
-		<div class="td-two center"><span class="td-title">CRO System Key:</span></div>
-		<div class="td-two">
-			<input type="text" id="cro-system" name="cro_system/access_id" value="<?php //echo $this->options[ 'cro_system' ][ 'access_id' ] ?>" class="cdp-input" />
-		</div>
-		<div class="td-full center"><small>An access ID must be entered in order to receive vehicle incentive data.</small></div>
-	</div>
-	-->
+
 </div>
 <?php
 	$this->admin_footer();

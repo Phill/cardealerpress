@@ -1,19 +1,12 @@
 <?php
 namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
-	$this->vms->tracer = 'Calculating how many items were returned with the given parameters.';
-	$vehicle_total_found = $this->vms->get_inventory()->please( array_merge( $parameters , array( 'per_page' => 1 , 'photo_view' => 1 , 'make_filters' =>  $this->options['vehicle_management_system' ]['data']['makes_new'] ) ) );
-	$vehicle_total_found = ( isset($vehicle_total_found[ 'body' ]) ) ? json_decode( $vehicle_total_found[ 'body' ] ) : NULL;
-	$vehicle_total_found = is_array( $vehicle_total_found ) && count( $vehicle_total_found ) > 0 ? $vehicle_total_found[ 0 ]->pagination->total : 0;
-
 	$do_not_carry = remove_query_arg( 'page' );
 	$tmp_do_not_carry = remove_query_arg( 'certified' , $do_not_carry );
 
 	$new_link = ( isset($rules['^(inventory)']) ) ? '/inventory/New/' : add_query_arg( array('saleclass' => 'New'), $tmp_do_not_carry );
 	$used_link = ( isset($rules['^(inventory)']) ) ? '/inventory/Used/' : add_query_arg( array('saleclass' => 'Used') );
 	$cert_link = ( isset($rules['^(inventory)']) ) ? add_query_arg('certified', 'yes', '/inventory/Used/') : add_query_arg( array('saleclass' => 'Used', 'certified' => 'yes') );
-
-	//echo generate_inventory_link( $url_rule, $parameters );
 
 	$filters = array(
 		'vehicleclass' => isset( $parameters[ 'vehicleclass' ] ) ? $parameters[ 'vehicleclass' ] : NULL,
@@ -34,7 +27,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			$makes = $this->options['vehicle_management_system' ]['data']['makes_new'];
 		} else {
 			$makes = $this->vms->get_makes()->please( array_merge( array( 'saleclass' => $parameters[ 'saleclass' ] ) , $filters ) );
-			$makes = json_decode( $makes[ 'body' ] );
 		}
 	} else {
 		$geo_makes = $this->vms->get_geo_dealer_mmt('makes',$parameters['dealer_id'], array_merge( array( 'saleclass' => $parameters[ 'saleclass' ] ) , $filters));
@@ -48,7 +40,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			$this->vms->tracer = 'Obtaining a list of models.';
 			$tmp_do_not_carry = remove_query_arg( 'make' , $do_not_carry );
 			$models = $this->vms->get_models()->please( array_merge( array('saleclass'=>$parameters[ 'saleclass' ],'make'=>$parameters[ 'make' ]),$filters));
-			$models = json_decode( $models[ 'body' ] );
 			if( isset($parameters[ 'model' ]) ){
 				if( !in_array( rawurldecode($parameters[ 'model' ]), $models ) && !empty($parameters[ 'model' ]) ){
 					$search_error = 'The current model('.$parameters[ 'model' ].') could not be found with current search parameters. Reset search or adjust search parameters. ';
@@ -72,7 +63,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			$this->vms->tracer = 'Obtaining a list of trims.';
 			$tmp_do_not_carry = remove_query_arg( array( 'make' , 'model' ) , $do_not_carry );
 			$trims = $this->vms->get_trims()->please( array_merge( array( 'saleclass' => $parameters[ 'saleclass' ] , 'make' => $parameters[ 'make' ] , 'model' => $parameters[ 'model' ] ) , $filters ) );
-			$trims = json_decode( $trims[ 'body' ] );
 			if( isset($parameters[ 'trim' ]) ){
 				if( !in_array( rawurldecode($parameters[ 'trim' ]), $trims ) && !empty( $parameters[ 'trim' ] ) ){
 					$search_error = 'The current trim('.$parameters[ 'trim' ].') could not be found with current search parameters. Reset search or adjust search parameters. ';
@@ -118,16 +108,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			<div class="inventory-breadcrumbs">
 			<?php echo display_breadcrumb( $parameters, $this->company, $this->options['vehicle_management_system' ]['custom_contact'], $parameters[ 'saleclass' ] ); ?>
 			</div>
-			<div id="inventory-top-search">
-				<div class="inventory-search">
-					<form action="#" method="GET" id="inventory-search-text" class="<?php echo $search_input_class;?>">
-						<input id="inventory-search-box" class="text-search" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
-						<button id="inventory-search-submit">SEARCH</button>
-					</form>
-				</div>
-				<div class="inventory-pager">
-					<span>Page:</span><?php echo paginate_links( $args ); ?>
-				</div>
+			<div class="inventory-pager">
+				<span>Page:</span><?php echo paginate_links( $args ); ?>
 			</div>
 		</div>
 
@@ -146,6 +128,14 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 				<div id="inventory-mobile-search-wrap" class="inactive"><div id="inventory-mobile-search-img"></div><div id="inventory-mobile-search-text">Search</div></div>
 				<div id="inventory-content-left"> <!-- inventory Content Left -->
 					<div id="inventory-content-left-wrapper">
+						<div class="inventory-sidebar-content sidebar-text-search">
+							<div class="inventory-search">
+								<form action="" method="GET" id="inventory-search-text" class="<?php echo $search_input_class;?>">
+									<input id="inventory-search-box" class="text-search" name="search" value="<?php echo isset( $parameters[ 'search' ] ) ? $parameters[ 'search' ] : NULL; ?>" />
+									<button id="inventory-search-submit">GO</button>
+								</form>
+							</div>
+						</div>
 						<div class="inventory-sidebar sidebar-new-used">
 							<h3>Search New and Used:</h3>
 							<div class="inventory-sidebar-content content-new-used">

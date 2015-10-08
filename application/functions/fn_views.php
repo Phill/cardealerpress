@@ -676,4 +676,34 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		$content .= '</div>';
 		return $content;
 	}
+	
+	function get_sc_slider_view( $vehicle, $class, $company, $options, $url_rule ){
+		$content = '';
+		$link_params = array( 'year' => $vehicle['year'], 'make' => $vehicle['make']['name'],  'model' => $vehicle['model']['name'], 'state' => $company->state, 'city' => $company->city, 'vin' => $vehicle['vin'] );
+		$link = generate_inventory_link($url_rule,$link_params,'','',1);
+
+		$content .= '<div class="'.$class.'-wrapper"><a class="'.$class.'-item" href="'.$link.'">';
+			//title
+			$content .= '<div class="'.$class.'-title-wrapper">';
+				$content .= '<span class="'.$class.'-year">' . $vehicle['year'] . '</span>';
+				$content .= '<span class="'.$class.'-make">' . $vehicle['make']['name'] . '</span>';
+				$content .= '<span class="'.$class.'-model">' . $vehicle['model']['name'] . '</span>';
+			$content .= '</div>';
+			//image
+			$content .= '<div class="'.$class.'-img-wrapper">';
+				$content .= '<img src="'.$vehicle['thumbnail'].'" />';
+			$content .= '</div>';
+			//price
+			$price = get_price_display($vehicle['prices'], $company, $vehicle['saleclass'], $vehicle['vin'], 'short-code', $options['vehicle_management_system' ]['theme']['price_text'], array() );
+			$content .= '<div class="'.$class.'-price-wrapper">';
+			if ( $price['primary_price'] > 0 ) {
+				$content .= '<div class="'.$class.'-price-value"><span class="sc-price-symbol">$</span>' .  number_format( $price['primary_price'] , 0 , '.' , ',' ) . '</div>';
+			} else {
+				$content .= '<div class="'.$class.'-price-value-text">'.$price['primary_text'].'</div>';
+			}
+			$content .= '</div>';
+		$content .= '</a></div>';
+		
+		return $content;
+	}
 ?>

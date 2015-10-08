@@ -17,6 +17,7 @@ class Admin_ajax {
 	function admin_handle_request(){
 		switch($_REQUEST['fn']){
 			case 'saveAdminSettings':
+				if( $_REQUEST['params']['path'] == 'vehicle_management_system/company_information/id'){ delete_transient('cdp_company'); }
 				$this->set_options_value($_REQUEST['params']['path'], $_REQUEST['params']['value']);
 				$this->save_options_ajax();
 				$output['id'] = '';
@@ -24,8 +25,7 @@ class Admin_ajax {
 				break;
 			case 'getMakes':
 				if( $this->vms ){
-					$vms_makes_raw = $this->vms->get_makes()->please( array( 'saleclass' => 'New') );
-					$vms_makes = isset($vms_makes_raw['body']) ? json_decode($vms_makes_raw['body']) : array();
+					$vms_makes = $this->vms->get_makes()->please( array( 'saleclass' => 'New') );
 					natcasesort($vms_makes);
 					$data_makes = isset($this->options['vehicle_management_system']['data']['makes_new']) ? $this->options['vehicle_management_system']['data']['makes_new'] : array();
 					$output['id'] = $_REQUEST['params']['id'];
@@ -125,7 +125,7 @@ class Admin_ajax {
 						$output['content'] = get_message_rows( $this->options[ 'vehicle_reference_system' ][ 'messages' ] );
 						break;
 					case 'scriptRows':
-						$this->options[ 'vehicle_management_system' ][ 'scripts' ]['data'][] = array( 'name'=>'','saleclass'=>0,'position'=>0,'url'=>'','page'=>0 );
+						$this->options[ 'vehicle_management_system' ][ 'scripts' ]['data'][] = array( 'name'=>'','saleclass'=>0,'location'=>0,'url'=>'','page'=>0 );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
 						$output['content'] = get_script_rows( $this->options[ 'vehicle_management_system' ][ 'scripts' ][ 'data' ] );
@@ -289,8 +289,7 @@ class Admin_ajax {
 	function get_default_keywords(){
 		$keyword_request = 'http://api.dealertrend.com/api/companies/' . $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ] . '/vehicles.json';
 		$keyword_handler = new http_request( $keyword_request , 'vehicle_keyword' );
-		$keyword_information = $keyword_handler->cached() ? $keyword_handler->cached() : $keyword_handler->get_file();
-		$keyword_data = isset( $keyword_information[ 'body' ] ) ? json_decode( $keyword_information[ 'body' ] ) : array();
+		$keyword_data = $keyword_handler->get_file();
 		
 		$keyword_array = array();
 		$item_array = array('make','model','trim');

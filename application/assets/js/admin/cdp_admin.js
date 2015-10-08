@@ -39,6 +39,7 @@
 		if( jQuery(e.target).hasClass('value-updated') ){
 			jQuery(e.target).removeClass('value-updated');
 			tag = jQuery(e.target).attr('tag');
+			extra = jQuery(e.target).attr('extra');
 			data = {'path': jQuery(e.target).attr('name'), 'value': jQuery(e.target).val() };
 			
 			cdp_ajax_call( 'saveAdminSettings', data, '#cdp-content-wrapper' ).done(function(result) {
@@ -51,6 +52,10 @@
 					}).fail(function() {
 					    alert('Data Note Saved');
 					});
+				}
+				
+				if( extra ){
+					location.reload();
 				}
 			}).fail(function() {
 			    alert('Data Note Saved');

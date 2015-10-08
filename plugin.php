@@ -113,6 +113,7 @@ class cdp_plugin {
 	public $company;
 	public $seo_headers;
 	public $plugin_slug = '';
+	public $page_url = '';
 	
 	function __construct() {
 		$this->plugin_slug = plugin_basename(__FILE__);
@@ -235,8 +236,13 @@ class cdp_plugin {
 			}
 			
 			if( !empty($this->vms) ){
-				$company_raw = $this->vms->get_company_information()->please();
-				$this->company = isset($company_raw['body']) ? json_decode($company_raw['body']) : array();
+				$trans_key = 'cdp_company';
+				if ( false === ( $trans_value = get_transient( $trans_key ) ) ) {
+					$this->vms->tracer = 'Getting initial company data';
+					$trans_value = $this->vms->get_company_information()->please();
+					if( !empty($trans_value) ){ set_transient( $trans_key, $trans_value, DAY_IN_SECONDS ); }
+				}
+				$this->company = $trans_value;
 			}
 		
 			if( !empty($this->vms) && !empty($this->company) ){
@@ -403,7 +409,7 @@ class cdp_plugin {
 						$theme_path = dirname( __FILE__ ) . '/application/views/inventory/' . $current_theme;
 						$theme_path = apply_filters('cdp_theme_path', $theme_path);
 
-						$status = $this->vms->set_headers( $this->parameters );
+						//$status = $this->vms->set_headers( $this->parameters );
 					
 						if( $this->autocheck_flag ){
 							include_once( dirname( __FILE__ ) . '/application/views/inventory/autocheck.php' );
@@ -596,6 +602,16 @@ class cdp_plugin {
 		 **/
 		add_filter('wpseo_sitemap_index', array( &$this, 'add_custom_sitemap_link' ) );
 		add_filter( 'redirect_canonical', array( &$this, 'stop_canonical' ) );
+		add_filter( 'gform_pre_send_email', function($email){
+			if( isset($_COOKIE['cdp_page_url']) ){
+				$merge_tag = '{cdp_embed_url}';
+				$new_message = str_replace($merge_tag, $_COOKIE['cdp_page_url'], $email['message']);
+				$email['message'] = $new_message;
+				return $email;	
+			} else {
+				return $email;
+			}
+		});
 	}
 
 	function add_custom_sitemap_link () {
@@ -660,7 +676,7 @@ class cdp_plugin {
 		$sc_run = new sc_run( $this->vms, $this->vrs, $this->company, $this->options, self::$plugin_information[ 'PluginURL' ] );
 		add_shortcode( 'inventory_list', array( $sc_run, 'inventory_list' ) );
 		add_shortcode( 'inventory_detail', array( $sc_run, 'inventory_detail' ) );
-		//add_shortcode( 'vrs_slider', array( $sc_run, 'vrs_slider' ) );
+		add_shortcode( 'inventory_slider', array( $sc_run, 'inventory_slider' ) );
 	}
 	
 	function wp_header_add(){

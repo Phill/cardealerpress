@@ -53,8 +53,7 @@ if( jQuery('#inventory-detail').length ){
 				dialogClass: "form-wrap",
 				modal: true,
 				resizable: false,
-				width: 320,
-				height: 450
+				width: 360
 			})
 		});
 
@@ -177,13 +176,14 @@ if( jQuery('#inventory-listing').length ) {
 			jQuery('#'+key+' .form-value').each( function(){
 				form_data[jQuery(this).attr('name')] = jQuery(this).text();
 			});
-		
+			page_url = window.location.href;
+			form_data['page_url'] = page_url;
 			data = {'key': key, 'form': form_id, 'title': form_name, 'hooks': form_data};
 		
 			cdp_front_ajax_call( 'get_gform', data, '.inventory-form-container' ).done(function(result) {
 				//jQuery('#'+key).siblings('.ajax-loading-message').removeClass('loading');
 			}).fail(function() {
-				alert('no good');
+				alert('Error Loading Form.');
 			});
 		}
 		
@@ -314,8 +314,7 @@ function cdp_front_ajax_call( fn, params, wrapper ){
 		data: {'action': 'cdp_front_ajax_request', 'fn': fn, 'params': params},
 		dataType: 'json',
 		beforeSend: function(){
-			//jQuery(wrapper).addClass('saving');
-			//jQuery(wrapper).removeClass('not-saved');
+
 		},
 		success: function(data){
 			if( data['id'].length > 0 ){
@@ -323,13 +322,11 @@ function cdp_front_ajax_call( fn, params, wrapper ){
 			}
 		},
 		complete: function(){
-			//jQuery(wrapper).addClass('saved');
-			//jQuery(wrapper).removeClass('saving');
-			//setTimeout( 'cdp_aftersave("'+wrapper+'")', 500);
+
 		},
 		error: function(xhr, status, error) {
-			alert('Ajax call failed.');
-			alert(error);
+			//alert('Ajax call failed.');
+			//alert(error);
 		}
 	});
 }

@@ -17,10 +17,33 @@
 #inventory-wrapper a:visited{
 	color: #898989;
 }
+#inventory-detail #inventory-top{
+    background-color: inherit;
+}
+#inventory-detail #inventory-top .inventory-breadcrumbs{
+    width: 96%;
+    padding: 1% 2%;
+}
+#inventory-top{
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+	
+	flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	
+    justify-content: space-around;
+	-webkit-justify-content: space-around;
+	
+	width: 100%;
+	clear: both;
+	background-color: #D7D7D7;
+}
 .inventory-breadcrumbs{
 	background-color: #D7D7D7;
 	padding: 1%;
-	width: 98%;
+	width: 56%;
 	
     -webkit-box-flex: 0 0 auto;
     -moz-box-flex:  0 0 auto;
@@ -36,71 +59,20 @@
 .inventory-breadcrumbs a span{
 	margin: 0 1%;
 }
-#inventory-top{
-    display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-	
-	flex-flow: column nowrap;
-	-webkit-flex-flow: column nowrap;
-	
-    justify-content: space-around;
-	-webkit-justify-content: space-around;
-	
-	width: 100%;
-	clear: both;
-}
-#inventory-top-search{
-	display: block;
-	clear: both;
-	float: none;
-	width: 92%;
-	margin: 2% auto 0;
-}
-.inventory-search{
-	float: left;
-	max-width: 300px;
-	width: 32%;
-}
-#inventory-search-text.search-typeahead > span{
-    float: left;
-    margin: 0 4% 0 0;
-}
-.tt-menu.tt-open{
-    background-color: #FFF;
-	color: #000;
-    padding: 5%;
-    width: 90%;
-    margin: 0 auto;
-	text-align: left;
-}
-.tt-menu.tt-open .tt-suggestion:hover{
-    background-color: #EEE;
-	color: #000;
-    cursor: pointer;
-}
-#inventory-search-box{
-	padding: 0;
-	display: inline-block;
-}
-#inventory-search-submit{
-	padding: 0;
-	background-color: #CA204D;
-	color: #FFF;
-	border-radius: 4px;
-	font-weight: bold;
-	padding: 0 2%;
-	display: inline-block;
-}
 .inventory-pager{
-	float: right;
+    -webkit-box-flex: 0 0 auto;
+    -moz-box-flex:  0 0 auto;
+    -webkit-flex:  0 0 auto;
+    -ms-flex:  0 0 auto;
+    flex: 0 0 auto;
+	
 	margin: .4% 0 0;
-	max-width: 600px;
-	width: 67%;
+	width: 40%;
 	text-align: right;
 	font-size: .8em;
 	line-height: 1.5em;
+	padding: 1%;
+	float: right;
 }
 a.page-numbers{
 	background-color: #CA204D;
@@ -240,6 +212,7 @@ a.page-numbers:hover{
 	margin: 0 0 5%;
 }
 .inventory-sidebar-content{
+	display: block;
 	background-color: #F6F6F6;
 	padding: 2% 6%;
 	font-size: .9em;
@@ -285,6 +258,45 @@ a.page-numbers:hover{
 .inventory-sidebar-content .inventory-filter-prev:hover{
 	background-color: #000;
 	color: #FFF;
+}
+.inventory-search{
+	display: block;
+	clear: both;
+	float: none;
+	position: relative;
+}
+#inventory-search-text.search-typeahead > span{
+    margin: 0 4% 0 0;
+}
+input.text-search.tt-hint{
+	display: none;
+}
+.tt-menu.tt-open{
+    background-color: #FFF;
+	color: #000;
+    padding: 5%;
+    width: 90%;
+    margin: 0 auto;
+	text-align: left;
+}
+.tt-menu.tt-open .tt-suggestion:hover{
+    background-color: #EEE;
+	color: #000;
+    cursor: pointer;
+}
+#inventory-search-box{
+	padding: 0;
+	display: inline-block;
+}
+#inventory-search-submit{
+	background-color: #CA204D;
+	color: #FFF;
+	border-radius: 4px;
+	font-weight: bold;
+	padding: 0 2%;
+	display: inline-block;
+	position: absolute;
+	right: 0;
 }
 
 #inventory-content-center{
@@ -622,7 +634,7 @@ span.dealer-number a{
 	clear: both;
 	display: block;
 	float: none;
-	margin: 3% auto 0;
+	margin: 1% auto 0;
 	overflow: hidden;
 	padding: 1%;
 	width: 92%;
