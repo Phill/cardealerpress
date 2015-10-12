@@ -21,10 +21,11 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		wp_redirect( $site_url.'/inventory/'.$redirect_class, 301 );
 		exit;
 	}
+
 	//Log if debug is on if the inventory is empty
 	if ( empty($inventory) ){
 		if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
-			error_log('CDP Inv Error: Inventory returned empty | Front URL: '.$this->page_url. (!empty($this->page_referer) ? ' | Referer: '.$this->page_referer : '') );
+			error_log('Version: '.self::$plugin_information['Version'].' | CDP Inv Error: Inventory returned empty | Front URL: '.$this->page_url. (!empty($this->page_referer) ? ' | Referer: '.$this->page_referer : '') );
 			foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
 		}
 	}
@@ -35,20 +36,20 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 			break;
 		case 404:
 			if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
-				error_log('CDP Inv 404 Error - Front URL: '.$this->page_url);
+				error_log('Version: '.self::$plugin_information['Version'].' | CDP Inv 404 Error - Front URL: '.$this->page_url);
 				foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
 			}
 			break;
 		case 503:
 			if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
-				error_log('CDP Inv 503 Error - Front URL: '.$this->page_url);
+				error_log('Version: '.self::$plugin_information['Version'].' | CDP Inv 503 Error - Front URL: '.$this->page_url);
 				foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
 			}
 			echo $generic_error_message;
 			echo '<p>We were unable to establish a connection to the API. Refreshing the page may resolve this.</p>';
 		default:
 			if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
-				error_log('CDP Inv '.$this->vms->request_code.' Error - Front URL: '.$this->page_url);
+				error_log('Version: '.self::$plugin_information['Version'].' | CDP Inv '.$this->vms->request_code.' Error - Front URL: '.$this->page_url);
 				foreach( $this->vms->request_stack as $call ){ error_log('API: '.( is_array($call) ? $call[0] .' | Request: '.$call[1] : $call) ); }
 			}
 			get_header(); get_footer();

@@ -48,7 +48,7 @@ class http_request {
 			}
 			$error_array = array( 'code' => $error_code , 'message' => $error_message );
 			if( $this->plugin_options[ 'alt_settings' ][ 'debug_plugin_info' ] ){
-				error_log($error_title.' code: '.$error_code.' | message: '.$error_message.' | call: '.$this->url);
+				error_log('Version: '.cdp_plugin::$plugin_information[ 'Version' ].' | '.$error_title.' code: '.$error_code.' | message: '.$error_message.' | call: '.$this->url);
 			}
 			return $error_array;
 		}
