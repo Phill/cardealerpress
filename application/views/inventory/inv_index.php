@@ -2,6 +2,7 @@
 
 namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
+	$this->seo_headers->apply_headers();
 	$parameters = $this->parameters;
 	$parameters[ 'saleclass' ] = isset( $parameters[ 'saleclass' ] ) ? ucwords( $parameters[ 'saleclass' ] ) : 'All';
 	$theme_settings = $this->options[ 'vehicle_management_system' ][ 'theme' ];

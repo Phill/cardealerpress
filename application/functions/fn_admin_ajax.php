@@ -17,8 +17,8 @@ class Admin_ajax {
 	function admin_handle_request(){
 		switch($_REQUEST['fn']){
 			case 'saveAdminSettings':
-				if( $_REQUEST['params']['path'] == 'vehicle_management_system/company_information/id'){ delete_transient('cdp_company'); }
-				$this->set_options_value($_REQUEST['params']['path'], $_REQUEST['params']['value']);
+				if( $_REQUEST['params']['path'] == 'vehicle_management_system/company_information/id'){ delete_transient('cdp_company'); delete_transient('cdp_dynamic_headers'); }
+				$this->set_options_value($_REQUEST['params']['path'], stripslashes($_REQUEST['params']['value']));
 				$this->save_options_ajax();
 				$output['id'] = '';
 				$output['content'] = 'saved';
@@ -131,7 +131,7 @@ class Admin_ajax {
 						$output['content'] = get_script_rows( $this->options[ 'vehicle_management_system' ][ 'scripts' ][ 'data' ] );
 						break;
 					case 'styleRows':
-						$this->options[ 'vehicle_management_system' ][ 'styles' ]['data'][] = array( 'name'=>'','saleclass'=>0,'url'=>'','page'=>0,'override'=>0 );
+						$this->options['vehicle_management_system'][ 'styles' ]['data'][] = array( 'name'=>'','saleclass'=>0,'url'=>'','page'=>0,'override'=>0 );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
 						$output['content'] = get_style_rows( $this->options[ 'vehicle_management_system' ][ 'styles' ][ 'data' ] );

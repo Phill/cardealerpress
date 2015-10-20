@@ -84,10 +84,6 @@ class dynamic_site_headers {
 			$this->parameters = $parameters;
             $this->discourage_seo = $discourage;
 			$this->get_headers();
-			if( $this->headers != false ) {
-				add_filter( 'wp_title' , array( &$this , 'set_title' ) );
-				add_action( 'wp_head' , array( &$this , 'set_head_information' ) , 1 );
-			}
 		}
 
 	/**
@@ -122,11 +118,14 @@ class dynamic_site_headers {
 			$request_handler = new http_request( $url , 'dynamic_site_headers' );
 			$this->request_stack[] = $url;
 			$trans_key = 'cdp_dynamic_headers';
-			if ( false === ( $trans_value = get_transient( $trans_key ) ) ) {
+			if ( false === ( $trans_body = get_transient( $trans_key ) ) ) {
 				$trans_value = $request_handler->get_file( true );
-				if( !empty($trans_value) ){ set_transient( $trans_key, $trans_value, DAY_IN_SECONDS ); }
+				if( !empty($trans_value['body']) ){
+					$trans_body = json_decode($trans_value['body']);
+					set_transient( $trans_key, $trans_body, DAY_IN_SECONDS ); 
+				}
 			}
-			$body = $trans_value;
+			$body = $trans_body;
 			if( $body ) {
 				$this->headers[ 'page_title' ] = isset($body->page_title) ? rawurldecode( $body->page_title ) : '';
 				$this->headers[ 'page_description' ] = isset($body->page_description) ? $body->page_description : '';
@@ -162,6 +161,7 @@ class dynamic_site_headers {
 			if( isset( $this->headers[ 'page_keywords' ] ) && !empty( $this->headers[ 'page_keywords' ] ) ) {
 				echo '<meta name="Keywords" content="' . $this->headers[ 'page_keywords' ] . '" />' . "\n";
 			}
+
             if( empty( $this->discourage_seo ) ) {
 			    $robots = array();
 			    if( isset( $this->headers[ 'follow' ] ) && $this->headers[ 'follow' ] != true ) {
@@ -176,6 +176,13 @@ class dynamic_site_headers {
             } else {
                 echo '<meta name="robots" content="nofollow,noindex" />' . "\n";
             }
+		}
+		
+		function apply_headers() {
+			if( $this->headers != false ) {
+				add_filter( 'wp_title' , array( &$this , 'set_title' ) );
+				add_action( 'wp_head' , array( &$this , 'set_head_information' ) , 1 );
+			}	
 		}
 
 }
