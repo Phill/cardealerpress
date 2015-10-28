@@ -18,6 +18,14 @@
 		jQuery(this).parent().parent().find('.tab-content.active').removeClass('active');
 		jQuery('.'+button_id).addClass('active');
 	});
+	// Controls inner tabs
+	jQuery('.inner-tab-button').click(function() {
+		button_id = jQuery(this).attr('id');
+		jQuery(this).siblings('.active').removeClass('active');
+		jQuery(this).addClass('active');
+		jQuery(this).parents('#content-loan').find('.tab-inner-content.active').removeClass('active');
+		jQuery('.'+button_id).addClass('active');
+	});
 	
 	// Input Triggers
 	jQuery('#cdp-content-wrapper').on( 'input', '.cdp-input', function(e) {
@@ -40,7 +48,7 @@
 			jQuery(e.target).removeClass('value-updated');
 			tag = jQuery(e.target).attr('tag');
 			extra = jQuery(e.target).attr('extra');
-			data = {'path': jQuery(e.target).attr('name'), 'value': jQuery(e.target).val() };
+			data = {'path': jQuery(e.target).attr('name'), 'value': jQuery(e.target).val()};
 			
 			cdp_ajax_call( 'saveAdminSettings', data, '#cdp-content-wrapper' ).done(function(result) {
 				if( tag ){

@@ -2,7 +2,6 @@
 
 namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 
-	$this->seo_headers->apply_headers();
 	$parameters = $this->parameters;
 	$parameters[ 'saleclass' ] = isset( $parameters[ 'saleclass' ] ) ? ucwords( $parameters[ 'saleclass' ] ) : 'All';
 	$theme_settings = $this->options[ 'vehicle_management_system' ][ 'theme' ];
@@ -69,6 +68,10 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	$state = $this->company->state;
 	$company_name = strtoupper( $this->company->name );
 	$country_code =	$this->company->country_code;
+	
+	//The seo_hack was in the inital setup
+	$seo_hack = array( 'city' => $this->company->seo->city , 'state' => $this->company->seo->state , 'country_code' => $country_code );
+	$this->seo_headers->apply_headers( $parameters, $seo_hack );
 
 	$type = isset( $inventory->vin ) ? 'detail' : 'list';
 	

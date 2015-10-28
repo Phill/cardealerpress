@@ -29,6 +29,12 @@ For a complete list of FAQ's please visit:
 
 == Changelog ==
 
+**4.3.1510.05**:
+
+* Feature: Can now load payments on list and detail pages, with custom settings.
+* Update: Adjusted inventory Site headers.
+* Update: Added plugin deactivate log.
+
 **4.3.1510.04**:
 
 * Bug: Site headers loading nofollow, noindex incorrectly.

@@ -306,6 +306,9 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 										<div class="inventory-price-wrap">
 											<?php
 											 	echo ( !empty($price['msrp_text']) && strtolower($vehicle['saleclass']) == 'new' ? $price['msrp_text'] : '') . $price['primary_text'] . $price['ais_text'] . $price['compare_text'] . $price['expire_text'] . $price['hidden_prices'] . ( !empty($price['ais_link']) ? $price['ais_link'] : '');
+												
+												$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
+												echo get_loan_value($theme_settings['loan'], $price['primary_price'], $loan_parameters);
 											 ?>	
 										</div>
 										<div class="inventory-more-info"><div class="inventory-more-info-button"><a href="<?php echo $inventory_url; ?>"><?php echo $theme_settings['list_info_button'] ? $theme_settings['list_info_button'] : 'More Info'; ?></a></div></div>

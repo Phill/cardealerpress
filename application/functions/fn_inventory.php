@@ -53,6 +53,8 @@
 		$data['fuel_economy'] = isset($vehicle->fuel_economy) ? $vehicle->fuel_economy: '';
 		$data['acode'] = isset($vehicle->ads_acode) && !empty($vehicle->ads_acode) ? $vehicle->ads_acode : NULL;
 		$data['sold'] = isset($vehicle->sold_on) ? TRUE : FALSE;
+		$data['model_code'] = isset($vehicle->model_code) ? $vehicle->model_code: '';
+		$data['fuel_type'] = isset($vehicle->fuel_type) ? $vehicle->fuel_type: '';
 
 		$contact = $vehicle->contact_info;
 		$data['contact_info']['dealer_id'] = isset($contact->company_id) ? $contact->company_id: '0';
@@ -463,40 +465,103 @@
 
 	}
 
-	function get_loan_calculator( $loan_data, $price, $button = True ){
+	function get_loan_calculator( $loan_data, $price, $button = True, $params = array() ){
 		$display = '';
+		
+		//Get Loan Values
+		if( isset($params['saleclass']) ){
+			$loan = $loan_data[strtolower($params['saleclass'])]['default'];
+			get_custom_loan($loan_data['custom'], $loan, $params);
+		}
+		
+		$calculate = isset($loan['display_calc']) ? $loan['display_calc'] : '';
 
-		if( is_numeric($price) && $price != 0 ){
-			$display = '<div id="loan-calculator-wrapper">';
+		if( !empty($calculate) ){
+			if( is_numeric($price) && $price != 0 ){
+				$display = '<div id="loan-calculator-wrapper">';
 
-			$display .= ($button) ? '<div id="loan-calculator-button">Loan Calculator</div>': '';
+				$display .= ($button) ? '<div id="loan-calculator-button">Loan Calculator</div>': '';
 
-			$display .= '<div id="loan-calculator-data">';
-			$display .= '<div id="loan-calculator">';
-			$display .= '<div class="loan-value"><label>Vehicle Price</label><input type="text" id="loan-calculator-price" value="$'.( is_numeric($price) ? number_format( $price , 0 , '.' , ',' ) : '0' ).'" /></div>';
-			$display .= '<div class="loan-value"><label>Interest Rate</label><input type="text" id="loan-calculator-interest-rate" value="'.$loan_data['default_interest'].'%" /></div>';
-			$display .= '<div class="loan-value"><label>Trade-in Value</label><input type="text" id="loan-calculator-trade-in-value" value="$'.number_format( $loan_data['default_trade'] , 0 , '.' , ',' ).'" /></div>';
-			$display .= '<div class="loan-value"><label>Term (months)</label><input type="text" id="loan-calculator-term" value="'.$loan_data['default_term'].'" /></div>';
-			$display .= '<div class="loan-value"><label>Down Payment</label><input type="text" id="loan-calculator-down-payment" value="$'.number_format( $loan_data['default_down'] , 0 , '.' , ',' ).'" /></div>';
-			$display .= '<div class="loan-value"><label>Sales Tax</label><input type="text" id="loan-calculator-sales-tax" value="'.$loan_data['default_tax'].'%" /></div>';
+				$display .= '<div id="loan-calculator-data">';
+				$display .= '<div id="loan-calculator">';
+				$display .= '<div class="loan-value"><label>Vehicle Price</label><input type="text" id="loan-calculator-price" value="$'.( is_numeric($price) ? number_format( $price , 0 , '.' , ',' ) : '0' ).'" /></div>';
+				$display .= '<div class="loan-value"><label>Interest Rate</label><input type="text" id="loan-calculator-interest-rate" value="'.$loan['interest'].'%" /></div>';
+				$display .= '<div class="loan-value"><label>Trade-in Value</label><input type="text" id="loan-calculator-trade-in-value" value="$'.number_format( $loan['trade'] , 0 , '.' , ',' ).'" /></div>';
+				$display .= '<div class="loan-value"><label>Term (months)</label><input type="text" id="loan-calculator-term" value="'.$loan['term'].'" /></div>';
+				$display .= '<div class="loan-value"><label>Down Payment</label><input type="text" id="loan-calculator-down-payment" value="$'.number_format( $loan['down'] , 0 , '.' , ',' ).'" /></div>';
+				$display .= '<div class="loan-value"><label>Sales Tax</label><input type="text" id="loan-calculator-sales-tax" value="'.$loan['tax'].'%" /></div>';
 
-			$display .= '<hr>';
+				$display .= '<hr>';
 
-			$display .= ($loan_data['display_bi_monthly']) ? '<div class="loan-payment"><label>Bi Monthly Cost</label><div id="loan-calculator-bi-monthly-cost"></div></div>' :'';
-			$display .= ($loan_data['display_monthly']) ? '<div class="loan-payment"><label>Monthly Cost</label><div id="loan-calculator-monthly-cost"></div></div>' :'';
+				$display .= ($loan['display_bi_monthly']) ? '<div class="loan-payment"><label>Bi Monthly Cost</label><div id="loan-calculator-bi-monthly-cost"></div></div>' :'';
+				$display .= ($loan['display_monthly']) ? '<div class="loan-payment"><label>Monthly Cost</label><div id="loan-calculator-monthly-cost"></div></div>' :'';
 
-			$display .= ($loan_data['display_total_cost']) ? '<div class="loan-total"><label>Total Cost<br><small>(including taxes)</small></label><div id="loan-calculator-total-cost"></div></div>' : '';
+				$display .= ($loan['display_total_cost']) ? '<div class="loan-total"><label>Total Cost<br><small>(including taxes)</small></label><div id="loan-calculator-total-cost"></div></div>' : '';
 
-			$display .= '<div id="loan-calculator-submit"><button>Calculate</button></div>';
+				$display .= '<div id="loan-calculator-submit"><button>Calculate</button></div>';
 
-			$display .= '</div></div>';
+				$display .= '</div></div>';
 
-			$display .= '</div>';
-		} else {
-			$display = '<div id="loan-calculator-error">No price is currently available to calculate. Please contact dealer for price information.</div>';
+				$display .= '</div>';
+			} else {
+				$display = '<div id="loan-calculator-error">No price is currently available to calculate. Please contact dealer for price information.</div>';
+			}	
 		}
 
 		return $display;
+	}
+	
+	function get_loan_value( $loan_data, $price, $params = array() ){
+		$display = '';
+		//Get Loan Values
+		if( isset($params['saleclass']) ){
+			$loan = $loan_data[strtolower($params['saleclass'])]['default'];
+			get_custom_loan($loan_data['custom'], $loan, $params);
+		}
+		$calculate = isset($loan['display_payment']) ? $loan['display_payment'] : '';
+		if( !empty($calculate) ){
+			if( is_numeric($price) && $price != 0 ){
+				$number_pattern = '/[^0-9\.]/';
+				$interest = preg_replace( $number_pattern, '',$loan['interest']);
+				$term = preg_replace( $number_pattern, '',$loan['term']);
+				$trade = preg_replace( $number_pattern, '',$loan['trade']);
+				$down = preg_replace( $number_pattern, '',$loan['down']);
+				$tax = preg_replace( $number_pattern, '',$loan['tax']);
+				$total_price = ( ($price - $trade) - $down );
+				$total_price += $total_price * ($tax > 0 ? $tax / 100 : 1);
+				
+				if( $interest > 0 ){
+				    $interest /= 1200;
+				    $monthly_payment = $interest * $total_price / ( 1 - pow( 1 + $interest , -$term ) );		
+				} else {
+					$monthly_payment = $total_price / $term;
+				}
+					
+				$display .= '<div class="loan-payment-wrapper" '.(!empty($loan['disclaimer']) ? 'title="'.$loan['disclaimer'].'"' : '' ).'>';
+				$display .= str_replace( '[payment]', '<strong>'.round($monthly_payment).'</strong>', $loan['display_text']);
+				$display .= '</div>';
+			}
+		}
+		return $display;
+	}
+	
+	function get_custom_loan($custom, &$default, $params){
+		if ( !empty($custom) ){
+			$param_saleclass = strtolower($params['saleclass']) == 'new'? 1 : (strtolower($params['saleclass']) == 'used' ? 2: 0) ;
+			foreach($custom as $key => $loan){
+				$check_saleclass = (empty($loan['saleclass']) || $loan['saleclass'] == $param_saleclass) ? TRUE: FALSE;
+				$check_model = (!empty($loan['model']) && strtolower($loan['model']) == strtolower($params['model']) ) ? TRUE: FALSE;
+				$check_trim = !empty($loan['trim']) ? (strtolower($loan['trim']) == strtolower($params['trim']) ? TRUE : FALSE) : TRUE;
+				$check_year = !empty($loan['year']) ? ( $loan['year'] == $params['year'] ? TRUE : FALSE) : TRUE;
+				if( $check_saleclass && $check_model && $check_trim && $check_year ){
+					foreach($loan as $id => $value){
+						if( !empty($value) and isset($default[$id]) ){
+							$default[$id] = $value;
+						} 
+					}	
+				}
+			}
+		}
 	}
 
 	function build_tab_display( $buttons, $data, $active = 0, $flex = ''){
@@ -563,7 +628,7 @@
 						echo display_equipment($data[ $button[0] ][1]);
 						break;
 					case 'loan':
-						echo get_loan_calculator($data[ $button[0] ][1], $data['values']['price'], False);
+						echo get_loan_calculator($data[ $button[0] ][1], $data['values']['price'], False, $data[ $button[0] ][2]);
 						break;
 
 					default:

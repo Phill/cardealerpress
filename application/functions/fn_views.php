@@ -153,45 +153,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		return $content;
 	}
 	
-	function get_admin_showcase_theme_view( $options ){
-		$theme = $options['name'];
-		//Title/Current Theme
-		$content = '<div id="view-CurrentTheme" class="view-wrapper"><div class="tr-wrapper"><div class="td-full"><h4 class="divider"><span>'.ucfirst($theme).'</span> Theme Settings</h4></div></div>';
-		//Change Theme
-		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Change Theme:</span></div><div class="td-two">';
-		$content .= '<select name="vehicle_reference_system/theme/name" class="cdp-input" tag="CurrentThemeShowcase">';
-		$themes = cdp_plugin::get_themes( 'showcase' );
-		foreach( $themes as $key => $value ) {
-			$selected = $value == $theme ? 'selected' : NULL;
-			$content .= '<option ' . $selected . ' value="' . $value . '">' . ucwords( $value ) .'</option>';
-		}
-		$content .= '</select>';
-		$content .= '</div></div>';
-		// Form ID
-		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Gravity Form ID:</span></div><div class="td-two">';
-		$value = $options[ 'form_id' ]; 
-		$content .= '<input type="text" id="showcase-form-id" class="cdp-input input-short" name="vehicle_reference_system/theme/form_id" pattern="[0-9]" value="'.$value.'" />';
-		$content .= '</div></div>';
-		// Display VMS ID
-		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Display Similar Vehicles:</span></div><div class="td-two">';
-		$value = $options[ 'display_vms' ]; 
-		$content .= '<input type="checkbox" id="display_vms" class="cdp-input" name="vehicle_reference_system/theme/display_vms" '. ( !empty($value) ? ' checked ' : '' ).' />';
-		$content .= '</div></div>';
-		// Display VMS Count
-		$content .= '<div class="tr-wrapper tr-color"><div class="td-two right"><span class="td-title">Similar Count:</span></div><div class="td-two">';
-		$value = $options[ 'display_vms_count' ];
-		$option_array = array( 4, 8, 12, 16);
-		$content .= '<select name="vehicle_reference_system/theme/vms_count" class="cdp-input" >';
-		foreach( $option_array as $val ){
-			$content .= '<option value="'.$val.'" '.($value == $val ? 'selected': '').' >'.$val.'</option>';
-		}
-		$content .= '</select>';
-		$content .= '</div></div>';
-		
-		$content .= '</div>';
-		return $content;
-	}
-	
 	function get_form_rows( $data ){
 		$content = '';
 		
@@ -378,6 +339,90 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		return $content;
 	}
 	
+	function get_loan_rows( $data ){
+		$content = '';
+		
+		if( !empty($data) ){
+			foreach( $data as $key => $value){
+				$id_value = 'tag-'.$key;
+				$content .= '<div class="inner-row-wrapper">';
+				
+				$content .= '<div class="inner-row-label"><h5>'.( !empty($value['name']) ? $value['name'] : 'New Loan' ).'</h5></div>';
+				$content .= '<div class="inner-row-content">';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Name:</span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/name" type="text" class="cdp-input" value="'.$value['name'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Sale Class:</span></div>';
+				$content .= '<div class="inner-td value"><select name="vehicle_management_system/theme/loan/custom/'.$key.'/saleclass" id="loan-'.$key.'-saleclass" class="cdp-input '.$id_value.'" >';
+					$content .= '<option value="0" '.( $value['saleclass'] == '0' ? 'selected' : '' ).'>All</option>';
+					$content .= '<option value="1" '.( $value['saleclass'] == '1' ? 'selected' : '' ).'>New</option>';
+					$content .= '<option value="2" '.( $value['saleclass'] == '2' ? 'selected' : '' ).'>Used</option>';
+				$content .= '</select></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Interest:</span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/interest" type="number" id="loan-'.$key.'-interest" class="cdp-input input-med '.$id_value.'" value="'.$value['interest'].'" /></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Trade:</span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/trade" type="number" id="loan-'.$key.'-trade" class="cdp-input input-med '.$id_value.'" value="'.$value['trade'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Term:</span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/term" type="number" id="loan-'.$key.'-term" class="cdp-input input-med '.$id_value.'" value="'.$value['term'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Down:</span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/down" type="number" id="loan-'.$key.'-down" class="cdp-input input-med '.$id_value.'" value="'.$value['down'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Disclaimer:</span></div>';
+				$content .= '<div class="inner-td value"><textarea name="vehicle_management_system/theme/loan/custom/'.$key.'/disclaimer" id="loan-'.$key.'-disclaimer" class="cdp-input '.$id_value.'" >'.$value['disclaimer'].'</textarea></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Display Text:</span></div>';
+				$content .= '<div class="inner-td value"><textarea name="vehicle_management_system/theme/loan/custom/'.$key.'/display_text" id="loan-'.$key.'-text" class="cdp-input '.$id_value.'" >'.$value['display_text'].'</textarea></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Model:</span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/model" type="text" id="loan-'.$key.'-model" class="cdp-input '.$id_value.'" value="'.$value['model'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Trim:<small>(optional)</small></span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/trim" type="text" id="loan-'.$key.'-trim" class="cdp-input '.$id_value.'" value="'.$value['trim'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Year:<small>(optional)</small></span></div>';
+				$content .= '<div class="inner-td value"><input name="vehicle_management_system/theme/loan/custom/'.$key.'/year" type="number" id="loan-'.$key.'-year" class="cdp-input input-med '.$id_value.'" value="'.$value['year'].'"/></div>';
+				$content .= '</div>';
+				
+				$content .= '<div class="inner-tr-wrapper">';
+				$content .= '<div class="inner-td label"><span class="td-title">Display:<small>(optional override)</small></span></div>';
+				$content .= '<div class="inner-td value"><input type="checkbox" id="loan-'.$key.'-display-calc" class="cdp-input input-checkbox '.$id_value.'" name="vehicle_management_system/theme/loan/custom/'.$key.'/display_payment" '.(!empty($value['display_payment']) ? 'checked' :'').' /></div>';
+				$content .= '</div>';
+				
+				$content .= '<div tag="'.$key.'" class="remove '.$id_value.'">Remove [x]</div>';
+								
+				$content .= '</div></div>';
+			}
+		}
+
+		return $content;
+	}
+	
 	function get_style_rows( $data ){
 		$content = '';
 		
@@ -424,98 +469,6 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 				
 				$content .= '<div tag="'.$key.'" class="remove '.$id_value.'">Remove [x]</div>';
 								
-				$content .= '</div></div>';
-			}
-		}
-		
-		return $content;
-	}
-	
-	function get_video_rows( $data ){
-		$content = '';
-		
-		if( !empty($data) ){
-			foreach( $data as $key => $value){
-				$id_value = 'video-'.$key;
-				$content .= '<div class="inner-row-wrapper">';
-				
-				$content .= '<div class="inner-row-label"><h5>'.( !empty($value['name']) ? $value['name'] : 'New Video' ).'</h5></div>';
-				$content .= '<div class="inner-row-content">';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Name:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/videos/'.$key.'/name" type="text" class="cdp-input" value="'.$value['name'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Make:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/videos/'.$key.'/make" type="text" class="cdp-input" value="'.$value['make'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Model:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/videos/'.$key.'/model" type="text" class="cdp-input" value="'.$value['model'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Video URL:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/videos/'.$key.'/url" type="text" class="cdp-input" value="'.$value['url'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div tag="'.$key.'" class="remove '.$id_value.'">Remove [x]</div>';
-				
-				$content .= '</div></div>';
-			}
-		}
-		
-		return $content;
-	}
-	
-	function get_message_rows( $data ){
-		$content = '';
-		
-		if( !empty($data) ){
-			foreach( $data as $key => $value){
-				$id_value = 'video-'.$key;
-				$content .= '<div class="inner-row-wrapper">';
-				
-				$content .= '<div class="inner-row-label"><h5>'.( !empty($value['name']) ? $value['name'] : 'New Message' ).'</h5></div>';
-				$content .= '<div class="inner-row-content">';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Name:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/messages/'.$key.'/name" type="text" class="cdp-input" value="'.$value['name'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Count:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/messages/'.$key.'/evaluate" type="number" class="cdp-input input-short" value="'.$value['evaluate'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Operator:</span></div>';
-				$content .= '<div class="inner-td value"><select name="vehicle_reference_system/messages/'.$key.'/operator" class="cdp-input short">';
-				$content .= '<option value=">" ' . ($value['operator'] == ">" ? "selected": "") . ' >&gt;</option>';
-				$content .= '<option value="<" ' . ($value['operator'] == "<" ? "selected": "") . ' >&lt;</option>';
-				$content .= '<option value=">=" ' . ($value['operator'] == ">=" ? "selected": "") . ' >&ge;</option>';
-				$content .= '<option value="<=" ' . ($value['operator'] == "<=" ? "selected": "") . ' >&le;</option>';
-				$content .= '<option value="=" ' . ($value['operator'] == "=" ? "selected": "") . ' >=</option>';
-				$content .= '<option value="!=" ' . ($value['operator'] == "!=" ? "selected": "") . ' >&ne;</option>';
-				$content .= '</select></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label top"><span class="td-title">Message:</span></div>';
-				$content .= '<div class="inner-td value"><textarea name="vehicle_reference_system/messages/'.$key.'/text" class="cdp-textarea">'.$value['text'].'</textarea></div>';
-				$content .= '</div>';
-				
-				$content .= '<div class="inner-tr-wrapper">';
-				$content .= '<div class="inner-td label"><span class="td-title">Title:</span></div>';
-				$content .= '<div class="inner-td value"><input name="vehicle_reference_system/messages/'.$key.'/title" type="text" class="cdp-input" value="'.$value['title'].'"/></div>';
-				$content .= '</div>';
-				
-				$content .= '<div tag="'.$key.'" class="remove '.$id_value.'">Remove [x]</div>';
-				
 				$content .= '</div></div>';
 			}
 		}

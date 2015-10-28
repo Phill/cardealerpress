@@ -5,6 +5,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	$vehicle = itemize_vehicle($inventory);
 	$price = get_price_display($vehicle['prices'], $this->company, $vehicle['saleclass'], $vehicle['vin'], 'inventory', $theme_settings['price_text'] );
 	$vehicle['primary_price'] = $price['primary_price'];
+	$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
 
 	apply_gravity_form_hooks( $vehicle );
 	$flex_wrapper = ' style="display: flex; flex-flow: row wrap; justify-content: space-around; margin: 0 auto; width: 96%" ';
@@ -45,7 +46,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 						<?php echo
 							( !empty($price['msrp_text']) && strtolower($vehicle['saleclass']) == 'new' ? $price['msrp_text'] : '') . '
 							'.$price['ais_text'].$price['compare_text'].$price['expire_text'].$price['hidden_prices'].'
-							'. ( !empty($price['ais_link']) ? $price['ais_link'] : '')
+							'. ( !empty($price['ais_link']) ? $price['ais_link'] : '');
+							echo get_loan_value($theme_settings['loan'], $vehicle['primary_price'], $loan_parameters);
 						?>
 						</div>
 					</div>
@@ -123,7 +125,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 							'options' => array( (count($vehicle['dealer_options']) > 0 ? 1 : 0), $vehicle['dealer_options'] ),
 							'description' => array( (strlen($vehicle['description']) > 0 ? 1 : 0), $vehicle['description'] ),
 							'equipment' => array( ($theme_settings['show_standard_eq'] && !is_Empty_check($vehicle['standard_equipment']) ? 1 : 0 ), $vehicle['standard_equipment'] ),
-							'loan' => array( $theme_settings['loan']['display_calc'], $theme_settings['loan'] ),
+							'loan' => array( $theme_settings['loan'][strtolower($vehicle['saleclass'])]['default']['display_calc'], $theme_settings['loan'], $loan_parameters ),
 							'similar' => array($theme_settings['display_similar'], $similar_output),
 							'form' => array( (function_exists('gravity_form') && !empty($theme_settings['forms'])?1:0), $theme_settings['forms'] ),
 							'values' => array('saleclass' => $vehicle['saleclass'], 'price' => $price['primary_price'] )

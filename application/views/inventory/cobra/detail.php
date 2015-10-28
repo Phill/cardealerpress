@@ -4,7 +4,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	$vehicle = itemize_vehicle($inventory);
 	$price = get_price_display($vehicle['prices'], $this->company, $vehicle['saleclass'], $vehicle['vin'], 'inventory', $theme_settings['price_text'] );
 	$vehicle['primary_price'] = $price['primary_price'];
-	//echo '<pre>';var_dump($vehicle['photos']);echo '</pre>';
+	$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
+
 	apply_gravity_form_hooks( $vehicle );
 	
 	$flex_wrapper = $flex_one = $flex_two = $flex_three = $flex_four = $flex_five = $flex_six = '';
@@ -49,7 +50,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 							<?php echo
 								( !empty($price['msrp_text']) && strtolower($vehicle['saleclass']) == 'new' ? $price['msrp_text'] : '') . '
 								'.$price['primary_text'].$price['ais_text'].$price['compare_text'].$price['expire_text'].$price['hidden_prices'].'
-								'. ( !empty($price['ais_link']) ? $price['ais_link'] : '')
+								'. ( !empty($price['ais_link']) ? $price['ais_link'] : '');
+								echo get_loan_value($theme_settings['loan'], $vehicle['primary_price'], $loan_parameters);
 							?>
 						</div>
 					</div>
@@ -100,9 +102,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 					<?php
 						echo get_fuel_economy_display( $vehicle['fuel_economy'], $country_code, 2, $this->vrs, $vehicle['acode'] );
 						
-						if( $theme_settings['loan']['display_calc'] ){
-							echo get_loan_calculator( $theme_settings['loan'], $price['primary_price'] );
-						}
+						echo get_loan_calculator($theme_settings['loan'], $vehicle['primary_price'], TRUE, $loan_parameters);
 						
 						if( $vehicle['autocheck'] ){
 							echo display_autocheck_image( $vehicle['vin'], $vehicle['saleclass'], $type );

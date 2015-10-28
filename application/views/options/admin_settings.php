@@ -22,7 +22,7 @@
 		<div class="td-two">
 			<input type="checkbox" id="discourage_seo_visibility" name="alt_settings/discourage_seo_visibility" <?php if ( $this->options[ 'alt_settings' ][ 'discourage_seo_visibility' ] != '' ) { echo 'checked'; } ?> class="cdp-input" />
 		</div>
-		<div class="td-full center"><small>Discourage search engines from indexing inventory/showcase pages</small></div>
+		<div class="td-full center"><small>Discourage search engines from indexing inventory pages</small></div>
 	</div>
 	<div class="tr-wrapper tr-color">
 		<div class="td-two center"><span class="td-title">Show Plugin Debug Info:</span></div>

@@ -303,6 +303,9 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 													$price = get_price_display($vehicle['prices'], $this->company, $vehicle['saleclass'], $vehicle['vin'], 'inventory', $theme_settings['price_text'] );
 													echo (!empty($price['ais_link'])) ? $price['ais_link'] : '';
 													echo $price['compare_text'].$price['ais_text'].$price['primary_text'].$price['expire_text'].$price['hidden_prices'];
+													
+													$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
+													echo get_loan_value($theme_settings['loan'], $price['primary_price'], $loan_parameters);
 													?>
 												</div>
 												<div class="inventory-detail-button inventory-show-form" name="<?php echo ( !empty($theme_settings['list_info_button']) ) ? $theme_settings['list_info_button'] : 'Get Your ePrice'; ?>">

@@ -86,101 +86,89 @@ class Admin_ajax {
 				break;	
 			case 'getCurrentTheme':
 				$output['id'] = $_REQUEST['params']['id'];
-				$output['content'] = get_admin_theme_view( $this->options[ 'vehicle_management_system' ][ 'theme' ]);
+				$output['content'] = get_admin_theme_view( $this->options['vehicle_management_system']['theme']);
 				break;
 			case 'getCurrentThemeShowcase':
 				$output['id'] = $_REQUEST['params']['id'];
-				$output['content'] = get_admin_showcase_theme_view( $this->options[ 'vehicle_reference_system' ][ 'theme' ]);
+				$output['content'] = get_admin_showcase_theme_view( $this->options['vehicle_reference_system']['theme']);
 				break;
 			case 'addTableRow':
 				switch($_REQUEST['params']['id']){
 					case 'emailRows':
-						$this->options[ 'vehicle_management_system' ][ 'theme' ][ 'emails' ]['dealers'][] = array( 'id'=>'','email'=>'','saleclass'=>0 );
+						$this->options['vehicle_management_system']['theme']['emails']['dealers'][] = array( 'id'=>'','email'=>'','saleclass'=>0 );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_email_rows( $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'emails' ]['dealers'] );
+						$output['content'] = get_email_rows( $this->options['vehicle_management_system']['theme']['emails']['dealers'] );
 						break;
 					case 'formRows':
-						$this->options[ 'vehicle_management_system' ][ 'theme' ][ 'forms' ][] = array( 'id'=>'','button'=>'on','title'=>'','saleclass'=>0 );
+						$this->options['vehicle_management_system']['theme']['forms'][] = array( 'id'=>'','button'=>'on','title'=>'','saleclass'=>0 );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_form_rows( $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'forms' ] );
+						$output['content'] = get_form_rows( $this->options['vehicle_management_system']['theme']['forms'] );
 						break;
 					case 'tagRows':
-						$this->options[ 'vehicle_management_system' ][ 'tags' ][ 'data' ][] = array( 'name'=>'','order'=>'','url'=>'','link'=>'' );
+						$this->options['vehicle_management_system']['tags']['data'][] = array( 'name'=>'','order'=>'','url'=>'','link'=>'' );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_tag_rows( $this->options[ 'vehicle_management_system' ][ 'tags' ][ 'data' ] );
-						break;
-					case 'videoRows':
-						$this->options[ 'vehicle_reference_system' ][ 'videos' ][] = array( 'name'=>'','make'=>'','model'=>'','url'=>'' );
-						$this->save_options_ajax();
-						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_video_rows( $this->options[ 'vehicle_reference_system' ][ 'videos' ] );
-						break;
-					case 'messageRows':
-						$this->options[ 'vehicle_reference_system' ][ 'messages' ][] = array( 'name'=>'','evaluate'=>'','operator'=>'','text'=>'','title'=>'' );
-						$this->save_options_ajax();
-						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_message_rows( $this->options[ 'vehicle_reference_system' ][ 'messages' ] );
+						$output['content'] = get_tag_rows( $this->options['vehicle_management_system']['tags']['data'] );
 						break;
 					case 'scriptRows':
-						$this->options[ 'vehicle_management_system' ][ 'scripts' ]['data'][] = array( 'name'=>'','saleclass'=>0,'location'=>0,'url'=>'','page'=>0 );
+						$this->options['vehicle_management_system']['scripts']['data'][] = array( 'name'=>'','saleclass'=>0,'location'=>0,'url'=>'','page'=>0 );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_script_rows( $this->options[ 'vehicle_management_system' ][ 'scripts' ][ 'data' ] );
+						$output['content'] = get_script_rows( $this->options['vehicle_management_system']['scripts']['data'] );
 						break;
 					case 'styleRows':
-						$this->options['vehicle_management_system'][ 'styles' ]['data'][] = array( 'name'=>'','saleclass'=>0,'url'=>'','page'=>0,'override'=>0 );
+						$this->options['vehicle_management_system']['styles']['data'][] = array( 'name'=>'','saleclass'=>0,'url'=>'','page'=>0,'override'=>0 );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_style_rows( $this->options[ 'vehicle_management_system' ][ 'styles' ][ 'data' ] );
+						$output['content'] = get_style_rows( $this->options['vehicle_management_system']['styles']['data'] );
+						break;
+					case 'loanRows':
+						$this->options['vehicle_management_system']['theme']['loan']['custom'][] = array( 'name'=>'', 'saleclass'=>0, 'interest'=>0, 'trade'=>0, 'down'=>0, 'term'=>0, 'disclaimer'=>'', 'display_text'=>'', 'model'=>'', 'trim'=>'', 'year'=>0, 'display_payment'=>'' );
+						$this->save_options_ajax();
+						$output['id'] = $_REQUEST['params']['id'];
+						$output['content'] = get_loan_rows( $this->options['vehicle_management_system']['theme']['loan']['custom'] );
 						break;
 				}
 				break;
 			case 'removeTableRow':
 				switch($_REQUEST['params']['id']){
 					case 'emailRows':
-						unset( $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'emails' ][ 'dealers' ][ $_REQUEST['params']['value'] ] );
+						unset( $this->options['vehicle_management_system']['theme']['emails']['dealers'][ $_REQUEST['params']['value'] ] );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_email_rows( $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'emails' ]['dealers'] );
+						$output['content'] = get_email_rows( $this->options['vehicle_management_system']['theme']['emails']['dealers'] );
 						break;
 					case 'formRows':
-						unset( $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'forms' ][ $_REQUEST['params']['value'] ] );
+						unset( $this->options['vehicle_management_system']['theme']['forms'][ $_REQUEST['params']['value'] ] );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_form_rows( $this->options[ 'vehicle_management_system' ][ 'theme' ][ 'forms' ] );
+						$output['content'] = get_form_rows( $this->options['vehicle_management_system']['theme']['forms'] );
 						break;
 					case 'tagRows':
-						unset( $this->options[ 'vehicle_management_system' ][ 'tags' ][ 'data' ][ $_REQUEST['params']['value'] ] );
+						unset( $this->options['vehicle_management_system']['tags']['data'][ $_REQUEST['params']['value'] ] );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_tag_rows( $this->options[ 'vehicle_management_system' ][ 'tags' ][ 'data' ] );
-						break;
-					case 'videoRows':
-						unset( $this->options[ 'vehicle_reference_system' ][ 'videos' ][ $_REQUEST['params']['value'] ] );
-						$this->save_options_ajax();
-						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_video_rows( $this->options[ 'vehicle_reference_system' ][ 'videos' ] );
-						break;
-					case 'messageRows':
-						unset( $this->options[ 'vehicle_reference_system' ][ 'messages' ][ $_REQUEST['params']['value'] ] );
-						$this->save_options_ajax();
-						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_message_rows( $this->options[ 'vehicle_reference_system' ][ 'messages' ] );
+						$output['content'] = get_tag_rows( $this->options['vehicle_management_system']['tags']['data'] );
 						break;
 					case 'scriptRows':
-						unset( $this->options[ 'vehicle_management_system' ][ 'scripts' ][ 'data' ][ $_REQUEST['params']['value'] ] );
+						unset( $this->options['vehicle_management_system']['scripts']['data'][ $_REQUEST['params']['value'] ] );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_script_rows( $this->options[ 'vehicle_management_system' ][ 'scripts' ][ 'data' ] );
+						$output['content'] = get_script_rows( $this->options['vehicle_management_system']['scripts']['data'] );
 						break;
 					case 'styleRows':
-						unset( $this->options[ 'vehicle_management_system' ][ 'styles' ][ 'data' ][ $_REQUEST['params']['value'] ] );
+						unset( $this->options['vehicle_management_system']['styles']['data'][ $_REQUEST['params']['value'] ] );
 						$this->save_options_ajax();
 						$output['id'] = $_REQUEST['params']['id'];
-						$output['content'] = get_style_rows( $this->options[ 'vehicle_management_system' ][ 'styles' ][ 'data' ] );
+						$output['content'] = get_style_rows( $this->options['vehicle_management_system']['styles']['data'] );
+						break;
+					case 'loanRows':
+						unset( $this->options['vehicle_management_system']['theme']['loan']['custom'][ $_REQUEST['params']['value'] ] );
+						$this->save_options_ajax();
+						$output['id'] = $_REQUEST['params']['id'];
+						$output['content'] = get_loan_rows( $this->options['vehicle_management_system']['theme']['loan']['custom'] );
 						break;
 				}
 				break;

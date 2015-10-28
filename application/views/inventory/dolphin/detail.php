@@ -5,6 +5,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	$price = get_price_display($vehicle['prices'], $this->company, $vehicle['saleclass'], $vehicle['vin'], 'inventory', $theme_settings['price_text'] );
 	$vehicle['primary_price'] = $price['primary_price'];
 	$parameters['saleclass'] = $vehicle['saleclass'];
+	$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
 	apply_gravity_form_hooks( $vehicle );
 
 	$traffic_source = isset( $_COOKIE[ 'cardealerpress-traffic-source' ] ) ? $_COOKIE[ 'cardealerpress-traffic-source' ] : false;
@@ -110,6 +111,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 						echo $price['hidden_prices'];
 						echo ( !empty($price['ais_link']) ) ? $price['ais_link'] : '';
 						echo $price['primary_text'].$price['ais_text'].$price['compare_text'].$price['msrp_text'].$price['expire_text'];
+						echo get_loan_value($theme_settings['loan'], $price['primary_price'], $loan_parameters);
 					?>
 				</div>
 				<div id="inventory-vehicle-overview">
@@ -284,9 +286,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 						$gform_buttons = get_gform_button_display( $theme_settings['forms'], $vehicle['saleclass'] );
 						echo $gform_buttons;
 					}
-					if( $theme_settings['loan']['display_calc'] ){
-						echo get_loan_calculator($theme_settings['loan'], $vehicle['primary_price'], TRUE);	
-					}
+					echo get_loan_calculator($theme_settings['loan'], $vehicle['primary_price'], TRUE, $loan_parameters);
 				?>
 
 			</div> <!-- Column Right End -->

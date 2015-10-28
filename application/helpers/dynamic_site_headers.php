@@ -74,16 +74,11 @@ class dynamic_site_headers {
 	 * @since 3.0.0
 	 * @return void
 	 */
-		function __construct( $host , $company_id , $parameters, $discourage ) {
-			if( substr($host, 0, 7) == 'http://' ){
-				$this->host = $host;
-			} else {
-				$this->host = 'http://' . $host;
-			}
+		function __construct( $host , $company_id , $discourage ) {
+			$this->host = $host;
 			$this->company_id = $company_id;
-			$this->parameters = $parameters;
-            $this->discourage_seo = $discourage;
-			$this->get_headers();
+			$this->discourage_seo = $discourage;
+			
 		}
 
 	/**
@@ -117,15 +112,8 @@ class dynamic_site_headers {
 			$url .= '?' . rawurlencode(http_build_query( $this->parameters , '' , '&' ));
 			$request_handler = new http_request( $url , 'dynamic_site_headers' );
 			$this->request_stack[] = $url;
-			$trans_key = 'cdp_dynamic_headers';
-			if ( false === ( $trans_body = get_transient( $trans_key ) ) ) {
-				$trans_value = $request_handler->get_file( true );
-				if( !empty($trans_value['body']) ){
-					$trans_body = json_decode($trans_value['body']);
-					set_transient( $trans_key, $trans_body, DAY_IN_SECONDS ); 
-				}
-			}
-			$body = $trans_body;
+			$response = $request_handler->get_file( true );
+			$body = isset($response['body']) && !empty($response['body']) ? json_decode($response['body']): array();
 			if( $body ) {
 				$this->headers[ 'page_title' ] = isset($body->page_title) ? rawurldecode( $body->page_title ) : '';
 				$this->headers[ 'page_description' ] = isset($body->page_description) ? $body->page_description : '';
@@ -178,7 +166,14 @@ class dynamic_site_headers {
             }
 		}
 		
-		function apply_headers() {
+		function apply_headers( $parameters, $seo ) {
+			foreach($seo as $key => $value){
+				if( !empty($value) ){
+					$parameters[$key] = $value;
+				}
+			}
+			$this->parameters = $parameters;
+			$this->get_headers();
 			if( $this->headers != false ) {
 				add_filter( 'wp_title' , array( &$this , 'set_title' ) );
 				add_action( 'wp_head' , array( &$this , 'set_head_information' ) , 1 );

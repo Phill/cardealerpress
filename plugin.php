@@ -25,15 +25,39 @@ class cdp_plugin {
 				'name' => 'armadillo',
 				'per_page' => 10,
 				'loan' => array(
-					'display_calc' => '',
-					'default_interest' => '7.8',
-					'default_trade' => '5000',
-					'default_term' => '72',
-					'default_down' => '3000',
-					'default_tax' => '8.0',
-					'display_monthly' => '',
-					'display_bi_monthly' => '',
-					'display_total_cost' => ''
+					'used' => array(
+						'default' => array(
+							'display_calc' => '',
+							'display_payment' => '',
+							'display_monthly' => '',
+							'display_bi_monthly' => '',
+							'display_total_cost' => '',
+							'interest' => '7.8',
+							'trade' => '5000',
+							'term' => '72',
+							'down' => '3000',
+							'tax' => '8.0',
+							'disclaimer' => '',
+							'display_text' => ''
+						)
+					),
+					'new' => array(
+						'default' => array(
+							'display_calc' => '',
+							'display_payment' => '',
+							'display_monthly' => '',
+							'display_bi_monthly' => '',
+							'display_total_cost' => '',
+							'interest' => '7.8',
+							'trade' => '5000',
+							'term' => '72',
+							'down' => '3000',
+							'tax' => '8.0',
+							'disclaimer' => '',
+							'display_text' => ''
+						)
+					),
+					'custom' => array()
 				),
 				'forms' => array(),
 				'emails' => array(
@@ -135,7 +159,7 @@ class cdp_plugin {
 		$this->add_shortcode();
 		$this->wp_header_add();
 	}
-
+	
 	/*
 		//// LOAD PLUGIN INFOFORMATION
 	*/
@@ -246,11 +270,9 @@ class cdp_plugin {
 			}
 		
 			if( !empty($this->vms) && !empty($this->company) ){
-				$seo_hack = array( 'city' => $this->company->seo->city , 'state' => $this->company->seo->state , 'country_code' => $this->company->country_code );
 				$this->seo_headers = new dynamic_site_headers(
 					$this->options[ 'vehicle_management_system' ][ 'host' ],
 					$this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ],
-					(array) $this->parameters + (array) $seo_hack,
 					$this->options[ 'alt_settings' ][ 'discourage_seo_visibility' ]
 				);
 			}
@@ -265,7 +287,7 @@ class cdp_plugin {
 	}
 	
 	function display_admin_register_notice(){
-		$notice = '<div class="error"><p>CarDealerPress requires a Company ID prior to use. <a href="http://cardealerpress.com">Purchase Subscription</a> or <a href="'.get_admin_url().'admin.php?page=cardealerpress_admin">Add</a> your Company ID.</p></div>';
+		$notice = '<div class="error"><p>CarDealerPress requires a Company ID prior to use. Request a <a target="_blank" href="http://cardealerpress.com/request-cardealerpress-demo-account/">Demo ID</a>, <a href="http://cardealerpress.com">Purchase Subscription</a> or <a href="'.get_admin_url().'admin.php?page=cardealerpress_admin">Add</a> your Company ID.</p></div>';
 		echo $notice;
 	}
 	
@@ -395,6 +417,7 @@ class cdp_plugin {
 
 	function show_theme() {
 		global $wp_query;
+		if( $this->options[ 'alt_settings' ][ 'debug_plugin_info' ] ){ $this->log_error_page(); }
 		$this->taxonomy = ( isset( $wp_query->query_vars[ 'taxonomy' ] ) ) ? $wp_query->query_vars[ 'taxonomy' ] : NULL;
 		//wp_enqueue_script( 'dealertrend_inventory_api_traffic_source' );
 		if( $this->vms ){
@@ -464,8 +487,8 @@ class cdp_plugin {
 				break;
 			} 
 		} else {
-			$this->load_vms_error();
-			$this->stop_wordpress();
+			//$this->load_vms_error();
+			//$this->stop_wordpress();
 		}
 	}
 	
@@ -480,6 +503,18 @@ class cdp_plugin {
 		get_header();
 		$this->display_admin_register_notice();
 		get_footer();
+	}
+	
+	function log_error_page(){
+		if( function_exists('http_response_code') ){
+			$page_response = http_response_code();
+			if( $page_response !== 200 ){
+				$page = 'http'.(isset($_SERVER['HTTPS']) ? 's' : '').'://'."$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+				$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER']: '';
+				$error_message = 'Response Code: '.$page_response.' | Page URL: '.$page.(!empty($referer) ? ' | Referer: '.$referer : '');
+				error_log('CDP Response Code Error Message ('.self::$plugin_information['Version'].') - ');error_log($error_message);	
+			}	
+		}
 	}
 
 	function stop_wordpress() {

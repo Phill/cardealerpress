@@ -5,6 +5,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 	$price = get_price_display($vehicle['prices'], $this->company, $vehicle['saleclass'], $vehicle['vin'], 'inventory', $theme_settings['price_text'] );
 	$vehicle['primary_price'] = $price['primary_price'];
 	$parameters['saleclass'] = $vehicle['saleclass'];
+	$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
 
 	apply_gravity_form_hooks( $vehicle );
 
@@ -18,9 +19,9 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		$gform_button_display = get_gform_button_display( $theme_settings['forms'], $vehicle['saleclass'] );
 	}
 	// Loan Display
-	if( $theme_settings['loan']['display_calc'] ){
-		$loan_display = get_loan_calculator($theme_settings['loan'], $vehicle['primary_price'], TRUE);
-	}
+	$loan_display = get_loan_calculator($theme_settings['loan'], $vehicle['primary_price'], TRUE, $loan_parameters);
+	$loan_value = get_loan_value($theme_settings['loan'], $vehicle['primary_price'], $loan_parameters);
+
 	// Phone Display
 	$phone_display = get_dealer_contact_number( $vehicle['contact_info'], $this->options['vehicle_management_system' ]['custom_contact'], $vehicle['saleclass'] );
 	// Contact Display
@@ -105,12 +106,12 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 		return $column;
 	}
 	
-	function get_detail_column( $style, $vehicle, $price, $fuel, $tags, $detail_tabs, $equipment ){
+	function get_detail_column( $style, $vehicle, $price, $fuel, $tags, $detail_tabs, $equipment, $loan ){
 		$column = '<div id="inventory-column-details" class="inventory-column '.$style.'">'; // column wrapper
 		$column .= '<div id="inventory-vehicle-information">'; // vehicle info
 		$column .= '<div id="vehicle-info-header" class="inventory-header">Vehicle Information</div>';
 		$column .= '<div id="vehicle-info-wrapper">' . ( !empty($vehicle['exterior_color']) ?'<div id="info-ext-color"><span>Exterior: </span>'.$vehicle['exterior_color'].'</div>':'' ) . ( !empty($vehicle['interior_color']) ?'<div id="info-int-color"><span>Interior: </span>'.$vehicle['interior_color'].'</div>':'' ) . ( !empty($vehicle['engine']) ?'<div id="info-engine"><span>Engine: </span>'.$vehicle['engine'].'</div>':'' ) . ( !empty($vehicle['transmission']) ?'<div id="info-transmission"><span>Transmission: </span>'.$vehicle['transmission'].'</div>':'' ) . ( !empty($vehicle['odometer']) ?'<div id="info-odometer"><span>Odometer: </span>'.$vehicle['odometer'].'</div>':'' ) . ( !empty($vehicle['stock_number']) ?'<div id="info-stock-number"><span>Stock #: </span><span class="inventory-stock-number">'.$vehicle['stock_number'].'</span></div>':'' ) . ( !empty($vehicle['vin']) ?'<div id="info-vin"><span>VIN: </span><span class="inventory-vin">'.$vehicle['vin'].'</span></div>':'' ).'</div>';
-		$column .= '<div id="inventory-price-wrapper" class="inventory-price">'.( !empty($price['ais_link']) ? $price['ais_link'] : '') . $price['compare_text'].$price['ais_text'].$price['primary_text'].$price['expire_text'].$price['hidden_prices'].'</div>';
+		$column .= '<div id="inventory-price-wrapper" class="inventory-price">'.( !empty($price['ais_link']) ? $price['ais_link'] : '') . $price['compare_text'].$price['ais_text'].$price['primary_text'].$price['expire_text'].$price['hidden_prices'].$loan.'</div>';
 		$column .= '</div>'; // vehicle info
 		if( !empty($fuel) ){
 			$column .= $fuel;
@@ -160,7 +161,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 						break;
 				}
 				$info_column = get_info_column($theme_style, $vehicle, $phone_display, $contact_display, $loan_display, $ac_display, $this->options['vehicle_management_system' ]['host'], $traffic_source, $this->company->id, $theme_settings['detail_gform_id'],$gform_button_display,$carfax_url);
-				$detail_column = get_detail_column($theme_style, $vehicle, $price, $fuel_display, $tag_display, $detail_tabs_info, $equipment_display);
+				$detail_column = get_detail_column($theme_style, $vehicle, $price, $fuel_display, $tag_display, $detail_tabs_info, $equipment_display, $loan_value);
 				$photo_column = get_photo_column($theme_style, $photo_display);
 				
 				echo $photo_column . $detail_column . $info_column;

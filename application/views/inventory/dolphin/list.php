@@ -338,6 +338,8 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 							<?php
 								echo (!empty($price['rebate_link'])) ? $price['rebate_link'] : ( (!empty($price['ais_link'])) ? $price['ais_link'] : '' );
 								echo $price['compare_text'].( empty($price['rebate_link']) ? $price['ais_text'] : '' ).$price['primary_text'].$price['expire_text'].$price['hidden_prices'];
+								$loan_parameters = array('model'=>$vehicle['model']['name'], 'trim'=> $vehicle['trim']['name'], 'year'=>$vehicle['year'], 'saleclass'=>$vehicle['saleclass']);
+								echo get_loan_value($theme_settings['loan'], $price['primary_price'], $loan_parameters);
 							?>
 						</div>
 					</div>
