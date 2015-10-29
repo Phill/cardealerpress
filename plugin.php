@@ -457,6 +457,9 @@ class cdp_plugin {
 				break;
 				case 'new-vehicle-sitemap':
 				case 'used-vehicle-sitemap':
+				$this->parameters = $this->get_parameters();
+				$seo_hack = array( 'city' => $this->company->seo->city , 'state' => $this->company->seo->state , 'country_code' => $this->company->country_code );
+				$this->seo_headers->apply_headers( $this->parameters, $seo_hack );
 				if ( !empty($this->seo_headers->headers) ){
 				
 					$company_id = $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ];

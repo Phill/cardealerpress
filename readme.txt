@@ -29,6 +29,10 @@ For a complete list of FAQ's please visit:
 
 == Changelog ==
 
+**4.3.1510.06**:
+
+* Bug: Sitemap was not loading correctly.
+
 **4.3.1510.05**:
 
 * Feature: Can now load payments on list and detail pages, with custom settings.
