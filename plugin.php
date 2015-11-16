@@ -287,7 +287,7 @@ class cdp_plugin {
 	}
 	
 	function display_admin_register_notice(){
-		$notice = '<div class="error"><p>CarDealerPress requires a Company ID prior to use. Request a <a target="_blank" href="http://cardealerpress.com/request-cardealerpress-demo-account/">Demo ID</a>, <a href="http://cardealerpress.com">Purchase Subscription</a> or <a href="'.get_admin_url().'admin.php?page=cardealerpress_admin">Add</a> your Company ID.</p></div>';
+		$notice = '<div class="error"><p>CarDealerPress requires a Company ID prior to use. <button> <a style="font-weight:bold; font-size: 120%;" target="_blank" href="http://cardealerpress.com/request-cardealerpress-demo-account/"> Request a Demo ID</a> </button> , <button> <a style="font-weight:bold; font-size: 120%;" target="_blank" href="http://cardealerpress.com">Purchase Subscription</a></button> or <button><a style="font-weight:bold; font-size: 120%;" href="'.get_admin_url().'admin.php?page=cardealerpress_admin">Add</a></button> your Company ID.</p></div>';
 		echo $notice;
 	}
 	

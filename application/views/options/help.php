@@ -53,6 +53,9 @@
 				<p><a target="_blank" href="<?php bloginfo( 'url' ); echo '/used-vehicle-sitemap.xml'; ?>">Sitemap Used</a></p>
 			</div>
 		</div>
+		<?php
+		}
+		?>
 		<div class="tr-wrapper">
 			<div class="td-full"><h3 class="title">Clean Uninstall</h3></div>
 		</div>
@@ -71,9 +74,6 @@
 				</div>
 			</div>
 		</div>
-		<?php
-		}
-		?>
 	</div>
 <?php
 	$this->admin_footer();

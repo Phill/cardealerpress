@@ -18,7 +18,8 @@ class Admin_ajax {
 		switch($_REQUEST['fn']){
 			case 'saveAdminSettings':
 				if( $_REQUEST['params']['path'] == 'vehicle_management_system/company_information/id'){ delete_transient('cdp_company'); delete_transient('cdp_dynamic_headers'); }
-				$this->set_options_value($_REQUEST['params']['path'], stripslashes($_REQUEST['params']['value']));
+				$value = ( isset($_REQUEST['params']['value']) && !empty($_REQUEST['params']['value']) ? is_array($_REQUEST['params']['value']) ? $_REQUEST['params']['value'] : stripslashes($_REQUEST['params']['value']) : '' );
+				$this->set_options_value($_REQUEST['params']['path'], $value );
 				$this->save_options_ajax();
 				$output['id'] = '';
 				$output['content'] = 'saved';
@@ -224,7 +225,7 @@ class Admin_ajax {
 	            $cur[$segment] = array();
 	        $cur =& $cur[$segment];
 	    }
-	    $cur = $value;
+		$cur = $value;
 	}
 	
 	function save_options_ajax() {

@@ -203,11 +203,11 @@
 			key = jQuery(e.target).attr('class');
 			item = jQuery(e.target).attr('name');
 			element = jQuery(e.target);
-			value = [];
+			var value = [];
 			jQuery('.msw-wrapper.'+tag+' ul.msw-included > li').each(function(){
 				value.push(jQuery(this).attr('name'));
 			});
-		
+
 			switch(key){
 				case 'msw-add':
 					value.push(item);
@@ -240,9 +240,11 @@
 			cdp_ajax_call( 'saveAdminSettings', data, '#cdp-content-wrapper' ).done(function(result) {
 
 			}).fail(function() {
-			    alert('Data Note Saved');
+			    alert('Data Note Saved...');
 			});
 			//alert('Path: '+path+' | Tag: '+tag+' | Key: '+key+' | Item: '+item+' | Value: '+value);
+			//console.log('Path: '+path+' | Tag: '+tag+' | Key: '+key+' | Item: '+item+' | Value: '+value);
+			//console.dir(data);
 		}
 	});
 	jQuery('.msw-view-wrapper').on( 'click', '.msw-window-title', function (e){
