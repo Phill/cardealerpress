@@ -298,6 +298,7 @@ namespace Wordpress\Plugins\CarDealerPress\Inventory\Api;
 											<?php
 												echo $vehicle['exterior_color'] ? '<span class="exterior-color"> Exterior: '.$vehicle['exterior_color'].'</span>' : '';
 												echo $vehicle['interior_color'] ? '<span class="interior-color"> Interior: '.$vehicle['interior_color'].'</span>' : '';
+												echo $vehicle['odometer'] && strtolower($vehicle['saleclass']) =='used' ? '<br><span class="odometer-color"> Odometer: '.$vehicle['odometer'].'</span>' : '';
 											?>
 										</div>
 									</div>

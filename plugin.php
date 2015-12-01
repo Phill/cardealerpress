@@ -366,47 +366,44 @@ class cdp_plugin {
 					'show_tagcloud' => false
 				)
 			);
-			if( !empty($this->seo_headers->headers) ){
-				$saleclass = $this->options[ 'vehicle_management_system' ][ 'saleclass' ];
+			
+			$saleclass = $this->options[ 'vehicle_management_system' ][ 'saleclass' ];
+			if( $saleclass == 'all' || $saleclass == 'new' ){
+				$labels = array(
+					'name' => _x( 'New Inventory Sitemap' , 'taxonomy general name' )
+				);
+				register_taxonomy(
+					'new-vehicle-sitemap',
+					array( 'page' ),
+					array(
+						'hierarchical' => false,
+						'labels' => $labels,
+						'show_ui' => false,
+						'query_var' => true,
+						'rewrite' => array( 'slug' => 'new-vehicle-sitemap' ),
+						'show_in_nav_menus' => false,
+						'show_tagcloud' => false
+					)
+				);				
+			}
 
-				if( $saleclass == 'all' || $saleclass == 'new' ){
-					$labels = array(
-						'name' => _x( 'New Inventory Sitemap' , 'taxonomy general name' )
-					);
-					register_taxonomy(
-						'new-vehicle-sitemap',
-						array( 'page' ),
-						array(
-							'hierarchical' => false,
-							'labels' => $labels,
-							'show_ui' => false,
-							'query_var' => true,
-							'rewrite' => array( 'slug' => 'new-vehicle-sitemap' ),
-							'show_in_nav_menus' => false,
-							'show_tagcloud' => false
-						)
-					);				
-				}
-
-				if( $saleclass == 'all' || $saleclass == 'used' || $saleclass == 'certified' ){
-					$labels = array(
-						'name' => _x( 'Used Inventory Sitemap' , 'taxonomy general name' )
-					);
-					register_taxonomy(
-						'used-vehicle-sitemap',
-						array( 'page' ),
-						array(
-							'hierarchical' => false,
-							'labels' => $labels,
-							'show_ui' => false,
-							'query_var' => true,
-							'rewrite' => array( 'slug' => 'used-vehicle-sitemap' ),
-							'show_in_nav_menus' => false,
-							'show_tagcloud' => false
-						)
-					);
-				}
-
+			if( $saleclass == 'all' || $saleclass == 'used' || $saleclass == 'certified' ){
+				$labels = array(
+					'name' => _x( 'Used Inventory Sitemap' , 'taxonomy general name' )
+				);
+				register_taxonomy(
+					'used-vehicle-sitemap',
+					array( 'page' ),
+					array(
+						'hierarchical' => false,
+						'labels' => $labels,
+						'show_ui' => false,
+						'query_var' => true,
+						'rewrite' => array( 'slug' => 'used-vehicle-sitemap' ),
+						'show_in_nav_menus' => false,
+						'show_tagcloud' => false
+					)
+				);
 			}
 		}
 	}

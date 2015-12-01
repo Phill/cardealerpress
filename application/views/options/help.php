@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<div class="tr-wrapper">
-			<div class="td-full"><h3 class="title">Sitemap Links</h3></div>
+			<div class="td-full"><h3 class="title">Sitemap Links<small>(Requires SEO Helpers)</small></h3></div>
 		</div>
 		<div class="tr-wrapper tr-color">
 			<div class="td-full center">
@@ -53,6 +53,7 @@
 				<p><a target="_blank" href="<?php bloginfo( 'url' ); echo '/used-vehicle-sitemap.xml'; ?>">Sitemap Used</a></p>
 			</div>
 		</div>
+		
 		<?php
 		}
 		?>

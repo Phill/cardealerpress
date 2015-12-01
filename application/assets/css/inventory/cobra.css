@@ -298,10 +298,11 @@
 	float: none;
 	clear: both;
 	overflow: hidden;
-	width: 96%;
+	width: 100%;
 	border: 2px solid #D72A19;
 	margin: 0 0 1%;
-	padding: 1.8%
+	padding: 1.8%;
+	box-sizing: border-box;
 }
 .inventory-vehicle{
 	display: block;
@@ -411,7 +412,7 @@
 	display: block;
 	width: 100%;
 	overflow: hidden;
-	max-height: 16px;
+	max-height: 32px;
 	color: #FFFFFF;
 	font-size: 84%;
 	margin: 1% 2% 0 0;
@@ -1466,7 +1467,7 @@ gForm
 	div.breadcrumbs{
 	    display: none;
 	}
-	div.cobra-pager{
+	div.inventory-pager{
 	    width: 98%;
 	    float: none;
 	    text-align: center;
@@ -1476,26 +1477,26 @@ gForm
 	div#mobile-show-search{
 		display: block;
 	}
-	div#cobra-search-wrapper{
+	div#inventory-search-wrapper{
 	    display: none;
 	}
-	div#cobra-search-wrapper.mobile-view{
+	div#inventory-search-wrapper.mobile-view{
 	    display: block;
 	}
-	div#cobra-quick-links{
+	div#inventory-quick-links{
 	    display: block;
 	    overflow: hidden;
 	    float: none;
 	    clear: both;
 	    text-align: center;
 	}
-	div#cobra-quick-select{
+	div#inventory-quick-select{
 	    display: block;
 	    overflow: hidden;
 	    float: none;
 	    clear: both;
 	}
-	div#cobra-quick-selects{
+	div#inventory-quick-selects{
 	    display: block;
 	    float: none;
 	    clear: both;
@@ -1507,36 +1508,36 @@ gForm
 	    margin: 1% auto;
 	    float: none;
 	}
-	div#cobra-quick-search{
+	div#inventory-quick-search{
 	    float: none;
 	    clear: both;
 	    text-align: center;
 	}
 
-	input#cobra-search-box{
+	input#inventory-search-box{
 	    padding: 0;
 	    margin: 0 auto;
 	    float: none;
 	    clear: both;
 	}
-	button#cobra-search-submit{
+	button#inventory-search-submit{
 	    display: block;
 	    float: none;
 	    margin: 2% auto 1%;
 	    height: 18px;
 		right: inherit;
 	}
-	div#cobra-total-found{
+	div#inventory-total-found{
 	    margin: 0 auto 1%;
 	}
-	div#cobra-sorting{
+	div#inventory-sorting{
 		display: none;
 	}
-	div#cobra-inventory-wrapper{
+	div#inventory-inventory-wrapper{
 	    margin: 1% auto;
 	    padding: 0;
 	}
-	div.cobra-vehicle-left{
+	div.inventory-vehicle-left{
 	    display: block;
 	    float: none;
 	    clear: both;
@@ -1544,7 +1545,7 @@ gForm
 	    margin: 2% auto 1%;
 	    padding: 0
 	}
-	div.cobra-vehicle-right{
+	div.inventory-vehicle-right{
 	    display: block;
 	    float: none;
 	    clear: both;
@@ -1552,10 +1553,10 @@ gForm
 	    margin: 0 auto;
 	    padding: 0;
 	}
-	div.cobra-vehicle-top{
+	div.inventory-vehicle-top{
 	    display: none;
 	}
-	div.cobra-vehicle-inner-left{
+	div.inventory-vehicle-inner-left{
 	    display: block;
 	    float: none;
 	    width: 100%;
@@ -1567,52 +1568,67 @@ gForm
 	span.title-trim{
 	    display: inline;
 	}
-	div.cobra-vehicle-extras{
+	div.inventory-vehicle-extras{
 	    display: none;
 	}
-	div.cobra-vehicle-inner-right{
+	div.inventory-vehicle-inner-right{
 	    display: block;
 	    float: none;
 	    width: 90%;
 	    text-align: center;
 	    margin: auto;
 	}
-	div.cobra-price-wrap{
+	div.inventory-price-wrap{
 	    float: none;
 	    width: 100%;
 	    text-align: center;
 	}
-	div.cobra-price-wrap > div{
+	div.inventory-price-wrap > div{
 	    margin: 0;
 	    padding: 0;
 	    text-align: center;
 	    width: 100%;
 	}
-	div.cobra-price-wrap > div span{
+	div.inventory-price-wrap > div span{
 	    margin: 0;
 	    padding: 0;
 	}
-	.cobra-vehicle div.cobra-main-price{
+	.inventory-vehicle div.inventory-main-price.inventory-asking-price{
 	    margin: 0;
 	    padding: 0;
 	    text-align: center;
 	}
-	div.cobra-more-info{
+	.inventory-vehicle div.inventory-main-price{
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	}
+	div.inventory-more-info{
 	    float: none;
 	    clear: both;
 	    margin: 1% auto;
 	    padding: 0;
 	}
-	div.cobra-more-info-button{
+	div.inventory-more-info-button{
 	    margin: 0 auto;
 	    padding: 0;
 	    float: none;
 	    clear: both;
 	}
-	div.cobra-vehicle-bottom{
+	div.inventory-vehicle-bottom{
 	    text-align: center;
 	    float: none;
 	    clear: both;
+	}
+	div.inventory-vehicle-bottom .bottom-left{
+		display: none;
+	}
+	div.inventory-vehicle-bottom .bottom-right{
+		width: 100%;
+		font-size: 90%;
+		text-align: center;
+		max-width: inherit;
+		float: none;
 	}
 	div.dealer-contact-wrapper{
 	    float: none;
@@ -1645,7 +1661,7 @@ gForm
 	    padding: 0;
 	    text-align: center;
 	}
-	hr.cobra-hr-half{
+	hr.inventory-hr-half{
 	    width: 100%;
 	}
 	div#top-dealer-info{
@@ -1654,20 +1670,20 @@ gForm
 	    margin: 0;
 	}
 
-	div.cobra-main-price{
+	div.inventory-main-price{
 	    padding: 0;
 	    margin: 0;
 	}
-	div.cobra-main-price > span{
+	div.inventory-main-price > span{
 	    display: inline;
 	    margin: 0;
 	}
-	div.cobra-asking-price{
+	div.inventory-asking-price{
 	    margin: 0;
 	    padding: 0;
 	    text-align: center;
 	}
-	div#cobra-content-wrapper > div{
+	div#inventory-content-wrapper > div{
 	    display: block;
 	    overflow: hidden;
 	    clear: both;
@@ -1676,7 +1692,7 @@ gForm
 	    padding: 0;
 	    margin: 0 auto;
 	}
-	div#cobra-content-wrapper div#content-inner-bottom{
+	div#inventory-content-wrapper div#content-inner-bottom{
 	    margin: 2% auto 0;
 	}
 	div#vehicle-details-tabs-content{
@@ -1764,7 +1780,7 @@ gForm
 	div.breadcrumbs{
 	    display: none;
 	}
-	div.cobra-pager{
+	div.inventory-pager{
 	    width: 98%;
 	    float: none;
 	    text-align: center;
@@ -1774,26 +1790,26 @@ gForm
 	div#mobile-show-search{
 		display: block;
 	}
-	div#cobra-search-wrapper{
+	div#inventory-search-wrapper{
 	    display: none;
 	}
-	div#cobra-search-wrapper.mobile-view{
+	div#inventory-search-wrapper.mobile-view{
 	    display: block;
 	}
-	div#cobra-quick-links{
+	div#inventory-quick-links{
 	    display: block;
 	    overflow: hidden;
 	    float: none;
 	    clear: both;
 	    text-align: center;
 	}
-	div#cobra-quick-select{
+	div#inventory-quick-select{
 	    display: block;
 	    overflow: hidden;
 	    float: none;
 	    clear: both;
 	}
-	div#cobra-quick-selects{
+	div#inventory-quick-selects{
 	    display: block;
 	    float: none;
 	    clear: both;
@@ -1805,36 +1821,36 @@ gForm
 	    margin: 1% auto;
 	    float: none;
 	}
-	div#cobra-quick-search{
+	div#inventory-quick-search{
 	    float: none;
 	    clear: both;
 	    text-align: center;
 	}
 
-	input#cobra-search-box{
+	input#inventory-search-box{
 	    padding: 0;
 	    margin: 0 auto;
 	    float: none;
 	    clear: both;
 	}
-	button#cobra-search-submit{
+	button#inventory-search-submit{
 	    display: block;
 	    float: none;
 	    margin: 2% auto 1%;
 	    height: 18px;
 		right: inherit;
 	}
-	div#cobra-total-found{
+	div#inventory-total-found{
 	    margin: 0 auto 1%;
 	}
-	div#cobra-sorting{
+	div#inventory-sorting{
 		display: none;
 	}
-	div#cobra-inventory-wrapper{
+	div#inventory-inventory-wrapper{
 	    margin: 1% auto;
 	    padding: 0;
 	}
-	div.cobra-vehicle-left{
+	div.inventory-vehicle-left{
 	    display: block;
 	    float: none;
 	    clear: both;
@@ -1842,7 +1858,7 @@ gForm
 	    margin: 2% auto 1%;
 	    padding: 0
 	}
-	div.cobra-vehicle-right{
+	div.inventory-vehicle-right{
 	    display: block;
 	    float: none;
 	    clear: both;
@@ -1850,10 +1866,10 @@ gForm
 	    margin: 0 auto;
 	    padding: 0;
 	}
-	div.cobra-vehicle-top{
+	div.inventory-vehicle-top{
 	    display: none;
 	}
-	div.cobra-vehicle-inner-left{
+	div.inventory-vehicle-inner-left{
 	    display: block;
 	    float: none;
 	    width: 100%;
@@ -1865,49 +1881,49 @@ gForm
 	span.title-trim{
 	    display: inline;
 	}
-	div.cobra-vehicle-extras{
+	div.inventory-vehicle-extras{
 	    display: none;
 	}
-	div.cobra-vehicle-inner-right{
+	div.inventory-vehicle-inner-right{
 	    display: block;
 	    float: none;
 	    width: 90%;
 	    text-align: center;
 	    margin: auto;
 	}
-	div.cobra-price-wrap{
+	div.inventory-price-wrap{
 	    float: none;
 	    width: 100%;
 	    text-align: center;
 	}
-	div.cobra-price-wrap > div{
+	div.inventory-price-wrap > div{
 	    margin: 0;
 	    padding: 0;
 	    text-align: center;
 	    width: 100%;
 	}
-	div.cobra-price-wrap > div span{
+	div.inventory-price-wrap > div span{
 	    margin: 0;
 	    padding: 0;
 	}
-	.cobra-vehicle div.cobra-main-price{
+	.inventory-vehicle div.inventory-main-price{
 	    margin: 0;
 	    padding: 0;
 	    text-align: center;
 	}
-	div.cobra-more-info{
+	div.inventory-more-info{
 	    float: none;
 	    clear: both;
 	    margin: 1% auto;
 	    padding: 0;
 	}
-	div.cobra-more-info-button{
+	div.inventory-more-info-button{
 	    margin: 0 auto;
 	    padding: 0;
 	    float: none;
 	    clear: both;
 	}
-	div.cobra-vehicle-bottom{
+	div.inventory-vehicle-bottom{
 	    text-align: center;
 	    float: none;
 	    clear: both;
@@ -1943,7 +1959,7 @@ gForm
 	    padding: 0;
 	    text-align: center;
 	}
-	hr.cobra-hr-half{
+	hr.inventory-hr-half{
 	    width: 100%;
 	}
 	div#top-dealer-info{
@@ -1952,20 +1968,20 @@ gForm
 	    margin: 0;
 	}
 
-	div.cobra-main-price{
+	div.inventory-main-price{
 	    padding: 0;
 	    margin: 0;
 	}
-	div.cobra-main-price > span{
+	div.inventory-main-price > span{
 	    display: inline;
 	    margin: 0;
 	}
-	div.cobra-asking-price{
+	div.inventory-asking-price{
 	    margin: 0;
 	    padding: 0;
 	    text-align: center;
 	}
-	div#cobra-content-wrapper > div{
+	div#inventory-content-wrapper > div{
 	    display: block;
 	    overflow: hidden;
 	    clear: both;

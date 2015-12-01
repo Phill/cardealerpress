@@ -276,9 +276,10 @@ class Admin_ajax {
 	}
 	
 	function get_default_keywords(){
-		$keyword_request = 'http://api.dealertrend.com/api/companies/' . $this->options[ 'vehicle_management_system' ][ 'company_information' ][ 'id' ] . '/vehicles.json';
+		$keyword_request = 'http://api.dealertrend.com/api/companies/' .$this->options['vehicle_management_system']['company_information']['id']. '/vehicles.json';
 		$keyword_handler = new http_request( $keyword_request , 'vehicle_keyword' );
-		$keyword_data = $keyword_handler->get_file();
+		$response = $keyword_handler->get_file();
+		$keyword_data = isset($response['body']) ? json_decode($response['body']) : array();
 		
 		$keyword_array = array();
 		$item_array = array('make','model','trim');

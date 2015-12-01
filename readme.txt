@@ -4,7 +4,7 @@ Donate link: http://www.cardealerpress.com
 Tags: car dealer,car sales,automotive,api,dealertrend,automotive,cars,custom taxonomy,vehicles,cardealerpress,cardealer
 Requires at least: 3.2
 Tested up to: 4.3
-Stable tag: 4.3.1511.00
+Stable tag: 4.3.1512.00
 License: GPLv2 or later
 
 In order to use CarDealerPress a subscription is required with DealerTrend. The plugin utilizes their API to pull automotive data.
@@ -28,6 +28,12 @@ For a complete list of FAQ's please visit:
 [CarDealerPress FAQ](http://cardealerpress.com/car-dealer-wordpress-plugin/plugin-faqs/ "Plugin Faqs")
 
 == Changelog ==
+
+**4.3.1512.00**:
+
+* Update: Added mileage to Cobra list page.
+* Bug: Mobile corba view corrected.
+* Bug: Keywords list was not being generated.
 
 **4.3.1511.00**:
 
